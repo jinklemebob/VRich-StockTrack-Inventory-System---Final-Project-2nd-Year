@@ -13,39 +13,43 @@ using System.Windows.Forms;
 
 namespace FinalProject2ndYear
 {
-    public partial class Form1 : Form
+    public partial class LoginPage : Form
     {
-       
-    public Form1()
+        public LoginPage()
         {
-          
             InitializeComponent();
         }
-
-    private void UserLogin()
+ 
+        private void UserLogin()
         {
             string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-
-                String queryLogin = "SELECT COUNT(*) FROM Admin_Accounts WHERE username = @username AND password = @password";
+              
+                String queryLogin = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
                 SqlCommand cmd = new SqlCommand(queryLogin, conn);
 
-                cmd.Parameters.AddWithValue("@username", UsernameTextBox.Text);
-                cmd.Parameters.AddWithValue("@password", PasswordTextBox.Text);
+                
+         
+                cmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text);
+                cmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text);
 
                 int result = (int)cmd.ExecuteScalar();
 
                 if (result == 0)
                 {
-                    MessageBox.Show("Incorrect Login");
+                    MessageBox.Show("Incorrect login.");
 
                 }
                 else if (result >= 1)
                 {
-                    MessageBox.Show("Login Successful!");
-                    LoginPanel.Visible = false;
+                    String Username = UsernameTextBox.Text;
+                    String Password = PasswordTextBox.Text;
+                    MessageBox.Show("Login Successful");
+                    MainDashboard main = new MainDashboard(Username,Password);
+                    this.Hide();
+                    main.Show();
                 }
             }
 
@@ -55,6 +59,11 @@ namespace FinalProject2ndYear
         private void button2_Click(object sender, EventArgs e)
         {
          UserLogin();
+
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
 
         }
     }

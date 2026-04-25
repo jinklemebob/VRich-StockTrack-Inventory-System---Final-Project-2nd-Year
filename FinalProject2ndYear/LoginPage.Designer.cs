@@ -1,6 +1,6 @@
 ﻿namespace FinalProject2ndYear
 {
-    partial class Form1
+    partial class LoginPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.LoginLabel = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.UsernameLbl = new System.Windows.Forms.Label();
             this.PasswordLbl = new System.Windows.Forms.Label();
             this.UsernameTextBox = new System.Windows.Forms.TextBox();
-            this.LoginLabel = new System.Windows.Forms.Label();
             this.LoginPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,10 +47,19 @@
             this.LoginPanel.Controls.Add(this.UsernameLbl);
             this.LoginPanel.Controls.Add(this.PasswordLbl);
             this.LoginPanel.Controls.Add(this.UsernameTextBox);
-            this.LoginPanel.Location = new System.Drawing.Point(280, 95);
+            this.LoginPanel.Location = new System.Drawing.Point(122, 65);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(249, 255);
             this.LoginPanel.TabIndex = 0;
+            // 
+            // LoginLabel
+            // 
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.Location = new System.Drawing.Point(71, 46);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(108, 13);
+            this.LoginLabel.TabIndex = 6;
+            this.LoginLabel.Text = "Log-In to StockTrack";
             // 
             // LoginButton
             // 
@@ -94,24 +103,16 @@
             this.UsernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.UsernameTextBox.TabIndex = 2;
             // 
-            // LoginLabel
-            // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(71, 46);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(108, 13);
-            this.LoginLabel.TabIndex = 6;
-            this.LoginLabel.Text = "Log-In to StockTrack";
-            // 
-            // Form1
+            // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(484, 391);
             this.Controls.Add(this.LoginPanel);
-            this.Name = "Form1";
+            this.Name = "LoginPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vitarich StockTrack";
+            this.Load += new System.EventHandler(this.LoginPage_Load);
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
             this.ResumeLayout(false);
