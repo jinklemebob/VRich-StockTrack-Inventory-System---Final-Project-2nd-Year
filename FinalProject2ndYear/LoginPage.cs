@@ -23,15 +23,13 @@ namespace FinalProject2ndYear
         private void UserLogin()
         {
             string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
+            SqlConnection conn = new SqlConnection(connStr);
+            
                 conn.Open();
               
                 String queryLogin = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
                 SqlCommand cmd = new SqlCommand(queryLogin, conn);
 
-                
-         
                 cmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text);
                 cmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text);
 
@@ -54,7 +52,7 @@ namespace FinalProject2ndYear
             }
 
 
-        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {

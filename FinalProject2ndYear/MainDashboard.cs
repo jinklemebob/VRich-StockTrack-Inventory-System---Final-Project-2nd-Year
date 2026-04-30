@@ -30,13 +30,15 @@ namespace FinalProject2ndYear
         {
             label1.Text = "Welcome, " + Username + "!";
             UserAuthentication();
+            hideSubmenu();
         }
+      
         private void UserAuthentication()
         {
             LoginPage lg = new LoginPage();
             string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
+            SqlConnection conn = new SqlConnection(connStr);
+   
 
                 conn.Open();
                 string userQuery = "SELECT UserID FROM Users WHERE Username = @Username AND Password = @Password";
@@ -56,12 +58,45 @@ namespace FinalProject2ndYear
                 object result2 = cmd2.ExecuteScalar();
                 int RoleID = Convert.ToInt32(result2);
 
-                if (RoleID == 1)
+                if (RoleID == 2)
                 {
-                    
+                button4.Visible = false;
                 }
             }
           
+        
+        private void hideSubmenu()
+        { 
+            MasterDataSubmenu.Visible = false;
+            TransactionsSubmenu.Visible = false;
+            AdministratorSubmenu.Visible = false;
+        }
+       private void autoHideSubmenu()
+        {
+            if(MasterDataSubmenu.Visible == true)
+            {
+                MasterDataSubmenu.Visible = false;
+            }
+            if (TransactionsSubmenu.Visible == true)
+            {
+                TransactionsSubmenu.Visible = false;
+            }
+            if (AdministratorSubmenu.Visible == true)
+            {
+                AdministratorSubmenu.Visible = false;
+            }
+        }
+        private void showSubmenus(Panel submenu)
+        {
+            if (submenu.Visible == false)
+            {
+                autoHideSubmenu();
+                submenu.Visible = true;
+            }
+            else
+            {
+                submenu.Visible = false;
+            }
         }
 
         private void MainDashboard_FormClosing(object sender, FormClosingEventArgs e)
@@ -69,6 +104,27 @@ namespace FinalProject2ndYear
             Application.Exit();
         }
 
-     
+        private void MasterDataButton_Click(object sender, EventArgs e)
+        {
+            showSubmenus(MasterDataSubmenu);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            showSubmenus(AdministratorSubmenu);
+        }
+
+        private void TransactionsButton_Click(object sender, EventArgs e)
+        {
+            showSubmenus(TransactionsSubmenu);
+        }
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+
+            LoginPage logout = new LoginPage();
+            logout.Show();
+            this.Hide();
+
+        }
     }
 }
