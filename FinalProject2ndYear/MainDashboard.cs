@@ -28,7 +28,7 @@ namespace FinalProject2ndYear
        
         private void MainDashboard_Load(object sender, EventArgs e)
         {
-            label1.Text = "Welcome, " + Username + "!";
+            WelcomeLabel.Text = "Welcome, " + Username + "!";
             UserAuthentication();
             hideSubmenu();
         }
@@ -60,7 +60,7 @@ namespace FinalProject2ndYear
 
                 if (RoleID == 2)
                 {
-                button4.Visible = false;
+                AdminButton.Visible = false;
                 }
             }
           
