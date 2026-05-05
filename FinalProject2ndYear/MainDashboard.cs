@@ -35,7 +35,6 @@ namespace FinalProject2ndYear
       
         private void UserAuthentication()
         {
-            LoginPage lg = new LoginPage();
             string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
             SqlConnection conn = new SqlConnection(connStr);
    
@@ -63,8 +62,7 @@ namespace FinalProject2ndYear
                 AdminButton.Visible = false;
                 }
             }
-          
-        
+
         private void hideSubmenu()
         { 
             MasterDataSubmenu.Visible = false;
@@ -109,7 +107,7 @@ namespace FinalProject2ndYear
             showSubmenus(MasterDataSubmenu);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void AdminButton_Click(object sender, EventArgs e)
         {
             showSubmenus(AdministratorSubmenu);
         }

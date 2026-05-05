@@ -68,8 +68,6 @@ namespace FinalProject2ndYear
         }
 
 
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
             
@@ -92,29 +90,54 @@ namespace FinalProject2ndYear
 
         }
 
-        private void UsernameLbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PasswordLbl_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void UsernameTextBox_TextChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+ 
         private void LoginPanel_Paint(object sender, PaintEventArgs e)
         {
             LoginPanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, LoginPanel.Width, LoginPanel.Height, 20, 20));
         }
+
+        private void UsernameTextBox_Click(object sender, EventArgs e)
+        {
+            UsernameTextBox.SelectAll();
+          
+        }
+
+        private void PasswordTextBox_Click(object sender, EventArgs e)
+        {
+            PasswordTextBox.SelectAll();
+        }
+
+        private void UsernameTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(UsernameTextBox.Text))
+            {
+                UsernameTextBox.Text = "Username...";
+            }
+        }
+
+        private void PasswordTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(PasswordTextBox.Text))
+            {
+                PasswordTextBox.Text = "Password...";
+            }
+        }
+
+        private void PasswordPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void UsernamePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
-}
+    }
+
