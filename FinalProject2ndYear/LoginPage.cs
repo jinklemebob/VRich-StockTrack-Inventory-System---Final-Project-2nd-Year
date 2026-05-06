@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginFunction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace FinalProject2ndYear
 {
@@ -35,68 +37,15 @@ namespace FinalProject2ndYear
             UsernamePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, UsernamePanel.Width, UsernamePanel.Height, 15, 15));
             PasswordPanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, PasswordPanel.Width, PasswordPanel.Height, 15, 15));
         }
- 
-        private void UserLogin()
+       
+        private void LoginButton_Click(object sender, EventArgs e)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connStr);
-            
-                conn.Open();
-              
-                String queryLogin = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
-                SqlCommand cmd = new SqlCommand(queryLogin, conn);
-
-                cmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text);
-                cmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text);
-
-                int result = (int)cmd.ExecuteScalar();
-
-                if (result == 0)
-                {
-                    MessageBox.Show("Incorrect login.");
-
-                }
-                else if (result >= 1)
-                {
-                    String Username = UsernameTextBox.Text;
-                    String Password = PasswordTextBox.Text;
-                    MessageBox.Show("Login Successful");
-                    MainDashboard main = new MainDashboard(Username,Password);
-                    this.Hide();
-                    main.Show();
-                }
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-            UserLogin();
+            UserLogin user = new UserLogin(UsernameTextBox.Text, PasswordTextBox.Text);
+            user.LoginMethod();
+            this.Hide();
 
         }
 
-        private void LoginPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoginLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PasswordTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void UsernameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
- 
         private void LoginPanel_Paint(object sender, PaintEventArgs e)
         {
             LoginPanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, LoginPanel.Width, LoginPanel.Height, 20, 20));
@@ -127,16 +76,6 @@ namespace FinalProject2ndYear
             {
                 PasswordTextBox.Text = "Password...";
             }
-        }
-
-        private void PasswordPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void UsernamePanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
     }

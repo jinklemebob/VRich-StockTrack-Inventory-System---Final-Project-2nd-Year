@@ -89,7 +89,7 @@
             this.MainControlPanel.ForeColor = System.Drawing.Color.DarkBlue;
             this.MainControlPanel.Location = new System.Drawing.Point(0, 0);
             this.MainControlPanel.Name = "MainControlPanel";
-            this.MainControlPanel.Size = new System.Drawing.Size(230, 561);
+            this.MainControlPanel.Size = new System.Drawing.Size(230, 681);
             this.MainControlPanel.TabIndex = 3;
             // 
             // LogoutSpacer
@@ -413,7 +413,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1028, 561);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.MainControlPanel);
             this.Controls.Add(this.WelcomeLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

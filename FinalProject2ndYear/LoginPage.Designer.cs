@@ -83,7 +83,7 @@
             this.LoginButton.TabIndex = 5;
             this.LoginButton.Text = "LOGIN";
             this.LoginButton.UseVisualStyleBackColor = false;
-            this.LoginButton.Click += new System.EventHandler(this.button2_Click);
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // UsernameTextBox
             // 
@@ -109,7 +109,6 @@
             this.LoginLabel.Size = new System.Drawing.Size(257, 28);
             this.LoginLabel.TabIndex = 6;
             this.LoginLabel.Text = "Login to your account.";
-            this.LoginLabel.Click += new System.EventHandler(this.LoginLabel_Click);
             // 
             // LoginPanel
             // 
@@ -132,7 +131,6 @@
             this.UsernamePanel.Name = "UsernamePanel";
             this.UsernamePanel.Size = new System.Drawing.Size(165, 37);
             this.UsernamePanel.TabIndex = 7;
-            this.UsernamePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.UsernamePanel_Paint);
             // 
             // PasswordPanel
             // 
@@ -144,7 +142,6 @@
             this.PasswordPanel.Name = "PasswordPanel";
             this.PasswordPanel.Size = new System.Drawing.Size(165, 37);
             this.PasswordPanel.TabIndex = 8;
-            this.PasswordPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PasswordPanel_Paint);
             // 
             // LoginFormPanel
             // 
@@ -172,7 +169,6 @@
             this.Name = "LoginPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VRich StockTrack";
-            this.Load += new System.EventHandler(this.LoginPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).EndInit();
             this.LoginPanel.ResumeLayout(false);
             this.UsernamePanel.ResumeLayout(false);
@@ -187,14 +183,14 @@
 
         #endregion
         private System.Windows.Forms.PictureBox SystemLogo;
-        private System.Windows.Forms.TextBox PasswordTextBox;
-        private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.TextBox UsernameTextBox;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Panel UsernamePanel;
         private System.Windows.Forms.Panel PasswordPanel;
-        private System.Windows.Forms.Panel LoginFormPanel;
+        public System.Windows.Forms.TextBox PasswordTextBox;
+        public System.Windows.Forms.Button LoginButton;
+        public System.Windows.Forms.TextBox UsernameTextBox;
+        public System.Windows.Forms.Panel LoginFormPanel;
     }
 }
 
