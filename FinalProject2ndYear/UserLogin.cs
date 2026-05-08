@@ -8,16 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace LoginFunction
 {
-    public class UserLogin 
+    public class UserAuthentication 
     {
         String Username;
         String Password;
-        public UserLogin(String Username, String Password)
+        public Boolean isValidated;
+        public UserAuthentication(String Username, String Password)
         {
             this.Username = Username;
             this.Password = Password;
+       
         }
         public void LoginMethod()
         {
@@ -37,13 +40,18 @@ namespace LoginFunction
             if (result == 0)
             {
                 MessageBox.Show("Incorrect login.");
+                return;
 
             }
             else if (result >= 1)
             {
                 MessageBox.Show("Login Successful");
+
                 MainDashboard main = new MainDashboard(Username, Password);
                 main.Show();
+                isValidated = true;
+
+               
             }
         }
     }

@@ -40,9 +40,13 @@ namespace FinalProject2ndYear
        
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            UserLogin user = new UserLogin(UsernameTextBox.Text, PasswordTextBox.Text);
+            UserAuthentication user = new UserAuthentication(UsernameTextBox.Text, PasswordTextBox.Text);
             user.LoginMethod();
-            this.Hide();
+
+            if (user.isValidated == true)
+            {
+                this.Hide();
+            }
 
         }
 
@@ -64,6 +68,7 @@ namespace FinalProject2ndYear
 
         private void UsernameTextBox_TextChanged_1(object sender, EventArgs e)
         {
+            
             if (String.IsNullOrWhiteSpace(UsernameTextBox.Text))
             {
                 UsernameTextBox.Text = "Username...";
@@ -72,9 +77,11 @@ namespace FinalProject2ndYear
 
         private void PasswordTextBox_TextChanged_1(object sender, EventArgs e)
         {
+            PasswordTextBox.UseSystemPasswordChar = true;
             if (String.IsNullOrWhiteSpace(PasswordTextBox.Text))
             {
                 PasswordTextBox.Text = "Password...";
+                PasswordTextBox.UseSystemPasswordChar = false; 
             }
         }
     }

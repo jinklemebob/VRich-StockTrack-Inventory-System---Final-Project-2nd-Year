@@ -74,6 +74,7 @@
             // 
             this.LoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.LoginButton.FlatAppearance.BorderSize = 0;
+            this.LoginButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginButton.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginButton.ForeColor = System.Drawing.Color.GhostWhite;
@@ -81,7 +82,7 @@
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(165, 37);
             this.LoginButton.TabIndex = 5;
-            this.LoginButton.Text = "LOGIN";
+            this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 

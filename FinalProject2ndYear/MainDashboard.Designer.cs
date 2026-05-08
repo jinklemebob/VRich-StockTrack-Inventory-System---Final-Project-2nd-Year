@@ -33,16 +33,11 @@
             this.MainControlPanel = new System.Windows.Forms.Panel();
             this.LogoutSpacer = new System.Windows.Forms.Panel();
             this.LogoutButton = new System.Windows.Forms.Button();
-            this.AdministratorSubmenu = new System.Windows.Forms.Panel();
-            this.UsersButton = new System.Windows.Forms.Button();
-            this.ActivityButton = new System.Windows.Forms.Button();
-            this.AdminButton = new System.Windows.Forms.Button();
             this.TransactionsSubmenu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GoodsReceiptsButton = new System.Windows.Forms.Button();
             this.SalesOrdersButton = new System.Windows.Forms.Button();
             this.TransactionsButton = new System.Windows.Forms.Button();
-            this.StocksButton = new System.Windows.Forms.Button();
             this.MasterDataSubmenu = new System.Windows.Forms.Panel();
             this.SuppliersButton = new System.Windows.Forms.Button();
             this.CustomersButton = new System.Windows.Forms.Button();
@@ -51,13 +46,18 @@
             this.MasterDataButton = new System.Windows.Forms.Button();
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.SystemLogo = new System.Windows.Forms.PictureBox();
+            this.InventoryButton = new System.Windows.Forms.Button();
+            this.AdminButton = new System.Windows.Forms.Button();
+            this.AdministratorSubmenu = new System.Windows.Forms.Panel();
+            this.UsersButton = new System.Windows.Forms.Button();
+            this.ActivityButton = new System.Windows.Forms.Button();
             this.MainControlPanel.SuspendLayout();
             this.LogoutSpacer.SuspendLayout();
-            this.AdministratorSubmenu.SuspendLayout();
             this.TransactionsSubmenu.SuspendLayout();
             this.MasterDataSubmenu.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).BeginInit();
+            this.AdministratorSubmenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -76,12 +76,12 @@
             this.MainControlPanel.AutoScroll = true;
             this.MainControlPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.MainControlPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.MainControlPanel.Controls.Add(this.LogoutSpacer);
             this.MainControlPanel.Controls.Add(this.AdministratorSubmenu);
             this.MainControlPanel.Controls.Add(this.AdminButton);
+            this.MainControlPanel.Controls.Add(this.InventoryButton);
+            this.MainControlPanel.Controls.Add(this.LogoutSpacer);
             this.MainControlPanel.Controls.Add(this.TransactionsSubmenu);
             this.MainControlPanel.Controls.Add(this.TransactionsButton);
-            this.MainControlPanel.Controls.Add(this.StocksButton);
             this.MainControlPanel.Controls.Add(this.MasterDataSubmenu);
             this.MainControlPanel.Controls.Add(this.MasterDataButton);
             this.MainControlPanel.Controls.Add(this.LogoPanel);
@@ -98,7 +98,7 @@
             this.LogoutSpacer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.LogoutSpacer.Location = new System.Drawing.Point(0, 733);
             this.LogoutSpacer.Name = "LogoutSpacer";
-            this.LogoutSpacer.Size = new System.Drawing.Size(213, 143);
+            this.LogoutSpacer.Size = new System.Drawing.Size(213, 86);
             this.LogoutSpacer.TabIndex = 11;
             // 
             // LogoutButton
@@ -110,7 +110,7 @@
             this.LogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogoutButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogoutButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.LogoutButton.Location = new System.Drawing.Point(0, 95);
+            this.LogoutButton.Location = new System.Drawing.Point(0, 38);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.LogoutButton.Size = new System.Drawing.Size(213, 48);
@@ -121,73 +121,6 @@
             this.LogoutButton.UseVisualStyleBackColor = false;
             this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
-            // AdministratorSubmenu
-            // 
-            this.AdministratorSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.AdministratorSubmenu.Controls.Add(this.UsersButton);
-            this.AdministratorSubmenu.Controls.Add(this.ActivityButton);
-            this.AdministratorSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AdministratorSubmenu.ForeColor = System.Drawing.Color.Transparent;
-            this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 638);
-            this.AdministratorSubmenu.Name = "AdministratorSubmenu";
-            this.AdministratorSubmenu.Size = new System.Drawing.Size(213, 95);
-            this.AdministratorSubmenu.TabIndex = 10;
-            // 
-            // UsersButton
-            // 
-            this.UsersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.UsersButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.UsersButton.FlatAppearance.BorderSize = 0;
-            this.UsersButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
-            this.UsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UsersButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsersButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.UsersButton.Location = new System.Drawing.Point(0, 48);
-            this.UsersButton.Name = "UsersButton";
-            this.UsersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.UsersButton.Size = new System.Drawing.Size(213, 48);
-            this.UsersButton.TabIndex = 5;
-            this.UsersButton.Text = "Users";
-            this.UsersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UsersButton.UseVisualStyleBackColor = false;
-            // 
-            // ActivityButton
-            // 
-            this.ActivityButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.ActivityButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ActivityButton.FlatAppearance.BorderSize = 0;
-            this.ActivityButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
-            this.ActivityButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActivityButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivityButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.ActivityButton.Location = new System.Drawing.Point(0, 0);
-            this.ActivityButton.Name = "ActivityButton";
-            this.ActivityButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.ActivityButton.Size = new System.Drawing.Size(213, 48);
-            this.ActivityButton.TabIndex = 4;
-            this.ActivityButton.Text = "Activity Logs";
-            this.ActivityButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ActivityButton.UseVisualStyleBackColor = false;
-            // 
-            // AdminButton
-            // 
-            this.AdminButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.AdminButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AdminButton.FlatAppearance.BorderSize = 0;
-            this.AdminButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
-            this.AdminButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.AdminButton.Location = new System.Drawing.Point(0, 590);
-            this.AdminButton.Name = "AdminButton";
-            this.AdminButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.AdminButton.Size = new System.Drawing.Size(213, 48);
-            this.AdminButton.TabIndex = 9;
-            this.AdminButton.Text = "Administrator";
-            this.AdminButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AdminButton.UseVisualStyleBackColor = false;
-            this.AdminButton.Click += new System.EventHandler(this.AdminButton_Click);
-            // 
             // TransactionsSubmenu
             // 
             this.TransactionsSubmenu.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -195,7 +128,7 @@
             this.TransactionsSubmenu.Controls.Add(this.GoodsReceiptsButton);
             this.TransactionsSubmenu.Controls.Add(this.SalesOrdersButton);
             this.TransactionsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TransactionsSubmenu.Location = new System.Drawing.Point(0, 494);
+            this.TransactionsSubmenu.Location = new System.Drawing.Point(0, 446);
             this.TransactionsSubmenu.Name = "TransactionsSubmenu";
             this.TransactionsSubmenu.Size = new System.Drawing.Size(213, 96);
             this.TransactionsSubmenu.TabIndex = 8;
@@ -254,7 +187,7 @@
             this.TransactionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TransactionsButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TransactionsButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.TransactionsButton.Location = new System.Drawing.Point(0, 446);
+            this.TransactionsButton.Location = new System.Drawing.Point(0, 398);
             this.TransactionsButton.Name = "TransactionsButton";
             this.TransactionsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.TransactionsButton.Size = new System.Drawing.Size(213, 48);
@@ -263,24 +196,6 @@
             this.TransactionsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TransactionsButton.UseVisualStyleBackColor = false;
             this.TransactionsButton.Click += new System.EventHandler(this.TransactionsButton_Click);
-            // 
-            // StocksButton
-            // 
-            this.StocksButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.StocksButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StocksButton.FlatAppearance.BorderSize = 0;
-            this.StocksButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
-            this.StocksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StocksButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StocksButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.StocksButton.Location = new System.Drawing.Point(0, 398);
-            this.StocksButton.Name = "StocksButton";
-            this.StocksButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.StocksButton.Size = new System.Drawing.Size(213, 48);
-            this.StocksButton.TabIndex = 5;
-            this.StocksButton.Text = "Stocks";
-            this.StocksButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StocksButton.UseVisualStyleBackColor = false;
             // 
             // MasterDataSubmenu
             // 
@@ -407,6 +322,91 @@
             this.SystemLogo.TabIndex = 4;
             this.SystemLogo.TabStop = false;
             // 
+            // InventoryButton
+            // 
+            this.InventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.InventoryButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.InventoryButton.FlatAppearance.BorderSize = 0;
+            this.InventoryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
+            this.InventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InventoryButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InventoryButton.ForeColor = System.Drawing.Color.GhostWhite;
+            this.InventoryButton.Location = new System.Drawing.Point(0, 542);
+            this.InventoryButton.Name = "InventoryButton";
+            this.InventoryButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.InventoryButton.Size = new System.Drawing.Size(213, 48);
+            this.InventoryButton.TabIndex = 12;
+            this.InventoryButton.Text = "Inventory";
+            this.InventoryButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InventoryButton.UseVisualStyleBackColor = false;
+            // 
+            // AdminButton
+            // 
+            this.AdminButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.AdminButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AdminButton.FlatAppearance.BorderSize = 0;
+            this.AdminButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
+            this.AdminButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminButton.ForeColor = System.Drawing.Color.GhostWhite;
+            this.AdminButton.Location = new System.Drawing.Point(0, 590);
+            this.AdminButton.Name = "AdminButton";
+            this.AdminButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.AdminButton.Size = new System.Drawing.Size(213, 48);
+            this.AdminButton.TabIndex = 13;
+            this.AdminButton.Text = "Administrator";
+            this.AdminButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AdminButton.UseVisualStyleBackColor = false;
+            this.AdminButton.Click += new System.EventHandler(this.AdminButton_Click_1);
+            // 
+            // AdministratorSubmenu
+            // 
+            this.AdministratorSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.AdministratorSubmenu.Controls.Add(this.UsersButton);
+            this.AdministratorSubmenu.Controls.Add(this.ActivityButton);
+            this.AdministratorSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AdministratorSubmenu.ForeColor = System.Drawing.Color.Transparent;
+            this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 638);
+            this.AdministratorSubmenu.Name = "AdministratorSubmenu";
+            this.AdministratorSubmenu.Size = new System.Drawing.Size(213, 95);
+            this.AdministratorSubmenu.TabIndex = 14;
+            // 
+            // UsersButton
+            // 
+            this.UsersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.UsersButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UsersButton.FlatAppearance.BorderSize = 0;
+            this.UsersButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
+            this.UsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UsersButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsersButton.ForeColor = System.Drawing.Color.GhostWhite;
+            this.UsersButton.Location = new System.Drawing.Point(0, 48);
+            this.UsersButton.Name = "UsersButton";
+            this.UsersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.UsersButton.Size = new System.Drawing.Size(213, 44);
+            this.UsersButton.TabIndex = 5;
+            this.UsersButton.Text = "Users";
+            this.UsersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UsersButton.UseVisualStyleBackColor = false;
+            // 
+            // ActivityButton
+            // 
+            this.ActivityButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.ActivityButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ActivityButton.FlatAppearance.BorderSize = 0;
+            this.ActivityButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
+            this.ActivityButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ActivityButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActivityButton.ForeColor = System.Drawing.Color.GhostWhite;
+            this.ActivityButton.Location = new System.Drawing.Point(0, 0);
+            this.ActivityButton.Name = "ActivityButton";
+            this.ActivityButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.ActivityButton.Size = new System.Drawing.Size(213, 48);
+            this.ActivityButton.TabIndex = 4;
+            this.ActivityButton.Text = "Activity Logs";
+            this.ActivityButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ActivityButton.UseVisualStyleBackColor = false;
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,11 +424,11 @@
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.MainControlPanel.ResumeLayout(false);
             this.LogoutSpacer.ResumeLayout(false);
-            this.AdministratorSubmenu.ResumeLayout(false);
             this.TransactionsSubmenu.ResumeLayout(false);
             this.MasterDataSubmenu.ResumeLayout(false);
             this.LogoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).EndInit();
+            this.AdministratorSubmenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,12 +444,7 @@
         private System.Windows.Forms.Button CategoriesButton;
         private System.Windows.Forms.Button ProductsButton;
         private System.Windows.Forms.Button MasterDataButton;
-        private System.Windows.Forms.Button StocksButton;
         private System.Windows.Forms.Button TransactionsButton;
-        private System.Windows.Forms.Button AdminButton;
-        private System.Windows.Forms.Panel AdministratorSubmenu;
-        private System.Windows.Forms.Button UsersButton;
-        private System.Windows.Forms.Button ActivityButton;
         private System.Windows.Forms.Panel TransactionsSubmenu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button GoodsReceiptsButton;
@@ -458,5 +453,10 @@
         private System.Windows.Forms.Panel LogoutSpacer;
         private System.Windows.Forms.Button LogoutButton;
         private System.Windows.Forms.Button SuppliersButton;
+        private System.Windows.Forms.Button InventoryButton;
+        private System.Windows.Forms.Panel AdministratorSubmenu;
+        private System.Windows.Forms.Button UsersButton;
+        private System.Windows.Forms.Button ActivityButton;
+        private System.Windows.Forms.Button AdminButton;
     }
 }

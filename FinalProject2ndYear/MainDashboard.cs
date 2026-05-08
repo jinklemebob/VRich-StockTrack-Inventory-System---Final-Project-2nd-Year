@@ -116,6 +116,10 @@ namespace FinalProject2ndYear
         {
             showSubmenus(TransactionsSubmenu);
         }
+        private void AdminButton_Click_1(object sender, EventArgs e)
+        {
+            showSubmenus(AdministratorSubmenu);
+        }
         private void LogoutButton_Click(object sender, EventArgs e)
         {
 
@@ -124,5 +128,7 @@ namespace FinalProject2ndYear
             this.Hide();
 
         }
+
+       
     }
 }
