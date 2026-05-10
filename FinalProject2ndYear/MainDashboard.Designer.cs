@@ -29,61 +29,51 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDashboard));
-            this.WelcomeLabel = new System.Windows.Forms.Label();
             this.MainControlPanel = new System.Windows.Forms.Panel();
             this.AdministratorSubmenu = new System.Windows.Forms.Panel();
             this.UsersButton = new System.Windows.Forms.Button();
             this.ActivityButton = new System.Windows.Forms.Button();
             this.AdminButton = new System.Windows.Forms.Button();
             this.InventoryButton = new System.Windows.Forms.Button();
-            this.LogoutSpacer = new System.Windows.Forms.Panel();
-            this.LogoutButton = new System.Windows.Forms.Button();
             this.TransactionsSubmenu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GoodsReceiptsButton = new System.Windows.Forms.Button();
             this.SalesOrdersButton = new System.Windows.Forms.Button();
             this.TransactionsButton = new System.Windows.Forms.Button();
+            this.LogoutSpacer = new System.Windows.Forms.Panel();
+            this.LogoutButton = new System.Windows.Forms.Button();
             this.MasterDataSubmenu = new System.Windows.Forms.Panel();
             this.SuppliersButton = new System.Windows.Forms.Button();
             this.CustomersButton = new System.Windows.Forms.Button();
             this.CategoriesButton = new System.Windows.Forms.Button();
             this.ProductsButton = new System.Windows.Forms.Button();
             this.MasterDataButton = new System.Windows.Forms.Button();
+            this.DashboardButton = new System.Windows.Forms.Button();
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.SystemLogo = new System.Windows.Forms.PictureBox();
+            this.MainScreenPanel = new System.Windows.Forms.Panel();
             this.MainControlPanel.SuspendLayout();
             this.AdministratorSubmenu.SuspendLayout();
-            this.LogoutSpacer.SuspendLayout();
             this.TransactionsSubmenu.SuspendLayout();
+            this.LogoutSpacer.SuspendLayout();
             this.MasterDataSubmenu.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // WelcomeLabel
-            // 
-            this.WelcomeLabel.AutoSize = true;
-            this.WelcomeLabel.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WelcomeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.WelcomeLabel.Location = new System.Drawing.Point(279, 100);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(108, 40);
-            this.WelcomeLabel.TabIndex = 0;
-            this.WelcomeLabel.Text = "label1";
-            // 
             // MainControlPanel
             // 
-            this.MainControlPanel.AutoScroll = true;
             this.MainControlPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.MainControlPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.MainControlPanel.Controls.Add(this.AdministratorSubmenu);
             this.MainControlPanel.Controls.Add(this.AdminButton);
             this.MainControlPanel.Controls.Add(this.InventoryButton);
-            this.MainControlPanel.Controls.Add(this.LogoutSpacer);
             this.MainControlPanel.Controls.Add(this.TransactionsSubmenu);
             this.MainControlPanel.Controls.Add(this.TransactionsButton);
+            this.MainControlPanel.Controls.Add(this.LogoutSpacer);
             this.MainControlPanel.Controls.Add(this.MasterDataSubmenu);
             this.MainControlPanel.Controls.Add(this.MasterDataButton);
+            this.MainControlPanel.Controls.Add(this.DashboardButton);
             this.MainControlPanel.Controls.Add(this.LogoPanel);
             this.MainControlPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MainControlPanel.ForeColor = System.Drawing.Color.DarkBlue;
@@ -99,10 +89,10 @@
             this.AdministratorSubmenu.Controls.Add(this.ActivityButton);
             this.AdministratorSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.AdministratorSubmenu.ForeColor = System.Drawing.Color.Transparent;
-            this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 638);
+            this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 686);
             this.AdministratorSubmenu.Name = "AdministratorSubmenu";
-            this.AdministratorSubmenu.Size = new System.Drawing.Size(213, 95);
-            this.AdministratorSubmenu.TabIndex = 14;
+            this.AdministratorSubmenu.Size = new System.Drawing.Size(230, 95);
+            this.AdministratorSubmenu.TabIndex = 16;
             // 
             // UsersButton
             // 
@@ -116,7 +106,7 @@
             this.UsersButton.Location = new System.Drawing.Point(0, 48);
             this.UsersButton.Name = "UsersButton";
             this.UsersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.UsersButton.Size = new System.Drawing.Size(213, 44);
+            this.UsersButton.Size = new System.Drawing.Size(230, 44);
             this.UsersButton.TabIndex = 5;
             this.UsersButton.Text = "Users";
             this.UsersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -134,7 +124,7 @@
             this.ActivityButton.Location = new System.Drawing.Point(0, 0);
             this.ActivityButton.Name = "ActivityButton";
             this.ActivityButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.ActivityButton.Size = new System.Drawing.Size(213, 48);
+            this.ActivityButton.Size = new System.Drawing.Size(230, 48);
             this.ActivityButton.TabIndex = 4;
             this.ActivityButton.Text = "Activity Logs";
             this.ActivityButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,10 +139,10 @@
             this.AdminButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AdminButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.AdminButton.Location = new System.Drawing.Point(0, 590);
+            this.AdminButton.Location = new System.Drawing.Point(0, 638);
             this.AdminButton.Name = "AdminButton";
             this.AdminButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.AdminButton.Size = new System.Drawing.Size(213, 48);
+            this.AdminButton.Size = new System.Drawing.Size(230, 48);
             this.AdminButton.TabIndex = 13;
             this.AdminButton.Text = "Administrator";
             this.AdminButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -168,43 +158,14 @@
             this.InventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InventoryButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InventoryButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.InventoryButton.Location = new System.Drawing.Point(0, 542);
+            this.InventoryButton.Location = new System.Drawing.Point(0, 590);
             this.InventoryButton.Name = "InventoryButton";
             this.InventoryButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.InventoryButton.Size = new System.Drawing.Size(213, 48);
+            this.InventoryButton.Size = new System.Drawing.Size(230, 48);
             this.InventoryButton.TabIndex = 12;
             this.InventoryButton.Text = "Inventory";
             this.InventoryButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.InventoryButton.UseVisualStyleBackColor = false;
-            // 
-            // LogoutSpacer
-            // 
-            this.LogoutSpacer.Controls.Add(this.LogoutButton);
-            this.LogoutSpacer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LogoutSpacer.Location = new System.Drawing.Point(0, 733);
-            this.LogoutSpacer.Name = "LogoutSpacer";
-            this.LogoutSpacer.Size = new System.Drawing.Size(213, 86);
-            this.LogoutSpacer.TabIndex = 11;
-            // 
-            // LogoutButton
-            // 
-            this.LogoutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.LogoutButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LogoutButton.FlatAppearance.BorderSize = 0;
-            this.LogoutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
-            this.LogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogoutButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoutButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.LogoutButton.Location = new System.Drawing.Point(0, 38);
-            this.LogoutButton.Name = "LogoutButton";
-            this.LogoutButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.LogoutButton.Size = new System.Drawing.Size(213, 48);
-            this.LogoutButton.TabIndex = 10;
-            this.LogoutButton.Text = "Logout";
-            this.LogoutButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LogoutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.LogoutButton.UseVisualStyleBackColor = false;
-            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // TransactionsSubmenu
             // 
@@ -213,10 +174,10 @@
             this.TransactionsSubmenu.Controls.Add(this.GoodsReceiptsButton);
             this.TransactionsSubmenu.Controls.Add(this.SalesOrdersButton);
             this.TransactionsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TransactionsSubmenu.Location = new System.Drawing.Point(0, 446);
+            this.TransactionsSubmenu.Location = new System.Drawing.Point(0, 494);
             this.TransactionsSubmenu.Name = "TransactionsSubmenu";
-            this.TransactionsSubmenu.Size = new System.Drawing.Size(213, 96);
-            this.TransactionsSubmenu.TabIndex = 8;
+            this.TransactionsSubmenu.Size = new System.Drawing.Size(230, 96);
+            this.TransactionsSubmenu.TabIndex = 15;
             // 
             // panel1
             // 
@@ -224,7 +185,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(213, 143);
+            this.panel1.Size = new System.Drawing.Size(230, 143);
             this.panel1.TabIndex = 9;
             // 
             // GoodsReceiptsButton
@@ -239,7 +200,7 @@
             this.GoodsReceiptsButton.Location = new System.Drawing.Point(0, 48);
             this.GoodsReceiptsButton.Name = "GoodsReceiptsButton";
             this.GoodsReceiptsButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.GoodsReceiptsButton.Size = new System.Drawing.Size(213, 48);
+            this.GoodsReceiptsButton.Size = new System.Drawing.Size(230, 48);
             this.GoodsReceiptsButton.TabIndex = 5;
             this.GoodsReceiptsButton.Text = "Goods Receipts";
             this.GoodsReceiptsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -257,7 +218,7 @@
             this.SalesOrdersButton.Location = new System.Drawing.Point(0, 0);
             this.SalesOrdersButton.Name = "SalesOrdersButton";
             this.SalesOrdersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.SalesOrdersButton.Size = new System.Drawing.Size(213, 48);
+            this.SalesOrdersButton.Size = new System.Drawing.Size(230, 48);
             this.SalesOrdersButton.TabIndex = 4;
             this.SalesOrdersButton.Text = "Sales Orders";
             this.SalesOrdersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -272,15 +233,44 @@
             this.TransactionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TransactionsButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TransactionsButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.TransactionsButton.Location = new System.Drawing.Point(0, 398);
+            this.TransactionsButton.Location = new System.Drawing.Point(0, 446);
             this.TransactionsButton.Name = "TransactionsButton";
             this.TransactionsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.TransactionsButton.Size = new System.Drawing.Size(213, 48);
-            this.TransactionsButton.TabIndex = 7;
+            this.TransactionsButton.Size = new System.Drawing.Size(230, 48);
+            this.TransactionsButton.TabIndex = 15;
             this.TransactionsButton.Text = "Transactions";
             this.TransactionsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TransactionsButton.UseVisualStyleBackColor = false;
             this.TransactionsButton.Click += new System.EventHandler(this.TransactionsButton_Click);
+            // 
+            // LogoutSpacer
+            // 
+            this.LogoutSpacer.Controls.Add(this.LogoutButton);
+            this.LogoutSpacer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LogoutSpacer.Location = new System.Drawing.Point(0, 568);
+            this.LogoutSpacer.Name = "LogoutSpacer";
+            this.LogoutSpacer.Size = new System.Drawing.Size(230, 113);
+            this.LogoutSpacer.TabIndex = 11;
+            // 
+            // LogoutButton
+            // 
+            this.LogoutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.LogoutButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LogoutButton.FlatAppearance.BorderSize = 0;
+            this.LogoutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
+            this.LogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogoutButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoutButton.ForeColor = System.Drawing.Color.GhostWhite;
+            this.LogoutButton.Location = new System.Drawing.Point(0, 65);
+            this.LogoutButton.Name = "LogoutButton";
+            this.LogoutButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.LogoutButton.Size = new System.Drawing.Size(230, 48);
+            this.LogoutButton.TabIndex = 10;
+            this.LogoutButton.Text = "Logout";
+            this.LogoutButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LogoutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.LogoutButton.UseVisualStyleBackColor = false;
+            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // MasterDataSubmenu
             // 
@@ -290,10 +280,10 @@
             this.MasterDataSubmenu.Controls.Add(this.CategoriesButton);
             this.MasterDataSubmenu.Controls.Add(this.ProductsButton);
             this.MasterDataSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MasterDataSubmenu.Location = new System.Drawing.Point(0, 207);
+            this.MasterDataSubmenu.Location = new System.Drawing.Point(0, 255);
             this.MasterDataSubmenu.Name = "MasterDataSubmenu";
-            this.MasterDataSubmenu.Size = new System.Drawing.Size(213, 191);
-            this.MasterDataSubmenu.TabIndex = 4;
+            this.MasterDataSubmenu.Size = new System.Drawing.Size(230, 191);
+            this.MasterDataSubmenu.TabIndex = 15;
             // 
             // SuppliersButton
             // 
@@ -307,7 +297,7 @@
             this.SuppliersButton.Location = new System.Drawing.Point(0, 144);
             this.SuppliersButton.Name = "SuppliersButton";
             this.SuppliersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.SuppliersButton.Size = new System.Drawing.Size(213, 48);
+            this.SuppliersButton.Size = new System.Drawing.Size(230, 48);
             this.SuppliersButton.TabIndex = 7;
             this.SuppliersButton.Text = "Suppliers";
             this.SuppliersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -325,7 +315,7 @@
             this.CustomersButton.Location = new System.Drawing.Point(0, 96);
             this.CustomersButton.Name = "CustomersButton";
             this.CustomersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CustomersButton.Size = new System.Drawing.Size(213, 48);
+            this.CustomersButton.Size = new System.Drawing.Size(230, 48);
             this.CustomersButton.TabIndex = 6;
             this.CustomersButton.Text = "Customers";
             this.CustomersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -343,7 +333,7 @@
             this.CategoriesButton.Location = new System.Drawing.Point(0, 48);
             this.CategoriesButton.Name = "CategoriesButton";
             this.CategoriesButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.CategoriesButton.Size = new System.Drawing.Size(213, 48);
+            this.CategoriesButton.Size = new System.Drawing.Size(230, 48);
             this.CategoriesButton.TabIndex = 5;
             this.CategoriesButton.Text = "Categories";
             this.CategoriesButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -361,11 +351,12 @@
             this.ProductsButton.Location = new System.Drawing.Point(0, 0);
             this.ProductsButton.Name = "ProductsButton";
             this.ProductsButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.ProductsButton.Size = new System.Drawing.Size(213, 48);
+            this.ProductsButton.Size = new System.Drawing.Size(230, 48);
             this.ProductsButton.TabIndex = 4;
             this.ProductsButton.Text = "Products";
             this.ProductsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProductsButton.UseVisualStyleBackColor = false;
+            this.ProductsButton.Click += new System.EventHandler(this.ProductsButton_Click);
             // 
             // MasterDataButton
             // 
@@ -376,15 +367,34 @@
             this.MasterDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MasterDataButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MasterDataButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.MasterDataButton.Location = new System.Drawing.Point(0, 159);
+            this.MasterDataButton.Location = new System.Drawing.Point(0, 207);
             this.MasterDataButton.Name = "MasterDataButton";
             this.MasterDataButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.MasterDataButton.Size = new System.Drawing.Size(213, 48);
-            this.MasterDataButton.TabIndex = 4;
+            this.MasterDataButton.Size = new System.Drawing.Size(230, 48);
+            this.MasterDataButton.TabIndex = 15;
             this.MasterDataButton.Text = "Master Data";
             this.MasterDataButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MasterDataButton.UseVisualStyleBackColor = false;
             this.MasterDataButton.Click += new System.EventHandler(this.MasterDataButton_Click);
+            // 
+            // DashboardButton
+            // 
+            this.DashboardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.DashboardButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DashboardButton.FlatAppearance.BorderSize = 0;
+            this.DashboardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
+            this.DashboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DashboardButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DashboardButton.ForeColor = System.Drawing.Color.GhostWhite;
+            this.DashboardButton.Location = new System.Drawing.Point(0, 159);
+            this.DashboardButton.Name = "DashboardButton";
+            this.DashboardButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.DashboardButton.Size = new System.Drawing.Size(230, 48);
+            this.DashboardButton.TabIndex = 15;
+            this.DashboardButton.Text = "Dashboard";
+            this.DashboardButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DashboardButton.UseVisualStyleBackColor = false;
+            this.DashboardButton.Click += new System.EventHandler(this.DashboardButton_Click);
             // 
             // LogoPanel
             // 
@@ -393,7 +403,7 @@
             this.LogoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.LogoPanel.Location = new System.Drawing.Point(0, 0);
             this.LogoPanel.Name = "LogoPanel";
-            this.LogoPanel.Size = new System.Drawing.Size(213, 159);
+            this.LogoPanel.Size = new System.Drawing.Size(230, 159);
             this.LogoPanel.TabIndex = 4;
             // 
             // SystemLogo
@@ -407,6 +417,15 @@
             this.SystemLogo.TabIndex = 4;
             this.SystemLogo.TabStop = false;
             // 
+            // MainScreenPanel
+            // 
+            this.MainScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainScreenPanel.Location = new System.Drawing.Point(230, 0);
+            this.MainScreenPanel.Name = "MainScreenPanel";
+            this.MainScreenPanel.Size = new System.Drawing.Size(1034, 681);
+            this.MainScreenPanel.TabIndex = 4;
+            this.MainScreenPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreenPanel_Paint);
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,8 +433,8 @@
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.MainScreenPanel);
             this.Controls.Add(this.MainControlPanel);
-            this.Controls.Add(this.WelcomeLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -424,39 +443,39 @@
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.MainControlPanel.ResumeLayout(false);
             this.AdministratorSubmenu.ResumeLayout(false);
-            this.LogoutSpacer.ResumeLayout(false);
             this.TransactionsSubmenu.ResumeLayout(false);
+            this.LogoutSpacer.ResumeLayout(false);
             this.MasterDataSubmenu.ResumeLayout(false);
             this.LogoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Panel MainControlPanel;
         private System.Windows.Forms.Panel LogoPanel;
-        private System.Windows.Forms.Button CustomersButton;
-        private System.Windows.Forms.Button CategoriesButton;
-        private System.Windows.Forms.Button ProductsButton;
-        private System.Windows.Forms.Button MasterDataButton;
-        private System.Windows.Forms.Button TransactionsButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button GoodsReceiptsButton;
-        private System.Windows.Forms.Button SalesOrdersButton;
         private System.Windows.Forms.PictureBox SystemLogo;
         private System.Windows.Forms.Panel LogoutSpacer;
         private System.Windows.Forms.Button LogoutButton;
-        private System.Windows.Forms.Button SuppliersButton;
         private System.Windows.Forms.Button InventoryButton;
+        private System.Windows.Forms.Button AdminButton;
+        private System.Windows.Forms.Button MasterDataButton;
+        private System.Windows.Forms.Button DashboardButton;
+        public System.Windows.Forms.Panel TransactionsSubmenu;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button GoodsReceiptsButton;
+        private System.Windows.Forms.Button SalesOrdersButton;
+        private System.Windows.Forms.Button TransactionsButton;
+        public System.Windows.Forms.Panel MasterDataSubmenu;
+        private System.Windows.Forms.Button SuppliersButton;
+        private System.Windows.Forms.Button CustomersButton;
+        private System.Windows.Forms.Button CategoriesButton;
+        private System.Windows.Forms.Button ProductsButton;
+        public System.Windows.Forms.Panel AdministratorSubmenu;
         private System.Windows.Forms.Button UsersButton;
         private System.Windows.Forms.Button ActivityButton;
-        private System.Windows.Forms.Button AdminButton;
-        public System.Windows.Forms.Panel MasterDataSubmenu;
-        public System.Windows.Forms.Panel TransactionsSubmenu;
-        public System.Windows.Forms.Panel AdministratorSubmenu;
+        private ucDashboard ucDashboard1;
+        private System.Windows.Forms.Panel MainScreenPanel;
     }
 }

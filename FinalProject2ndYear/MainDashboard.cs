@@ -31,10 +31,13 @@ namespace FinalProject2ndYear
             this.Password = Password;
             InitializeComponent();
             sb = new Submenus(MasterDataSubmenu, TransactionsSubmenu, AdministratorSubmenu);
+
+            
+
         }
         private void MainDashboard_Load(object sender, EventArgs e)
         {
-            WelcomeLabel.Text = "Welcome, " + (string.IsNullOrEmpty(Username) ? "Guest" : Username) + "!";
+            
             ValidateUserRole vu = new ValidateUserRole(Username,Password);
             vu.getUserRole();
 
@@ -48,6 +51,14 @@ namespace FinalProject2ndYear
             }
             
             sb.hideSubmenus();
+
+            ucDashboard ud = new ucDashboard(Username);
+
+            MainScreenPanel.Controls.Clear();
+
+            MainScreenPanel.Controls.Add(ud);
+
+
         }
         private void MasterDataButton_Click(object sender, EventArgs e)
         {
@@ -63,17 +74,36 @@ namespace FinalProject2ndYear
             sb.showSubmenus(AdministratorSubmenu);
         }
         private void LogoutButton_Click(object sender, EventArgs e)
-        {
-
+        { 
             LoginPage logout = new LoginPage();
             logout.Show();
             this.Hide();
-
         }
-
         private void MainDashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void DashboardButton_Click(object sender, EventArgs e)
+        {
+            ucDashboard ud = new ucDashboard(Username);
+
+            MainScreenPanel.Controls.Clear();
+
+            MainScreenPanel.Controls.Add(ud);
+        }
+
+        private void ProductsButton_Click(object sender, EventArgs e)
+        {
+            ucProducts up = new ucProducts();
+            MainScreenPanel.Controls.Clear();
+
+            MainScreenPanel.Controls.Add(up);
+        }
+
+        private void MainScreenPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

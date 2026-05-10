@@ -14,8 +14,6 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using LoginFunction;
 
-
-
 namespace FinalProject2ndYear
 {
     public partial class LoginPage : Form
