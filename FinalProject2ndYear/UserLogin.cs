@@ -15,7 +15,7 @@ namespace LoginFunction
     {
         String Username;
         String Password;
-        public Boolean isValidated;
+        public Boolean isAuth;
         public UserAuthentication(String Username, String Password)
         {
             this.Username = Username;
@@ -49,7 +49,7 @@ namespace LoginFunction
 
                 MainDashboard main = new MainDashboard(Username, Password);
                 main.Show();
-                isValidated = true;
+                isAuth = true;
 
                
             }

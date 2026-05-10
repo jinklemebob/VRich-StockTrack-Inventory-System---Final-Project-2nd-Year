@@ -170,6 +170,7 @@
             this.Name = "LoginPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VRich StockTrack";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginPage_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).EndInit();
             this.LoginPanel.ResumeLayout(false);
             this.UsernamePanel.ResumeLayout(false);
