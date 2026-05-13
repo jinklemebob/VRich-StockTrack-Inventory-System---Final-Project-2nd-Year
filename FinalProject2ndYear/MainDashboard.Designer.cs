@@ -32,7 +32,6 @@
             this.MainControlPanel = new System.Windows.Forms.Panel();
             this.AdministratorSubmenu = new System.Windows.Forms.Panel();
             this.UsersButton = new System.Windows.Forms.Button();
-            this.ActivityButton = new System.Windows.Forms.Button();
             this.AdminButton = new System.Windows.Forms.Button();
             this.InventoryButton = new System.Windows.Forms.Button();
             this.TransactionsSubmenu = new System.Windows.Forms.Panel();
@@ -86,12 +85,11 @@
             // 
             this.AdministratorSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.AdministratorSubmenu.Controls.Add(this.UsersButton);
-            this.AdministratorSubmenu.Controls.Add(this.ActivityButton);
             this.AdministratorSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.AdministratorSubmenu.ForeColor = System.Drawing.Color.Transparent;
             this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 686);
             this.AdministratorSubmenu.Name = "AdministratorSubmenu";
-            this.AdministratorSubmenu.Size = new System.Drawing.Size(230, 95);
+            this.AdministratorSubmenu.Size = new System.Drawing.Size(230, 47);
             this.AdministratorSubmenu.TabIndex = 16;
             // 
             // UsersButton
@@ -103,7 +101,7 @@
             this.UsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UsersButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsersButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.UsersButton.Location = new System.Drawing.Point(0, 48);
+            this.UsersButton.Location = new System.Drawing.Point(0, 0);
             this.UsersButton.Name = "UsersButton";
             this.UsersButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
             this.UsersButton.Size = new System.Drawing.Size(230, 44);
@@ -111,24 +109,6 @@
             this.UsersButton.Text = "Users";
             this.UsersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.UsersButton.UseVisualStyleBackColor = false;
-            // 
-            // ActivityButton
-            // 
-            this.ActivityButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.ActivityButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ActivityButton.FlatAppearance.BorderSize = 0;
-            this.ActivityButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
-            this.ActivityButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActivityButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivityButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.ActivityButton.Location = new System.Drawing.Point(0, 0);
-            this.ActivityButton.Name = "ActivityButton";
-            this.ActivityButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.ActivityButton.Size = new System.Drawing.Size(230, 48);
-            this.ActivityButton.TabIndex = 4;
-            this.ActivityButton.Text = "Activity Logs";
-            this.ActivityButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ActivityButton.UseVisualStyleBackColor = false;
             // 
             // AdminButton
             // 
@@ -302,6 +282,7 @@
             this.SuppliersButton.Text = "Suppliers";
             this.SuppliersButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SuppliersButton.UseVisualStyleBackColor = false;
+            this.SuppliersButton.Click += new System.EventHandler(this.SuppliersButton_Click);
             // 
             // CustomersButton
             // 
@@ -439,6 +420,7 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VRich StockTrack";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDashboard_FormClosing);
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.MainControlPanel.ResumeLayout(false);
@@ -474,7 +456,6 @@
         private System.Windows.Forms.Button ProductsButton;
         public System.Windows.Forms.Panel AdministratorSubmenu;
         private System.Windows.Forms.Button UsersButton;
-        private System.Windows.Forms.Button ActivityButton;
         private ucDashboard ucDashboard1;
         private System.Windows.Forms.Panel MainScreenPanel;
     }

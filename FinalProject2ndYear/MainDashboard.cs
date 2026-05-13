@@ -51,13 +51,11 @@ namespace FinalProject2ndYear
             }
             
             sb.hideSubmenus();
-
             ucDashboard ud = new ucDashboard(Username);
 
             MainScreenPanel.Controls.Clear();
 
             MainScreenPanel.Controls.Add(ud);
-
 
         }
         private void MasterDataButton_Click(object sender, EventArgs e)
@@ -104,6 +102,14 @@ namespace FinalProject2ndYear
         private void MainScreenPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void SuppliersButton_Click(object sender, EventArgs e)
+        {
+            ucSuppliers us = new ucSuppliers();
+
+            MainScreenPanel.Controls.Clear();
+            MainScreenPanel.Controls.Add(us);
         }
     }
 }

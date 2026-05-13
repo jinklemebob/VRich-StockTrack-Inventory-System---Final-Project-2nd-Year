@@ -74,6 +74,12 @@
     <Compile Include="ucProducts.Designer.cs">
       <DependentUpon>ucProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucSuppliers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSuppliers.Designer.cs">
+      <DependentUpon>ucSuppliers.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserLogin.cs" />
     <Compile Include="ValidateUserRole.cs" />
     <EmbeddedResource Include="LoginPage.resx">
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucProducts.resx">
       <DependentUpon>ucProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSuppliers.resx">
+      <DependentUpon>ucSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
