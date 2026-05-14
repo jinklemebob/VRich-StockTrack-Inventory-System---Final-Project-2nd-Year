@@ -67,7 +67,6 @@ namespace FinalProject2ndYear
 
         private void UsernameTextBox_TextChanged_1(object sender, EventArgs e)
         {
-            
             if (String.IsNullOrWhiteSpace(UsernameTextBox.Text))
             {
                 UsernameTextBox.Text = "Username...";

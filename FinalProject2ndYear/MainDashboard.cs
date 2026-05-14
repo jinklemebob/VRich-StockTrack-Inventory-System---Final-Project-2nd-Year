@@ -31,9 +31,6 @@ namespace FinalProject2ndYear
             this.Password = Password;
             InitializeComponent();
             sb = new Submenus(MasterDataSubmenu, TransactionsSubmenu, AdministratorSubmenu);
-
-            
-
         }
         private void MainDashboard_Load(object sender, EventArgs e)
         {
@@ -97,11 +94,6 @@ namespace FinalProject2ndYear
             MainScreenPanel.Controls.Clear();
 
             MainScreenPanel.Controls.Add(up);
-        }
-
-        private void MainScreenPanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void SuppliersButton_Click(object sender, EventArgs e)

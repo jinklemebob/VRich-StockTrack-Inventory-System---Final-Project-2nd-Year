@@ -13,6 +13,7 @@ namespace LoginFunction
 {
     public class UserAuthentication
     {
+        string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
         String Username;
         String Password;
         public Boolean isAuth;
@@ -24,7 +25,6 @@ namespace LoginFunction
         }
         public void LoginMethod()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
 

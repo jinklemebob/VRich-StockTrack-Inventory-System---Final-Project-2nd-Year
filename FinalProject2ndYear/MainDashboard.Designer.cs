@@ -405,7 +405,6 @@
             this.MainScreenPanel.Name = "MainScreenPanel";
             this.MainScreenPanel.Size = new System.Drawing.Size(1034, 681);
             this.MainScreenPanel.TabIndex = 4;
-            this.MainScreenPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainScreenPanel_Paint);
             // 
             // MainDashboard
             // 
@@ -420,7 +419,6 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VRich StockTrack";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDashboard_FormClosing);
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.MainControlPanel.ResumeLayout(false);
