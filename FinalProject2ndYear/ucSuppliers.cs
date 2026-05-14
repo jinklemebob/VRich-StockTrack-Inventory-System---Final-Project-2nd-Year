@@ -141,6 +141,7 @@ namespace FinalProject2ndYear
                         
                     }
                 }
+                SupplierDataGrid.Enabled = false;
                 isDeleting = false;
                 DeleteButton.Text = "Delete";
                 OperationLabel.Visible = false;
