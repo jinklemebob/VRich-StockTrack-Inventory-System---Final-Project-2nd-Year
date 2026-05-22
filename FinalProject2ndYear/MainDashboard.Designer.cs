@@ -49,6 +49,8 @@
             this.MasterDataButton = new System.Windows.Forms.Button();
             this.DashboardButton = new System.Windows.Forms.Button();
             this.LogoPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SystemLogo = new System.Windows.Forms.PictureBox();
             this.MainScreenPanel = new System.Windows.Forms.Panel();
             this.MainControlPanel.SuspendLayout();
@@ -87,7 +89,7 @@
             this.AdministratorSubmenu.Controls.Add(this.UsersButton);
             this.AdministratorSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.AdministratorSubmenu.ForeColor = System.Drawing.Color.Transparent;
-            this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 686);
+            this.AdministratorSubmenu.Location = new System.Drawing.Point(0, 644);
             this.AdministratorSubmenu.Name = "AdministratorSubmenu";
             this.AdministratorSubmenu.Size = new System.Drawing.Size(230, 47);
             this.AdministratorSubmenu.TabIndex = 16;
@@ -119,7 +121,7 @@
             this.AdminButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AdminButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.AdminButton.Location = new System.Drawing.Point(0, 638);
+            this.AdminButton.Location = new System.Drawing.Point(0, 596);
             this.AdminButton.Name = "AdminButton";
             this.AdminButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.AdminButton.Size = new System.Drawing.Size(230, 48);
@@ -138,7 +140,7 @@
             this.InventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InventoryButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InventoryButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.InventoryButton.Location = new System.Drawing.Point(0, 590);
+            this.InventoryButton.Location = new System.Drawing.Point(0, 548);
             this.InventoryButton.Name = "InventoryButton";
             this.InventoryButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.InventoryButton.Size = new System.Drawing.Size(230, 48);
@@ -154,7 +156,7 @@
             this.TransactionsSubmenu.Controls.Add(this.GoodsReceiptsButton);
             this.TransactionsSubmenu.Controls.Add(this.SalesOrdersButton);
             this.TransactionsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TransactionsSubmenu.Location = new System.Drawing.Point(0, 494);
+            this.TransactionsSubmenu.Location = new System.Drawing.Point(0, 452);
             this.TransactionsSubmenu.Name = "TransactionsSubmenu";
             this.TransactionsSubmenu.Size = new System.Drawing.Size(230, 96);
             this.TransactionsSubmenu.TabIndex = 15;
@@ -213,7 +215,7 @@
             this.TransactionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TransactionsButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TransactionsButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.TransactionsButton.Location = new System.Drawing.Point(0, 446);
+            this.TransactionsButton.Location = new System.Drawing.Point(0, 404);
             this.TransactionsButton.Name = "TransactionsButton";
             this.TransactionsButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.TransactionsButton.Size = new System.Drawing.Size(230, 48);
@@ -260,7 +262,7 @@
             this.MasterDataSubmenu.Controls.Add(this.CategoriesButton);
             this.MasterDataSubmenu.Controls.Add(this.ProductsButton);
             this.MasterDataSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MasterDataSubmenu.Location = new System.Drawing.Point(0, 255);
+            this.MasterDataSubmenu.Location = new System.Drawing.Point(0, 213);
             this.MasterDataSubmenu.Name = "MasterDataSubmenu";
             this.MasterDataSubmenu.Size = new System.Drawing.Size(230, 191);
             this.MasterDataSubmenu.TabIndex = 15;
@@ -348,7 +350,7 @@
             this.MasterDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MasterDataButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MasterDataButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.MasterDataButton.Location = new System.Drawing.Point(0, 207);
+            this.MasterDataButton.Location = new System.Drawing.Point(0, 165);
             this.MasterDataButton.Name = "MasterDataButton";
             this.MasterDataButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.MasterDataButton.Size = new System.Drawing.Size(230, 48);
@@ -367,7 +369,7 @@
             this.DashboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DashboardButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DashboardButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.DashboardButton.Location = new System.Drawing.Point(0, 159);
+            this.DashboardButton.Location = new System.Drawing.Point(0, 117);
             this.DashboardButton.Name = "DashboardButton";
             this.DashboardButton.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.DashboardButton.Size = new System.Drawing.Size(230, 48);
@@ -380,20 +382,44 @@
             // LogoPanel
             // 
             this.LogoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.LogoPanel.Controls.Add(this.label2);
+            this.LogoPanel.Controls.Add(this.label1);
             this.LogoPanel.Controls.Add(this.SystemLogo);
             this.LogoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.LogoPanel.Location = new System.Drawing.Point(0, 0);
             this.LogoPanel.Name = "LogoPanel";
-            this.LogoPanel.Size = new System.Drawing.Size(230, 159);
+            this.LogoPanel.Size = new System.Drawing.Size(230, 117);
             this.LogoPanel.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.label2.Location = new System.Drawing.Point(86, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 27);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "StockTrack";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.AliceBlue;
+            this.label1.Location = new System.Drawing.Point(82, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 35);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "VRich";
             // 
             // SystemLogo
             // 
             this.SystemLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SystemLogo.Image = ((System.Drawing.Image)(resources.GetObject("SystemLogo.Image")));
-            this.SystemLogo.Location = new System.Drawing.Point(-40, -4);
+            this.SystemLogo.Location = new System.Drawing.Point(-44, 0);
             this.SystemLogo.Name = "SystemLogo";
-            this.SystemLogo.Size = new System.Drawing.Size(301, 178);
+            this.SystemLogo.Size = new System.Drawing.Size(200, 136);
             this.SystemLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SystemLogo.TabIndex = 4;
             this.SystemLogo.TabStop = false;
@@ -419,6 +445,7 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VRich StockTrack";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDashboard_FormClosing);
             this.Load += new System.EventHandler(this.MainDashboard_Load);
             this.MainControlPanel.ResumeLayout(false);
@@ -427,6 +454,7 @@
             this.LogoutSpacer.ResumeLayout(false);
             this.MasterDataSubmenu.ResumeLayout(false);
             this.LogoPanel.ResumeLayout(false);
+            this.LogoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SystemLogo)).EndInit();
             this.ResumeLayout(false);
 
@@ -454,7 +482,8 @@
         private System.Windows.Forms.Button ProductsButton;
         public System.Windows.Forms.Panel AdministratorSubmenu;
         private System.Windows.Forms.Button UsersButton;
-        private ucDashboard ucDashboard1;
         private System.Windows.Forms.Panel MainScreenPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

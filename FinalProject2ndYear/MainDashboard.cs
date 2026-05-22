@@ -91,15 +91,15 @@ namespace FinalProject2ndYear
         private void ProductsButton_Click(object sender, EventArgs e)
         {
             ucProducts up = new ucProducts();
+            up.Dock = DockStyle.Fill;
             MainScreenPanel.Controls.Clear();
-
             MainScreenPanel.Controls.Add(up);
         }
 
         private void SuppliersButton_Click(object sender, EventArgs e)
         {
             ucSuppliers us = new ucSuppliers();
-
+            us.Dock = DockStyle.Fill;
             MainScreenPanel.Controls.Clear();
             MainScreenPanel.Controls.Add(us);
         }

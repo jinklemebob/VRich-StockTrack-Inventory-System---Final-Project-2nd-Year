@@ -45,8 +45,35 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addCustomer.Designer.cs">
+      <DependentUpon>addCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addProductForm.Designer.cs">
+      <DependentUpon>addProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editCustomer.Designer.cs">
+      <DependentUpon>editCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editProductForm.Designer.cs">
+      <DependentUpon>editProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="editSupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +121,18 @@
     </Compile>
     <Compile Include="UserLogin.cs" />
     <Compile Include="ValidateUserRole.cs" />
+    <EmbeddedResource Include="addCustomer.resx">
+      <DependentUpon>addCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addProductForm.resx">
+      <DependentUpon>addProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editCustomer.resx">
+      <DependentUpon>editCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editProductForm.resx">
+      <DependentUpon>editProductForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editSupplierForm.resx">
       <DependentUpon>editSupplierForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +163,7 @@
     <EmbeddedResource Include="ucSuppliers.resx">
       <DependentUpon>ucSuppliers.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
