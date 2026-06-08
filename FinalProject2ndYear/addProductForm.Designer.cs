@@ -37,6 +37,7 @@
             this.SubmitButton = new System.Windows.Forms.Button();
             this.CategoryBox = new System.Windows.Forms.ComboBox();
             this.UOMBox = new System.Windows.Forms.ComboBox();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProductDescBox
@@ -91,7 +92,7 @@
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Location = new System.Drawing.Point(204, 136);
+            this.SubmitButton.Location = new System.Drawing.Point(163, 145);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(75, 23);
             this.SubmitButton.TabIndex = 10;
@@ -118,11 +119,22 @@
             this.UOMBox.TabIndex = 12;
             this.UOMBox.SelectedIndexChanged += new System.EventHandler(this.UOMBox_SelectedIndexChanged);
             // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(244, 145);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 13;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // addProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 180);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UOMBox);
             this.Controls.Add(this.CategoryBox);
             this.Controls.Add(this.SubmitButton);
@@ -154,5 +166,6 @@
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.ComboBox CategoryBox;
         private System.Windows.Forms.ComboBox UOMBox;
+        private System.Windows.Forms.Button CancelButton;
     }
 }

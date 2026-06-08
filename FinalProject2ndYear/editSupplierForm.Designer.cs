@@ -39,6 +39,7 @@
             this.SubmitButton = new System.Windows.Forms.Button();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.StatusBox = new System.Windows.Forms.ComboBox();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SupplierNameTxtBox
@@ -107,7 +108,7 @@
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Location = new System.Drawing.Point(203, 212);
+            this.SubmitButton.Location = new System.Drawing.Point(165, 203);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(75, 31);
             this.SubmitButton.TabIndex = 10;
@@ -118,7 +119,7 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(175, 151);
+            this.StatusLabel.Location = new System.Drawing.Point(179, 150);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(37, 13);
             this.StatusLabel.TabIndex = 12;
@@ -127,16 +128,27 @@
             // StatusBox
             // 
             this.StatusBox.FormattingEnabled = true;
-            this.StatusBox.Location = new System.Drawing.Point(178, 167);
+            this.StatusBox.Location = new System.Drawing.Point(182, 166);
             this.StatusBox.Name = "StatusBox";
             this.StatusBox.Size = new System.Drawing.Size(121, 21);
             this.StatusBox.TabIndex = 13;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(245, 203);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 31);
+            this.CancelButton.TabIndex = 14;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // editSupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 255);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.StatusBox);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.SubmitButton);
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.ComboBox StatusBox;
+        private System.Windows.Forms.Button CancelButton;
     }
 }

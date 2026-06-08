@@ -1,6 +1,6 @@
 ﻿namespace FinalProject2ndYear
 {
-    partial class ucProducts
+    partial class ucUsers
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucProducts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucUsers));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ProductLabel = new System.Windows.Forms.Label();
+            this.SuppliersLabel = new System.Windows.Forms.Label();
             this.MenuBar = new System.Windows.Forms.Panel();
             this.SearchIcon = new System.Windows.Forms.PictureBox();
             this.DeleteIcon = new System.Windows.Forms.PictureBox();
@@ -52,14 +52,14 @@
             this.BorderPanel1 = new System.Windows.Forms.Panel();
             this.BorderPanel2 = new System.Windows.Forms.Panel();
             this.BasePanel2 = new System.Windows.Forms.Panel();
-            this.AddedTodayText = new System.Windows.Forms.Label();
+            this.ActiveCount = new System.Windows.Forms.Label();
             this.ActiveLabel = new System.Windows.Forms.Label();
             this.BorderPanel3 = new System.Windows.Forms.Panel();
             this.BasePanel3 = new System.Windows.Forms.Panel();
-            this.RecentAddText = new System.Windows.Forms.Label();
+            this.InactiveCount = new System.Windows.Forms.Label();
             this.InactiveLabel = new System.Windows.Forms.Label();
             this.StatChart = new System.Windows.Forms.Panel();
-            this.ProductDataGrid = new System.Windows.Forms.DataGridView();
+            this.UsersDataGrid = new System.Windows.Forms.DataGridView();
             this.MenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeleteIcon)).BeginInit();
@@ -72,20 +72,20 @@
             this.BorderPanel3.SuspendLayout();
             this.BasePanel3.SuspendLayout();
             this.StatChart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // ProductLabel
+            // SuppliersLabel
             // 
-            this.ProductLabel.AutoSize = true;
-            this.ProductLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ProductLabel.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductLabel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.ProductLabel.Location = new System.Drawing.Point(3, 25);
-            this.ProductLabel.Name = "ProductLabel";
-            this.ProductLabel.Size = new System.Drawing.Size(149, 40);
-            this.ProductLabel.TabIndex = 7;
-            this.ProductLabel.Text = "Products";
+            this.SuppliersLabel.AutoSize = true;
+            this.SuppliersLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SuppliersLabel.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SuppliersLabel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.SuppliersLabel.Location = new System.Drawing.Point(3, 25);
+            this.SuppliersLabel.Name = "SuppliersLabel";
+            this.SuppliersLabel.Size = new System.Drawing.Size(99, 40);
+            this.SuppliersLabel.TabIndex = 7;
+            this.SuppliersLabel.Text = "Users";
             // 
             // MenuBar
             // 
@@ -100,7 +100,7 @@
             this.MenuBar.Controls.Add(this.DeleteButton);
             this.MenuBar.Controls.Add(this.EditButton);
             this.MenuBar.Controls.Add(this.AddButton);
-            this.MenuBar.Controls.Add(this.ProductLabel);
+            this.MenuBar.Controls.Add(this.SuppliersLabel);
             this.MenuBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
@@ -162,16 +162,15 @@
             this.LinkLabel.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.LinkLabel.Location = new System.Drawing.Point(6, 64);
             this.LinkLabel.Name = "LinkLabel";
-            this.LinkLabel.Size = new System.Drawing.Size(184, 22);
+            this.LinkLabel.Size = new System.Drawing.Size(170, 22);
             this.LinkLabel.TabIndex = 14;
-            this.LinkLabel.Text = "Master Data > Products";
+            this.LinkLabel.Text = "Manage System Users";
             // 
             // SearchLabel
             // 
             this.SearchLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchLabel.AutoSize = true;
             this.SearchLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.SearchLabel.Enabled = false;
             this.SearchLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchLabel.ForeColor = System.Drawing.Color.SlateGray;
             this.SearchLabel.Location = new System.Drawing.Point(521, 64);
@@ -274,9 +273,9 @@
             this.TotalSuppliersLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.TotalSuppliersLabel.Location = new System.Drawing.Point(7, 5);
             this.TotalSuppliersLabel.Name = "TotalSuppliersLabel";
-            this.TotalSuppliersLabel.Size = new System.Drawing.Size(128, 15);
+            this.TotalSuppliersLabel.Size = new System.Drawing.Size(99, 15);
             this.TotalSuppliersLabel.TabIndex = 15;
-            this.TotalSuppliersLabel.Text = "TOTAL PRODUCTS";
+            this.TotalSuppliersLabel.Text = "TOTAL USERS";
             // 
             // BorderPanel1
             // 
@@ -299,24 +298,24 @@
             // BasePanel2
             // 
             this.BasePanel2.BackColor = System.Drawing.Color.GhostWhite;
-            this.BasePanel2.Controls.Add(this.AddedTodayText);
+            this.BasePanel2.Controls.Add(this.ActiveCount);
             this.BasePanel2.Controls.Add(this.ActiveLabel);
             this.BasePanel2.Location = new System.Drawing.Point(3, 3);
             this.BasePanel2.Name = "BasePanel2";
             this.BasePanel2.Size = new System.Drawing.Size(309, 58);
             this.BasePanel2.TabIndex = 12;
             // 
-            // AddedTodayText
+            // ActiveCount
             // 
-            this.AddedTodayText.AutoSize = true;
-            this.AddedTodayText.BackColor = System.Drawing.Color.Transparent;
-            this.AddedTodayText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddedTodayText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.AddedTodayText.Location = new System.Drawing.Point(2, 19);
-            this.AddedTodayText.Name = "AddedTodayText";
-            this.AddedTodayText.Size = new System.Drawing.Size(30, 32);
-            this.AddedTodayText.TabIndex = 16;
-            this.AddedTodayText.Text = "3";
+            this.ActiveCount.AutoSize = true;
+            this.ActiveCount.BackColor = System.Drawing.Color.Transparent;
+            this.ActiveCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActiveCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.ActiveCount.Location = new System.Drawing.Point(2, 19);
+            this.ActiveCount.Name = "ActiveCount";
+            this.ActiveCount.Size = new System.Drawing.Size(30, 32);
+            this.ActiveCount.TabIndex = 16;
+            this.ActiveCount.Text = "3";
             // 
             // ActiveLabel
             // 
@@ -326,9 +325,9 @@
             this.ActiveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.ActiveLabel.Location = new System.Drawing.Point(7, 5);
             this.ActiveLabel.Name = "ActiveLabel";
-            this.ActiveLabel.Size = new System.Drawing.Size(103, 15);
+            this.ActiveLabel.Size = new System.Drawing.Size(102, 15);
             this.ActiveLabel.TabIndex = 15;
-            this.ActiveLabel.Text = "ADDED TODAY";
+            this.ActiveLabel.Text = "TOTAL ACTIVE";
             // 
             // BorderPanel3
             // 
@@ -342,24 +341,24 @@
             // BasePanel3
             // 
             this.BasePanel3.BackColor = System.Drawing.Color.GhostWhite;
-            this.BasePanel3.Controls.Add(this.RecentAddText);
+            this.BasePanel3.Controls.Add(this.InactiveCount);
             this.BasePanel3.Controls.Add(this.InactiveLabel);
             this.BasePanel3.Location = new System.Drawing.Point(3, 3);
             this.BasePanel3.Name = "BasePanel3";
             this.BasePanel3.Size = new System.Drawing.Size(309, 58);
             this.BasePanel3.TabIndex = 12;
             // 
-            // RecentAddText
+            // InactiveCount
             // 
-            this.RecentAddText.AutoSize = true;
-            this.RecentAddText.BackColor = System.Drawing.Color.Transparent;
-            this.RecentAddText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecentAddText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.RecentAddText.Location = new System.Drawing.Point(5, 24);
-            this.RecentAddText.Name = "RecentAddText";
-            this.RecentAddText.Size = new System.Drawing.Size(22, 24);
-            this.RecentAddText.TabIndex = 16;
-            this.RecentAddText.Text = "3";
+            this.InactiveCount.AutoSize = true;
+            this.InactiveCount.BackColor = System.Drawing.Color.Transparent;
+            this.InactiveCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InactiveCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.InactiveCount.Location = new System.Drawing.Point(2, 19);
+            this.InactiveCount.Name = "InactiveCount";
+            this.InactiveCount.Size = new System.Drawing.Size(30, 32);
+            this.InactiveCount.TabIndex = 16;
+            this.InactiveCount.Text = "3";
             // 
             // InactiveLabel
             // 
@@ -369,9 +368,9 @@
             this.InactiveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.InactiveLabel.Location = new System.Drawing.Point(7, 5);
             this.InactiveLabel.Name = "InactiveLabel";
-            this.InactiveLabel.Size = new System.Drawing.Size(129, 15);
+            this.InactiveLabel.Size = new System.Drawing.Size(116, 15);
             this.InactiveLabel.TabIndex = 15;
-            this.InactiveLabel.Text = "RECENTLY ADDED";
+            this.InactiveLabel.Text = "TOTAL INACTIVE";
             // 
             // StatChart
             // 
@@ -384,31 +383,31 @@
             this.StatChart.Size = new System.Drawing.Size(1034, 78);
             this.StatChart.TabIndex = 15;
             // 
-            // ProductDataGrid
+            // UsersDataGrid
             // 
-            this.ProductDataGrid.AllowUserToAddRows = false;
-            this.ProductDataGrid.AllowUserToDeleteRows = false;
-            this.ProductDataGrid.AllowUserToResizeColumns = false;
-            this.ProductDataGrid.AllowUserToResizeRows = false;
+            this.UsersDataGrid.AllowUserToAddRows = false;
+            this.UsersDataGrid.AllowUserToDeleteRows = false;
+            this.UsersDataGrid.AllowUserToResizeColumns = false;
+            this.UsersDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ProductDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.UsersDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.UsersDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ProductDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(228)))), ((int)(((byte)(243)))));
-            this.ProductDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ProductDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.UsersDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UsersDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(228)))), ((int)(((byte)(243)))));
+            this.UsersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UsersDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ProductDataGrid.ColumnHeadersHeight = 35;
-            this.ProductDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ProductDataGrid.Cursor = System.Windows.Forms.Cursors.Default;
+            this.UsersDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.UsersDataGrid.ColumnHeadersHeight = 35;
+            this.UsersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.UsersDataGrid.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -416,16 +415,16 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ProductDataGrid.Enabled = false;
-            this.ProductDataGrid.EnableHeadersVisualStyles = false;
-            this.ProductDataGrid.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ProductDataGrid.Location = new System.Drawing.Point(32, 195);
-            this.ProductDataGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.ProductDataGrid.MultiSelect = false;
-            this.ProductDataGrid.Name = "ProductDataGrid";
-            this.ProductDataGrid.ReadOnly = true;
-            this.ProductDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.UsersDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.UsersDataGrid.Enabled = false;
+            this.UsersDataGrid.EnableHeadersVisualStyles = false;
+            this.UsersDataGrid.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.UsersDataGrid.Location = new System.Drawing.Point(32, 195);
+            this.UsersDataGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.UsersDataGrid.MultiSelect = false;
+            this.UsersDataGrid.Name = "UsersDataGrid";
+            this.UsersDataGrid.ReadOnly = true;
+            this.UsersDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -434,35 +433,35 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.ProductDataGrid.RowHeadersVisible = false;
-            this.ProductDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.UsersDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.UsersDataGrid.RowHeadersVisible = false;
+            this.UsersDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.ProductDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.ProductDataGrid.RowTemplate.Height = 40;
-            this.ProductDataGrid.RowTemplate.ReadOnly = true;
-            this.ProductDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductDataGrid.Size = new System.Drawing.Size(960, 486);
-            this.ProductDataGrid.StandardTab = true;
-            this.ProductDataGrid.TabIndex = 16;
-            this.ProductDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGrid_CellClick);
-            this.ProductDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductDataGrid_CellFormatting);
+            this.UsersDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.UsersDataGrid.RowTemplate.Height = 40;
+            this.UsersDataGrid.RowTemplate.ReadOnly = true;
+            this.UsersDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.UsersDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.UsersDataGrid.Size = new System.Drawing.Size(960, 486);
+            this.UsersDataGrid.StandardTab = true;
+            this.UsersDataGrid.TabIndex = 16;
+            this.UsersDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplierDataGrid_CellClick);
+            this.UsersDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.UsersDataGrid_CellFormatting);
             // 
-            // ucProducts
+            // ucUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(228)))), ((int)(((byte)(243)))));
-            this.Controls.Add(this.ProductDataGrid);
+            this.Controls.Add(this.UsersDataGrid);
             this.Controls.Add(this.StatChart);
             this.Controls.Add(this.MenuBar);
-            this.Name = "ucProducts";
+            this.Name = "ucUsers";
             this.Size = new System.Drawing.Size(1034, 681);
-            this.Load += new System.EventHandler(this.ucSuppliers_Load);
+            this.Load += new System.EventHandler(this.ucUsers_Load);
             this.MenuBar.ResumeLayout(false);
             this.MenuBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
@@ -479,13 +478,13 @@
             this.BasePanel3.ResumeLayout(false);
             this.BasePanel3.PerformLayout();
             this.StatChart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label ProductLabel;
+        private System.Windows.Forms.Label SuppliersLabel;
         private System.Windows.Forms.Panel MenuBar;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
@@ -498,18 +497,18 @@
         private System.Windows.Forms.Label TotalSuppliersCount;
         private System.Windows.Forms.Panel BorderPanel2;
         private System.Windows.Forms.Panel BasePanel2;
-        private System.Windows.Forms.Label AddedTodayText;
+        private System.Windows.Forms.Label ActiveCount;
         private System.Windows.Forms.Label ActiveLabel;
         private System.Windows.Forms.Panel BorderPanel3;
         private System.Windows.Forms.Panel BasePanel3;
-        private System.Windows.Forms.Label RecentAddText;
+        private System.Windows.Forms.Label InactiveCount;
         private System.Windows.Forms.Label InactiveLabel;
         private System.Windows.Forms.Panel StatChart;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.PictureBox AddIcon;
         private System.Windows.Forms.PictureBox EditIcon;
         private System.Windows.Forms.PictureBox DeleteIcon;
-        private System.Windows.Forms.DataGridView ProductDataGrid;
+        private System.Windows.Forms.DataGridView UsersDataGrid;
         private System.Windows.Forms.PictureBox SearchIcon;
     }
 }

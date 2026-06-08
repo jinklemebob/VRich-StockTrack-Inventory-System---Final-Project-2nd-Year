@@ -37,6 +37,7 @@
             this.ContactPersonLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.SubmitButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SupplierNameTxtBox
@@ -105,7 +106,7 @@
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Location = new System.Drawing.Point(204, 136);
+            this.SubmitButton.Location = new System.Drawing.Point(165, 145);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(75, 23);
             this.SubmitButton.TabIndex = 10;
@@ -113,11 +114,22 @@
             this.SubmitButton.UseVisualStyleBackColor = true;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(246, 145);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 11;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // addSupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 180);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.ContactPersonLabel);
@@ -132,6 +144,7 @@
             this.Name = "addSupplierForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Supplier";
+            this.Load += new System.EventHandler(this.addSupplierForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +161,6 @@
         private System.Windows.Forms.Label ContactPersonLabel;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Button SubmitButton;
+        private System.Windows.Forms.Button CancelButton;
     }
 }

@@ -1,83 +1,170 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinalProject2ndYear
 {
     public partial class editProductForm : Form
     {
-        int SupplierID;
-        int Status;
-        String connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
-        public editProductForm(int SupplierID)
+        int ProductID;
+        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+
+        public editProductForm(int ProductID)
         {
             InitializeComponent();
-            this.SupplierID = SupplierID;
+            this.ProductID = ProductID;
         }
 
-        private void editSupplierForm_Load(object sender, EventArgs e)
+        private void editProductForm_Load(object sender, EventArgs e)
         {
-            StatusBox.Items.Add("Active");
-            StatusBox.Items.Add("Inactive");
+            LoadDropdowns();
 
-            string query = "SELECT * FROM Suppliers WHERE SupplierID = @ID";
+            string query = "SELECT * FROM Products WHERE ProductID = @ID";
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@ID", SupplierID);
+                cmd.Parameters.AddWithValue("@ID", ProductID);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    SupplierNameTxtBox.Text = reader["SupplierName"].ToString();
-                    ContactPersonTxtBox.Text = reader["ContactPerson"].ToString();
-                    ContactNoTxtBox.Text = reader["ContactNo"].ToString();
-                    EmailTxtBox.Text = reader["Email"].ToString();
-                    if (reader["Status"].ToString() == "True")
-                    {
-                        StatusBox.Text = "Active";
-                    }
-                    else if (reader["Status"].ToString() == "False")
-                    {
-                        StatusBox.Text = "Inactive";
-                    }
+                    ProductDescBox.Text = reader["Description"].ToString();
+                    ReorderLvlBox.Text = reader["ReorderLvl"].ToString();
+                    CategoryBox.SelectedValue = reader["CategoryID"];
+                    UOMBox.SelectedValue = reader["UOMID"];
+                    StatusBox.SelectedIndex = Convert.ToInt32(reader["Status"]) == 1 ? 0 : 1;
                 }
+            }
+        }
 
+        private void LoadDropdowns()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand("SELECT CategoryID, CategoryName FROM Categories ORDER BY CategoryName", conn))
+            {
+                conn.Open();
+                DataTable dtCat = new DataTable();
+                dtCat.Load(cmd.ExecuteReader());
+                CategoryBox.DataSource = dtCat;
+                CategoryBox.DisplayMember = "CategoryName";
+                CategoryBox.ValueMember = "CategoryID";
+                CategoryBox.SelectedIndex = -1;
             }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand("SELECT UOMID, UOMName FROM UOMs ORDER BY UOMName", conn))
+            {
+                conn.Open();
+                DataTable dtUOM = new DataTable();
+                dtUOM.Load(cmd.ExecuteReader());
+                UOMBox.DataSource = dtUOM;
+                UOMBox.DisplayMember = "UOMName";
+                UOMBox.ValueMember = "UOMID";
+                UOMBox.SelectedIndex = -1;
             }
+
+            // Load Status options
+            StatusBox.Items.Clear();
+            StatusBox.Items.Add("Active");
+            StatusBox.Items.Add("Inactive");
+        }
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            this.Status = StatusBox.SelectedItem.ToString() == "Active" ? 1 : 0;
+            if (string.IsNullOrWhiteSpace(ProductDescBox.Text) ||
+                string.IsNullOrWhiteSpace(ReorderLvlBox.Text) ||
+                CategoryBox.SelectedIndex == -1 ||
+                UOMBox.SelectedIndex == -1 ||
+                StatusBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all required fields.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(ReorderLvlBox.Text, out int reorderLvl) || reorderLvl < 0)
+            {
+                MessageBox.Show("Reorder Level must be a non-negative whole number.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int newStatus = StatusBox.SelectedIndex == 0 ? 1 : 0;
+
+            // Warn if setting to inactive and still has remaining stock
+            if (newStatus == 0)
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand check = new SqlCommand(@"
+                        SELECT COUNT(*) FROM StockBatches sb
+                        JOIN GoodsReceiptItems gri ON sb.ReceiptItemsID = gri.ReceiptItemsID
+                        WHERE gri.ProductID = @ID AND sb.QtyRemaining > 0", conn))
+                    {
+                        check.Parameters.AddWithValue("@ID", ProductID);
+                        int remainingStock = (int)check.ExecuteScalar();
+
+                        if (remainingStock > 0)
+                        {
+                            DialogResult warn = MessageBox.Show(
+                                "This product still has remaining stock in the inventory. Are you sure you want to mark it as inactive?",
+                                "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if (warn == DialogResult.No) return;
+                        }
+                    }
+                }
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                String Query = @"UPDATE Suppliers SET SupplierName = @SupplierName, ContactPerson = @ContactPerson, ContactNo = @ContactNo, 
-                Email = @Email, Status = @Status WHERE SupplierID = @ID";
-            using (SqlCommand cmd = new SqlCommand(Query, conn))
+                conn.Open();
+
+                using (SqlCommand check = new SqlCommand(
+                    "SELECT COUNT(*) FROM Products WHERE Description = @Description AND ProductID != @ID", conn))
                 {
-                    cmd.Parameters.AddWithValue("@ID", SupplierID);
-                    cmd.Parameters.AddWithValue("@SupplierName", SupplierNameTxtBox.Text);
-                    cmd.Parameters.AddWithValue("@ContactPerson", ContactPersonTxtBox.Text);
-                    cmd.Parameters.AddWithValue("@ContactNo", ContactNoTxtBox.Text);
-                    cmd.Parameters.AddWithValue("@Email", EmailTxtBox.Text);
-                    cmd.Parameters.AddWithValue("@Status", Status);
+                    check.Parameters.AddWithValue("@Description", ProductDescBox.Text.Trim());
+                    check.Parameters.AddWithValue("@ID", ProductID);
+                    if ((int)check.ExecuteScalar() > 0)
+                    {
+                        MessageBox.Show("A product with that description already exists.", "Duplicate Entry",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
 
-                    conn.Open();
+                string query = @"UPDATE Products 
+                                 SET Description = @Description,
+                                     ReorderLvl  = @ReorderLvl,
+                                     CategoryID  = @CategoryID,
+                                     UOMID       = @UOMID,
+                                     Status      = @Status
+                                 WHERE ProductID = @ID";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", ProductID);
+                    cmd.Parameters.AddWithValue("@Description", ProductDescBox.Text.Trim());
+                    cmd.Parameters.AddWithValue("@ReorderLvl", reorderLvl);
+                    cmd.Parameters.AddWithValue("@CategoryID", Convert.ToInt32(CategoryBox.SelectedValue));
+                    cmd.Parameters.AddWithValue("@UOMID", Convert.ToInt32(UOMBox.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Status", newStatus);
                     cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Supplier Updated! ");
+                    MessageBox.Show("Product Updated!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-
-
                 }
+            }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Are you sure you want to cancel this process?",
+                                    "Cancel Process", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirm == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

@@ -7,42 +7,40 @@ using Tulpep.NotificationWindow;
 
 namespace FinalProject2ndYear
 {
-    public partial class ucProducts: UserControl
+    public partial class ucCustomers : UserControl
     {
         private bool isEditing = false;
         private bool isDeleting = false;
         PopupNotifier popup = new PopupNotifier();
         private const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
-        public ucProducts()
+        public ucCustomers()
         {
             InitializeComponent();
         }
 
-        private void ucSuppliers_Load(object sender, EventArgs e)
+        private void ucCustomers_Load(object sender, EventArgs e)
         {
-            LoadProducts();
+            LoadCustomers();
         }
 
-        public void LoadProducts()
+        public void LoadCustomers()
         {
-            string query = @"
-                 SELECT 'PD-' + CAST(p.ProductID AS VARCHAR) AS 'ID',
-                 p.Description, c.CategoryName AS 'Category', 
-                 p.ReorderLvl AS 'Reorder Lvl', UPPER(u.UOMName) AS 'UoM',
-                 CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END AS 'Status',
-                 p.CreatedAt AS 'Created At'
-                 FROM Products AS p 
-                 JOIN UOMs AS u ON p.UOMID = u.UOMID
-                 JOIN Categories AS c ON p.CategoryID = c.CategoryID";
 
+            string query = @"
+                SELECT 'CS-' + CAST(CustomerID AS VARCHAR) AS 'ID',
+                       CustomerName AS 'Name', ContactPerson AS 'Contact Person', ContactNo AS 'Contact No.', Email,
+                       CASE WHEN Status = 1 THEN 'Active' ELSE 'Inactive' END AS Status
+                FROM Customers";
 
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                ProductDataGrid.DataSource = dt;
+                CustomerDataGrid.DataSource = dt;
+                CustomerDataGrid.Visible = true;
+                CustomerDataGrid.Enabled = false;
             }
 
             RefreshCounts();
@@ -51,9 +49,9 @@ namespace FinalProject2ndYear
 
         private void RefreshCounts()
         {
-            TotalSuppliersCount.Text = GetCount("SELECT COUNT(*) FROM Products").ToString();
-            AddedTodayText.Text = GetCount("SELECT COUNT(*) FROM Products WHERE CreatedAt = GETDATE()").ToString();
-            RecentAddText.Text = GetDesc("SELECT TOP 1 Description FROM Products ORDER BY CreatedAt DESC, ProductID DESC").ToString();
+            TotalCustomersCount.Text = GetCount("SELECT COUNT(*) FROM Customers").ToString();
+            ActiveCount.Text = GetCount("SELECT COUNT(*) FROM Customers WHERE Status = 1").ToString();
+            InactiveCount.Text = GetCount("SELECT COUNT(*) FROM Customers WHERE Status = 0").ToString();
         }
 
         private int GetCount(string query)
@@ -65,25 +63,12 @@ namespace FinalProject2ndYear
                     return (int)cmd.ExecuteScalar();
             }
         }
-        private string GetDesc(string query)
-        {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    var result = cmd.ExecuteScalar();
-                    return result != null ? result.ToString() : "None";
-                }
-            }
-        }
-
         public void ShowNotif()
         {
             if (isEditing == true)
             {
-                popup.TitleText = "Products";
-                popup.ContentText = "Select a product to edit.";
+                popup.TitleText = "Customers";
+                popup.ContentText = "Select a customer to edit.";
                 popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
                 popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
 
@@ -100,8 +85,8 @@ namespace FinalProject2ndYear
             }
             else if (isDeleting == true)
             {
-                popup.TitleText = "Products";
-                popup.ContentText = "Select a product to delete.";
+                popup.TitleText = "Customers";
+                popup.ContentText = "Select a customer to delete.";
                 popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
                 popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
 
@@ -121,20 +106,17 @@ namespace FinalProject2ndYear
         {
             ResetState();
 
-            addProductForm aForm = new addProductForm();
+            addCustomerForm aForm = new addCustomerForm();
             if (aForm.ShowDialog() == DialogResult.OK)
-            {
-                LoadProducts();
-            }
-               
+                LoadCustomers();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (ProductDataGrid.RowCount == 0)
+            if (CustomerDataGrid.RowCount == 0)
             {
-                popup.TitleText = "Products";
-                popup.ContentText = "There are no products available to edit.";
+                popup.TitleText = "Customers";
+                popup.ContentText = "There are no customers available to edit.";
                 popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
                 popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
 
@@ -148,7 +130,7 @@ namespace FinalProject2ndYear
                 popup.Delay = 2500;
                 popup.Popup();
             }
-            else if (!isEditing && ProductDataGrid.RowCount >= 1)
+            else if (!isEditing && CustomerDataGrid.RowCount >= 1)
             {
                 isEditing = true;
                 isDeleting = false;
@@ -157,7 +139,7 @@ namespace FinalProject2ndYear
                 EditButton.Padding = new Padding(0, 0, 0, 0);
                 DeleteButton.Text = "Delete";
                 DeleteButton.Padding = new Padding(15, 0, 0, 0);
-                ProductDataGrid.Enabled = true;
+                CustomerDataGrid.Enabled = true;
                 EditIcon.Visible = false;
                 DeleteIcon.Visible = true;
             }
@@ -171,10 +153,10 @@ namespace FinalProject2ndYear
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (ProductDataGrid.RowCount == 0)
+            if (CustomerDataGrid.RowCount == 0)
             {
-                popup.TitleText = "Products";
-                popup.ContentText = "There are no products available to delete.";
+                popup.TitleText = "Customers";
+                popup.ContentText = "There are no customers available to delete.";
                 popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
                 popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
 
@@ -188,7 +170,7 @@ namespace FinalProject2ndYear
                 popup.Delay = 2500;
                 popup.Popup();
             }
-            else if (!isDeleting && ProductDataGrid.RowCount >= 1)
+            else if (!isDeleting && CustomerDataGrid.RowCount >= 1)
             {
                 isDeleting = true;
                 isEditing = false;
@@ -197,7 +179,7 @@ namespace FinalProject2ndYear
                 DeleteButton.Padding = new Padding(0, 0, 0, 0);
                 EditButton.Text = "Edit";
                 EditButton.Padding = new Padding(10, 0, 0, 0);
-                ProductDataGrid.Enabled = true;
+                CustomerDataGrid.Enabled = true;
                 DeleteIcon.Visible = false;
                 EditIcon.Visible = true;
             }
@@ -209,27 +191,25 @@ namespace FinalProject2ndYear
             }
         }
 
-        private void ProductDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return; 
+            if (e.RowIndex < 0) return;
 
-            string rawID = ProductDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-            int productID = Convert.ToInt32(rawID.Replace("PD-", ""));
+            string rawID = CustomerDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+            int customerID = Convert.ToInt32(rawID.Replace("CS-", ""));
 
             if (isEditing)
             {
-                editProductForm eForm = new editProductForm(productID);
+                editCustomerForm eForm = new editCustomerForm(customerID);
                 if (eForm.ShowDialog() == DialogResult.OK)
-                    LoadProducts();
-
+                    LoadCustomers();
                 ResetState();
-                
             }
             else if (isDeleting)
             {
                 DialogResult confirm = MessageBox.Show(
                     $"Are you sure you want to delete {rawID}?",
-                    "Delete Product",
+                    "Delete Customer",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (confirm == DialogResult.Yes)
@@ -237,65 +217,33 @@ namespace FinalProject2ndYear
                     using (SqlConnection conn = new SqlConnection(ConnectionString))
                     {
                         conn.Open();
-
-                        using (SqlCommand check = new SqlCommand(
-                            @"SELECT COUNT(*) FROM GoodsReceiptItems WHERE ProductID = @ID", conn))
+                        using (SqlCommand cmd = new SqlCommand("DELETE FROM Customers WHERE CustomerID = @ID", conn))
                         {
-                            check.Parameters.AddWithValue("@ID", productID);
-                            int count = (int)check.ExecuteScalar();
-
-                            if (count > 0)
-                            {
-                                using (SqlCommand cmd = new SqlCommand(
-                                    "UPDATE Products SET Status = 0 WHERE ProductID = @ID", conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@ID", productID);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                MessageBox.Show("Product is used in existing transactions and has been marked as inactive instead.",
-                                                "Product Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                using (SqlCommand cmd = new SqlCommand(
-                                    "DELETE FROM Products WHERE ProductID = @ID", conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@ID", productID);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                MessageBox.Show("Product deleted.", "Deletion Successful",
-                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            cmd.Parameters.AddWithValue("@ID", customerID);
+                            cmd.ExecuteNonQuery();
                         }
                     }
-
-                    LoadProducts();
+                    MessageBox.Show("Customer deleted.", "Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadCustomers();
                 }
-
                 ResetState();
             }
-
         }
-
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             SearchLabel.Visible = string.IsNullOrWhiteSpace(SearchBox.Text);
 
             string query = @"
-        SELECT 'PD-' + CAST(p.ProductID AS VARCHAR) AS 'ID',
-               p.Description, c.CategoryName AS 'Category', 
-               p.ReorderLvl AS 'Reorder Lvl', UPPER(u.UOMName) AS 'UoM',
-               CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END AS 'Status',
-               p.CreatedAt AS 'Created At'
-        FROM Products AS p 
-        JOIN UOMs AS u ON p.UOMID = u.UOMID
-        JOIN Categories AS c ON p.CategoryID = c.CategoryID
-        WHERE CAST(p.ProductID AS VARCHAR) LIKE @Search
-           OR p.Description               LIKE @Search
-           OR c.CategoryName              LIKE @Search
-           OR UPPER(u.UOMName)            LIKE @Search
-           OR CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END LIKE @Search";
+                SELECT 'CS-' + CAST(CustomerID AS VARCHAR(10)) AS 'ID',
+                       CustomerName AS 'Name', ContactPerson AS 'Contact Person', ContactNo AS 'Contact No.', Email,
+                       CASE WHEN Status = 1 THEN 'Active' ELSE 'Inactive' END AS Status
+                FROM Customers
+                WHERE CustomerID    LIKE @Search
+                   OR CustomerName  LIKE @Search
+                   OR ContactPerson LIKE @Search
+                   OR ContactNo     LIKE @Search
+                   OR Email         LIKE @Search";
 
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
@@ -303,7 +251,7 @@ namespace FinalProject2ndYear
                 da.SelectCommand.Parameters.AddWithValue("@Search", "%" + SearchBox.Text + "%");
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                ProductDataGrid.DataSource = dt;
+                CustomerDataGrid.DataSource = dt;
             }
 
             ClearGridSelection();
@@ -327,7 +275,7 @@ namespace FinalProject2ndYear
             EditButton.Text = "Edit";
             
             DeleteButton.Text = "Delete";
-            ProductDataGrid.Enabled = false;
+            CustomerDataGrid.Enabled = false;
             EditIcon.Visible = true;
             DeleteIcon.Visible = true;
             DeleteButton.Padding = new Padding(15, 0, 0, 0);
@@ -339,30 +287,30 @@ namespace FinalProject2ndYear
         {
             BeginInvoke(new Action(() =>
             {
-                ProductDataGrid.CurrentCell = null;
-                ProductDataGrid.ClearSelection();
+                CustomerDataGrid.CurrentCell = null;
+                CustomerDataGrid.ClearSelection();
             }));
         }
 
-        private void ProductDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void CustomerDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            string status = ProductDataGrid.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
+            string status = CustomerDataGrid.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
 
             if (status == null) return;
 
             switch (status)
             {
                 case "Active":
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    CustomerDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                    CustomerDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
                     break;
                 case "Inactive":
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    CustomerDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
+                    CustomerDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
                     break;
             }
-        }
+            }
     }
 }

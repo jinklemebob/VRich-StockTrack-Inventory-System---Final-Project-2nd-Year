@@ -27,8 +27,8 @@ namespace FinalProject2ndYear
         public void LoadSuppliers()
         {
             string query = @"
-                SELECT 'SP-' + CAST(SupplierID AS VARCHAR) AS SupplierID,
-                       SupplierName, ContactPerson, ContactNo, Email,
+                SELECT 'SP-' + CAST(SupplierID AS VARCHAR) AS 'ID',
+                       SupplierName AS 'Name', ContactPerson AS 'Contact', ContactNo AS 'Contact No.', Email,
                        CASE WHEN Status = 1 THEN 'Active' ELSE 'Inactive' END AS Status
                 FROM Suppliers";
 
@@ -127,7 +127,7 @@ namespace FinalProject2ndYear
                 popup.Delay = 2500;
                 popup.Popup();
             }
-            else if (!isEditing && SupplierDataGrid.RowCount <= 1)
+            else if (!isEditing && SupplierDataGrid.RowCount >= 1)
             {
                 isEditing = true;
                 isDeleting = false;
@@ -167,7 +167,7 @@ namespace FinalProject2ndYear
                 popup.Delay = 2500;
                 popup.Popup();
             }
-            else if (!isDeleting && SupplierDataGrid.RowCount <= 1)
+            else if (!isDeleting && SupplierDataGrid.RowCount >= 1)
             {
                 isDeleting = true;
                 isEditing = false;
@@ -209,7 +209,7 @@ namespace FinalProject2ndYear
                 DialogResult confirm = MessageBox.Show(
                     $"Are you sure you want to delete {rawID}?",
                     "Delete Supplier",
-                    MessageBoxButtons.YesNo);
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (confirm == DialogResult.Yes)
                 {
@@ -223,7 +223,8 @@ namespace FinalProject2ndYear
                         }
                     }
 
-                    MessageBox.Show("Supplier deleted.");
+                    MessageBox.Show("Supplier deleted.","Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     LoadSuppliers();
                 }
 
@@ -292,6 +293,27 @@ namespace FinalProject2ndYear
                 SupplierDataGrid.CurrentCell = null;
                 SupplierDataGrid.ClearSelection();
             }));
+        }
+
+        private void SupplierDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string status = SupplierDataGrid.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
+
+            if (status == null) return;
+
+            switch (status)
+            {
+                case "Active":
+                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    break;
+                case "Inactive":
+                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
+                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    break;
+            }
         }
     }
 }

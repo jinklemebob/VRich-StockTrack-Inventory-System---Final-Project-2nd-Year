@@ -36,6 +36,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +52,83 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addCustomer.cs">
+    <Compile Include="addCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addCustomer.Designer.cs">
-      <DependentUpon>addCustomer.cs</DependentUpon>
+    <Compile Include="addCustomerForm.Designer.cs">
+      <DependentUpon>addCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addSalesOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSalesOrderForm.Designer.cs">
+      <DependentUpon>addSalesOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editSalesOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editSalesOrderForm.Designer.cs">
+      <DependentUpon>editSalesOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editGoodsReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editGoodsReceiptForm.Designer.cs">
+      <DependentUpon>editGoodsReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addUserForm.Designer.cs">
+      <DependentUpon>addUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editUserForm.Designer.cs">
+      <DependentUpon>editUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucInventory.Designer.cs">
+      <DependentUpon>ucInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSalesOrders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSalesOrders.Designer.cs">
+      <DependentUpon>ucSalesOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucUsers.Designer.cs">
+      <DependentUpon>ucUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="viewSalesOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewSalesOrderForm.Designer.cs">
+      <DependentUpon>viewSalesOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="viewGoodsReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewGoodsReceiptForm.Designer.cs">
+      <DependentUpon>viewGoodsReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addGoodsReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addGoodsReceiptForm.Designer.cs">
+      <DependentUpon>addGoodsReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editProductForm.Designer.cs">
+      <DependentUpon>editProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="addProductForm.cs">
       <SubType>Form</SubType>
@@ -62,17 +136,11 @@
     <Compile Include="addProductForm.Designer.cs">
       <DependentUpon>addProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="editCustomer.cs">
+    <Compile Include="editCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="editCustomer.Designer.cs">
-      <DependentUpon>editCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="editProductForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="editProductForm.Designer.cs">
-      <DependentUpon>editProductForm.cs</DependentUpon>
+    <Compile Include="editCustomerForm.Designer.cs">
+      <DependentUpon>editCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="editSupplierForm.cs">
       <SubType>Form</SubType>
@@ -113,6 +181,18 @@
     <Compile Include="ucProducts.Designer.cs">
       <DependentUpon>ucProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucCustomers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucCustomers.Designer.cs">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucGoodsReceipts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucGoodsReceipts.Designer.cs">
+      <DependentUpon>ucGoodsReceipts.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucSuppliers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,17 +201,50 @@
     </Compile>
     <Compile Include="UserLogin.cs" />
     <Compile Include="ValidateUserRole.cs" />
-    <EmbeddedResource Include="addCustomer.resx">
-      <DependentUpon>addCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="addCustomerForm.resx">
+      <DependentUpon>addCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSalesOrderForm.resx">
+      <DependentUpon>addSalesOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editSalesOrderForm.resx">
+      <DependentUpon>editSalesOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editGoodsReceiptForm.resx">
+      <DependentUpon>editGoodsReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addUserForm.resx">
+      <DependentUpon>addUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editUserForm.resx">
+      <DependentUpon>editUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucInventory.resx">
+      <DependentUpon>ucInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSalesOrders.resx">
+      <DependentUpon>ucSalesOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucUsers.resx">
+      <DependentUpon>ucUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewSalesOrderForm.resx">
+      <DependentUpon>viewSalesOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewGoodsReceiptForm.resx">
+      <DependentUpon>viewGoodsReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addGoodsReceiptForm.resx">
+      <DependentUpon>addGoodsReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editProductForm.resx">
+      <DependentUpon>editProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addProductForm.resx">
       <DependentUpon>addProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="editCustomer.resx">
-      <DependentUpon>editCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="editProductForm.resx">
-      <DependentUpon>editProductForm.cs</DependentUpon>
+    <EmbeddedResource Include="editCustomerForm.resx">
+      <DependentUpon>editCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editSupplierForm.resx">
       <DependentUpon>editSupplierForm.cs</DependentUpon>
@@ -159,6 +272,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucProducts.resx">
       <DependentUpon>ucProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucCustomers.resx">
+      <DependentUpon>ucCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucGoodsReceipts.resx">
+      <DependentUpon>ucGoodsReceipts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucSuppliers.resx">
       <DependentUpon>ucSuppliers.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace FinalProject2ndYear
 {
-    partial class ucProducts
+    partial class ucGoodsReceipts
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,41 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucProducts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucGoodsReceipts));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ProductLabel = new System.Windows.Forms.Label();
+            this.ucLabel = new System.Windows.Forms.Label();
             this.MenuBar = new System.Windows.Forms.Panel();
             this.SearchIcon = new System.Windows.Forms.PictureBox();
-            this.DeleteIcon = new System.Windows.Forms.PictureBox();
             this.EditIcon = new System.Windows.Forms.PictureBox();
             this.AddIcon = new System.Windows.Forms.PictureBox();
             this.LinkLabel = new System.Windows.Forms.Label();
             this.SearchLabel = new System.Windows.Forms.Label();
             this.SearchBox = new System.Windows.Forms.TextBox();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.BasePanel1 = new System.Windows.Forms.Panel();
-            this.TotalSuppliersCount = new System.Windows.Forms.Label();
-            this.TotalSuppliersLabel = new System.Windows.Forms.Label();
+            this.TotalRCount = new System.Windows.Forms.Label();
+            this.TotalReceiptsLabel = new System.Windows.Forms.Label();
             this.BorderPanel1 = new System.Windows.Forms.Panel();
             this.BorderPanel2 = new System.Windows.Forms.Panel();
             this.BasePanel2 = new System.Windows.Forms.Panel();
-            this.AddedTodayText = new System.Windows.Forms.Label();
-            this.ActiveLabel = new System.Windows.Forms.Label();
+            this.TodayValue = new System.Windows.Forms.Label();
+            this.TotalReceiptsToday = new System.Windows.Forms.Label();
             this.BorderPanel3 = new System.Windows.Forms.Panel();
             this.BasePanel3 = new System.Windows.Forms.Panel();
-            this.RecentAddText = new System.Windows.Forms.Label();
-            this.InactiveLabel = new System.Windows.Forms.Label();
+            this.MonthCount = new System.Windows.Forms.Label();
+            this.MonthReceiptsLabel = new System.Windows.Forms.Label();
             this.StatChart = new System.Windows.Forms.Panel();
-            this.ProductDataGrid = new System.Windows.Forms.DataGridView();
+            this.ReceiptsDataGrid = new System.Windows.Forms.DataGridView();
             this.MenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeleteIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddIcon)).BeginInit();
             this.BasePanel1.SuspendLayout();
@@ -72,35 +68,33 @@
             this.BorderPanel3.SuspendLayout();
             this.BasePanel3.SuspendLayout();
             this.StatChart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // ProductLabel
+            // ucLabel
             // 
-            this.ProductLabel.AutoSize = true;
-            this.ProductLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ProductLabel.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductLabel.ForeColor = System.Drawing.Color.GhostWhite;
-            this.ProductLabel.Location = new System.Drawing.Point(3, 25);
-            this.ProductLabel.Name = "ProductLabel";
-            this.ProductLabel.Size = new System.Drawing.Size(149, 40);
-            this.ProductLabel.TabIndex = 7;
-            this.ProductLabel.Text = "Products";
+            this.ucLabel.AutoSize = true;
+            this.ucLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ucLabel.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucLabel.ForeColor = System.Drawing.Color.GhostWhite;
+            this.ucLabel.Location = new System.Drawing.Point(3, 25);
+            this.ucLabel.Name = "ucLabel";
+            this.ucLabel.Size = new System.Drawing.Size(245, 40);
+            this.ucLabel.TabIndex = 7;
+            this.ucLabel.Text = "Goods Receipts";
             // 
             // MenuBar
             // 
             this.MenuBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.MenuBar.Controls.Add(this.SearchIcon);
-            this.MenuBar.Controls.Add(this.DeleteIcon);
             this.MenuBar.Controls.Add(this.EditIcon);
             this.MenuBar.Controls.Add(this.AddIcon);
             this.MenuBar.Controls.Add(this.LinkLabel);
             this.MenuBar.Controls.Add(this.SearchLabel);
             this.MenuBar.Controls.Add(this.SearchBox);
-            this.MenuBar.Controls.Add(this.DeleteButton);
             this.MenuBar.Controls.Add(this.EditButton);
             this.MenuBar.Controls.Add(this.AddButton);
-            this.MenuBar.Controls.Add(this.ProductLabel);
+            this.MenuBar.Controls.Add(this.ucLabel);
             this.MenuBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
@@ -112,23 +106,11 @@
             this.SearchIcon.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SearchIcon.BackgroundImage")));
             this.SearchIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SearchIcon.Location = new System.Drawing.Point(482, 58);
+            this.SearchIcon.Location = new System.Drawing.Point(549, 59);
             this.SearchIcon.Name = "SearchIcon";
             this.SearchIcon.Size = new System.Drawing.Size(24, 24);
             this.SearchIcon.TabIndex = 18;
             this.SearchIcon.TabStop = false;
-            // 
-            // DeleteIcon
-            // 
-            this.DeleteIcon.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.DeleteIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteIcon.BackgroundImage")));
-            this.DeleteIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeleteIcon.Enabled = false;
-            this.DeleteIcon.Location = new System.Drawing.Point(917, 64);
-            this.DeleteIcon.Name = "DeleteIcon";
-            this.DeleteIcon.Size = new System.Drawing.Size(16, 14);
-            this.DeleteIcon.TabIndex = 17;
-            this.DeleteIcon.TabStop = false;
             // 
             // EditIcon
             // 
@@ -136,7 +118,7 @@
             this.EditIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditIcon.BackgroundImage")));
             this.EditIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditIcon.Enabled = false;
-            this.EditIcon.Location = new System.Drawing.Point(821, 64);
+            this.EditIcon.Location = new System.Drawing.Point(888, 64);
             this.EditIcon.Name = "EditIcon";
             this.EditIcon.Size = new System.Drawing.Size(16, 15);
             this.EditIcon.TabIndex = 16;
@@ -148,7 +130,7 @@
             this.AddIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddIcon.BackgroundImage")));
             this.AddIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddIcon.Enabled = false;
-            this.AddIcon.Location = new System.Drawing.Point(732, 65);
+            this.AddIcon.Location = new System.Drawing.Point(799, 65);
             this.AddIcon.Name = "AddIcon";
             this.AddIcon.Size = new System.Drawing.Size(14, 12);
             this.AddIcon.TabIndex = 15;
@@ -162,19 +144,18 @@
             this.LinkLabel.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.LinkLabel.Location = new System.Drawing.Point(6, 64);
             this.LinkLabel.Name = "LinkLabel";
-            this.LinkLabel.Size = new System.Drawing.Size(184, 22);
+            this.LinkLabel.Size = new System.Drawing.Size(240, 22);
             this.LinkLabel.TabIndex = 14;
-            this.LinkLabel.Text = "Master Data > Products";
+            this.LinkLabel.Text = "Transactions > Goods Receipts";
             // 
             // SearchLabel
             // 
             this.SearchLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchLabel.AutoSize = true;
             this.SearchLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.SearchLabel.Enabled = false;
             this.SearchLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchLabel.ForeColor = System.Drawing.Color.SlateGray;
-            this.SearchLabel.Location = new System.Drawing.Point(521, 64);
+            this.SearchLabel.Location = new System.Drawing.Point(588, 64);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(50, 13);
             this.SearchLabel.TabIndex = 13;
@@ -185,30 +166,13 @@
             this.SearchBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.SearchBox.Location = new System.Drawing.Point(514, 54);
+            this.SearchBox.Location = new System.Drawing.Point(581, 54);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.Size = new System.Drawing.Size(198, 35);
             this.SearchBox.TabIndex = 12;
             this.SearchBox.Click += new System.EventHandler(this.SearchBox_Click);
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             this.SearchBox.MouseLeave += new System.EventHandler(this.SearchBox_MouseLeave);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.DeleteButton.FlatAppearance.BorderSize = 0;
-            this.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.DeleteButton.Location = new System.Drawing.Point(909, 55);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.DeleteButton.Size = new System.Drawing.Size(85, 30);
-            this.DeleteButton.TabIndex = 10;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // EditButton
             // 
@@ -218,7 +182,7 @@
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.EditButton.Location = new System.Drawing.Point(806, 55);
+            this.EditButton.Location = new System.Drawing.Point(873, 55);
             this.EditButton.Name = "EditButton";
             this.EditButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.EditButton.Size = new System.Drawing.Size(85, 30);
@@ -235,7 +199,7 @@
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.AddButton.Location = new System.Drawing.Point(715, 55);
+            this.AddButton.Location = new System.Drawing.Point(782, 55);
             this.AddButton.Name = "AddButton";
             this.AddButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.AddButton.Size = new System.Drawing.Size(85, 30);
@@ -247,42 +211,43 @@
             // BasePanel1
             // 
             this.BasePanel1.BackColor = System.Drawing.Color.GhostWhite;
-            this.BasePanel1.Controls.Add(this.TotalSuppliersCount);
-            this.BasePanel1.Controls.Add(this.TotalSuppliersLabel);
+            this.BasePanel1.Controls.Add(this.TotalRCount);
+            this.BasePanel1.Controls.Add(this.TotalReceiptsLabel);
+            this.BasePanel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BasePanel1.Location = new System.Drawing.Point(3, 3);
             this.BasePanel1.Name = "BasePanel1";
             this.BasePanel1.Size = new System.Drawing.Size(309, 58);
             this.BasePanel1.TabIndex = 12;
             // 
-            // TotalSuppliersCount
+            // TotalRCount
             // 
-            this.TotalSuppliersCount.AutoSize = true;
-            this.TotalSuppliersCount.BackColor = System.Drawing.Color.Transparent;
-            this.TotalSuppliersCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalSuppliersCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.TotalSuppliersCount.Location = new System.Drawing.Point(2, 19);
-            this.TotalSuppliersCount.Name = "TotalSuppliersCount";
-            this.TotalSuppliersCount.Size = new System.Drawing.Size(30, 32);
-            this.TotalSuppliersCount.TabIndex = 16;
-            this.TotalSuppliersCount.Text = "3";
+            this.TotalRCount.AutoSize = true;
+            this.TotalRCount.BackColor = System.Drawing.Color.Transparent;
+            this.TotalRCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalRCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.TotalRCount.Location = new System.Drawing.Point(2, 20);
+            this.TotalRCount.Name = "TotalRCount";
+            this.TotalRCount.Size = new System.Drawing.Size(30, 32);
+            this.TotalRCount.TabIndex = 16;
+            this.TotalRCount.Text = "3";
             // 
-            // TotalSuppliersLabel
+            // TotalReceiptsLabel
             // 
-            this.TotalSuppliersLabel.AutoSize = true;
-            this.TotalSuppliersLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TotalSuppliersLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalSuppliersLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.TotalSuppliersLabel.Location = new System.Drawing.Point(7, 5);
-            this.TotalSuppliersLabel.Name = "TotalSuppliersLabel";
-            this.TotalSuppliersLabel.Size = new System.Drawing.Size(128, 15);
-            this.TotalSuppliersLabel.TabIndex = 15;
-            this.TotalSuppliersLabel.Text = "TOTAL PRODUCTS";
+            this.TotalReceiptsLabel.AutoSize = true;
+            this.TotalReceiptsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TotalReceiptsLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalReceiptsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.TotalReceiptsLabel.Location = new System.Drawing.Point(7, 5);
+            this.TotalReceiptsLabel.Name = "TotalReceiptsLabel";
+            this.TotalReceiptsLabel.Size = new System.Drawing.Size(120, 15);
+            this.TotalReceiptsLabel.TabIndex = 15;
+            this.TotalReceiptsLabel.Text = "TOTAL RECEIPTS";
             // 
             // BorderPanel1
             // 
             this.BorderPanel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BorderPanel1.Controls.Add(this.BasePanel1);
-            this.BorderPanel1.Location = new System.Drawing.Point(32, 7);
+            this.BorderPanel1.Location = new System.Drawing.Point(32, 6);
             this.BorderPanel1.Name = "BorderPanel1";
             this.BorderPanel1.Size = new System.Drawing.Size(316, 64);
             this.BorderPanel1.TabIndex = 13;
@@ -291,7 +256,7 @@
             // 
             this.BorderPanel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BorderPanel2.Controls.Add(this.BasePanel2);
-            this.BorderPanel2.Location = new System.Drawing.Point(354, 7);
+            this.BorderPanel2.Location = new System.Drawing.Point(354, 6);
             this.BorderPanel2.Name = "BorderPanel2";
             this.BorderPanel2.Size = new System.Drawing.Size(316, 64);
             this.BorderPanel2.TabIndex = 14;
@@ -299,42 +264,42 @@
             // BasePanel2
             // 
             this.BasePanel2.BackColor = System.Drawing.Color.GhostWhite;
-            this.BasePanel2.Controls.Add(this.AddedTodayText);
-            this.BasePanel2.Controls.Add(this.ActiveLabel);
+            this.BasePanel2.Controls.Add(this.TodayValue);
+            this.BasePanel2.Controls.Add(this.TotalReceiptsToday);
             this.BasePanel2.Location = new System.Drawing.Point(3, 3);
             this.BasePanel2.Name = "BasePanel2";
             this.BasePanel2.Size = new System.Drawing.Size(309, 58);
             this.BasePanel2.TabIndex = 12;
             // 
-            // AddedTodayText
+            // TodayValue
             // 
-            this.AddedTodayText.AutoSize = true;
-            this.AddedTodayText.BackColor = System.Drawing.Color.Transparent;
-            this.AddedTodayText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddedTodayText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.AddedTodayText.Location = new System.Drawing.Point(2, 19);
-            this.AddedTodayText.Name = "AddedTodayText";
-            this.AddedTodayText.Size = new System.Drawing.Size(30, 32);
-            this.AddedTodayText.TabIndex = 16;
-            this.AddedTodayText.Text = "3";
+            this.TodayValue.AutoSize = true;
+            this.TodayValue.BackColor = System.Drawing.Color.Transparent;
+            this.TodayValue.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TodayValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.TodayValue.Location = new System.Drawing.Point(2, 20);
+            this.TodayValue.Name = "TodayValue";
+            this.TodayValue.Size = new System.Drawing.Size(30, 32);
+            this.TodayValue.TabIndex = 16;
+            this.TodayValue.Text = "3";
             // 
-            // ActiveLabel
+            // TotalReceiptsToday
             // 
-            this.ActiveLabel.AutoSize = true;
-            this.ActiveLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ActiveLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActiveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.ActiveLabel.Location = new System.Drawing.Point(7, 5);
-            this.ActiveLabel.Name = "ActiveLabel";
-            this.ActiveLabel.Size = new System.Drawing.Size(103, 15);
-            this.ActiveLabel.TabIndex = 15;
-            this.ActiveLabel.Text = "ADDED TODAY";
+            this.TotalReceiptsToday.AutoSize = true;
+            this.TotalReceiptsToday.BackColor = System.Drawing.Color.Transparent;
+            this.TotalReceiptsToday.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalReceiptsToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.TotalReceiptsToday.Location = new System.Drawing.Point(7, 5);
+            this.TotalReceiptsToday.Name = "TotalReceiptsToday";
+            this.TotalReceiptsToday.Size = new System.Drawing.Size(134, 15);
+            this.TotalReceiptsToday.TabIndex = 15;
+            this.TotalReceiptsToday.Text = "TODAY\'S RECEIPTS";
             // 
             // BorderPanel3
             // 
             this.BorderPanel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BorderPanel3.Controls.Add(this.BasePanel3);
-            this.BorderPanel3.Location = new System.Drawing.Point(676, 7);
+            this.BorderPanel3.Location = new System.Drawing.Point(676, 6);
             this.BorderPanel3.Name = "BorderPanel3";
             this.BorderPanel3.Size = new System.Drawing.Size(316, 64);
             this.BorderPanel3.TabIndex = 14;
@@ -342,36 +307,37 @@
             // BasePanel3
             // 
             this.BasePanel3.BackColor = System.Drawing.Color.GhostWhite;
-            this.BasePanel3.Controls.Add(this.RecentAddText);
-            this.BasePanel3.Controls.Add(this.InactiveLabel);
+            this.BasePanel3.Controls.Add(this.MonthCount);
+            this.BasePanel3.Controls.Add(this.MonthReceiptsLabel);
+            this.BasePanel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BasePanel3.Location = new System.Drawing.Point(3, 3);
             this.BasePanel3.Name = "BasePanel3";
             this.BasePanel3.Size = new System.Drawing.Size(309, 58);
             this.BasePanel3.TabIndex = 12;
             // 
-            // RecentAddText
+            // MonthCount
             // 
-            this.RecentAddText.AutoSize = true;
-            this.RecentAddText.BackColor = System.Drawing.Color.Transparent;
-            this.RecentAddText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecentAddText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.RecentAddText.Location = new System.Drawing.Point(5, 24);
-            this.RecentAddText.Name = "RecentAddText";
-            this.RecentAddText.Size = new System.Drawing.Size(22, 24);
-            this.RecentAddText.TabIndex = 16;
-            this.RecentAddText.Text = "3";
+            this.MonthCount.AutoSize = true;
+            this.MonthCount.BackColor = System.Drawing.Color.Transparent;
+            this.MonthCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.MonthCount.Location = new System.Drawing.Point(2, 20);
+            this.MonthCount.Name = "MonthCount";
+            this.MonthCount.Size = new System.Drawing.Size(30, 32);
+            this.MonthCount.TabIndex = 16;
+            this.MonthCount.Text = "3";
             // 
-            // InactiveLabel
+            // MonthReceiptsLabel
             // 
-            this.InactiveLabel.AutoSize = true;
-            this.InactiveLabel.BackColor = System.Drawing.Color.Transparent;
-            this.InactiveLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InactiveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
-            this.InactiveLabel.Location = new System.Drawing.Point(7, 5);
-            this.InactiveLabel.Name = "InactiveLabel";
-            this.InactiveLabel.Size = new System.Drawing.Size(129, 15);
-            this.InactiveLabel.TabIndex = 15;
-            this.InactiveLabel.Text = "RECENTLY ADDED";
+            this.MonthReceiptsLabel.AutoSize = true;
+            this.MonthReceiptsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.MonthReceiptsLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthReceiptsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.MonthReceiptsLabel.Location = new System.Drawing.Point(7, 5);
+            this.MonthReceiptsLabel.Name = "MonthReceiptsLabel";
+            this.MonthReceiptsLabel.Size = new System.Drawing.Size(172, 15);
+            this.MonthReceiptsLabel.TabIndex = 15;
+            this.MonthReceiptsLabel.Text = "THIS MONTH\'S RECEIPTS";
             // 
             // StatChart
             // 
@@ -384,89 +350,79 @@
             this.StatChart.Size = new System.Drawing.Size(1034, 78);
             this.StatChart.TabIndex = 15;
             // 
-            // ProductDataGrid
+            // ReceiptsDataGrid
             // 
-            this.ProductDataGrid.AllowUserToAddRows = false;
-            this.ProductDataGrid.AllowUserToDeleteRows = false;
-            this.ProductDataGrid.AllowUserToResizeColumns = false;
-            this.ProductDataGrid.AllowUserToResizeRows = false;
+            this.ReceiptsDataGrid.AllowUserToAddRows = false;
+            this.ReceiptsDataGrid.AllowUserToDeleteRows = false;
+            this.ReceiptsDataGrid.AllowUserToResizeColumns = false;
+            this.ReceiptsDataGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ProductDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ReceiptsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ReceiptsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ProductDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(228)))), ((int)(((byte)(243)))));
-            this.ProductDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ProductDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.ReceiptsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ReceiptsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(228)))), ((int)(((byte)(243)))));
+            this.ReceiptsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ReceiptsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ProductDataGrid.ColumnHeadersHeight = 35;
-            this.ProductDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ProductDataGrid.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ReceiptsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ReceiptsDataGrid.ColumnHeadersHeight = 35;
+            this.ReceiptsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.ReceiptsDataGrid.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ReceiptsDataGrid.EnableHeadersVisualStyles = false;
+            this.ReceiptsDataGrid.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ReceiptsDataGrid.Location = new System.Drawing.Point(32, 195);
+            this.ReceiptsDataGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.ReceiptsDataGrid.MultiSelect = false;
+            this.ReceiptsDataGrid.Name = "ReceiptsDataGrid";
+            this.ReceiptsDataGrid.ReadOnly = true;
+            this.ReceiptsDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ReceiptsDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ProductDataGrid.Enabled = false;
-            this.ProductDataGrid.EnableHeadersVisualStyles = false;
-            this.ProductDataGrid.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ProductDataGrid.Location = new System.Drawing.Point(32, 195);
-            this.ProductDataGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.ProductDataGrid.MultiSelect = false;
-            this.ProductDataGrid.Name = "ProductDataGrid";
-            this.ProductDataGrid.ReadOnly = true;
-            this.ProductDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProductDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.ProductDataGrid.RowHeadersVisible = false;
-            this.ProductDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.ProductDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.ProductDataGrid.RowTemplate.Height = 40;
-            this.ProductDataGrid.RowTemplate.ReadOnly = true;
-            this.ProductDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductDataGrid.Size = new System.Drawing.Size(960, 486);
-            this.ProductDataGrid.StandardTab = true;
-            this.ProductDataGrid.TabIndex = 16;
-            this.ProductDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataGrid_CellClick);
-            this.ProductDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProductDataGrid_CellFormatting);
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ReceiptsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.ReceiptsDataGrid.RowHeadersVisible = false;
+            this.ReceiptsDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.GhostWhite;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.ReceiptsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ReceiptsDataGrid.RowTemplate.Height = 40;
+            this.ReceiptsDataGrid.RowTemplate.ReadOnly = true;
+            this.ReceiptsDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ReceiptsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ReceiptsDataGrid.Size = new System.Drawing.Size(960, 486);
+            this.ReceiptsDataGrid.StandardTab = true;
+            this.ReceiptsDataGrid.TabIndex = 16;
+            this.ReceiptsDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReceiptsDataGrid_CellClick);
             // 
-            // ucProducts
+            // ucGoodsReceipts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(228)))), ((int)(((byte)(243)))));
-            this.Controls.Add(this.ProductDataGrid);
+            this.Controls.Add(this.ReceiptsDataGrid);
             this.Controls.Add(this.StatChart);
             this.Controls.Add(this.MenuBar);
-            this.Name = "ucProducts";
+            this.Name = "ucGoodsReceipts";
             this.Size = new System.Drawing.Size(1034, 681);
             this.Load += new System.EventHandler(this.ucSuppliers_Load);
             this.MenuBar.ResumeLayout(false);
             this.MenuBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeleteIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddIcon)).EndInit();
             this.BasePanel1.ResumeLayout(false);
@@ -479,37 +435,35 @@
             this.BasePanel3.ResumeLayout(false);
             this.BasePanel3.PerformLayout();
             this.StatChart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptsDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label ProductLabel;
+        private System.Windows.Forms.Label ucLabel;
         private System.Windows.Forms.Panel MenuBar;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Label SearchLabel;
         private System.Windows.Forms.Label LinkLabel;
         private System.Windows.Forms.Panel BasePanel1;
         private System.Windows.Forms.Panel BorderPanel1;
-        private System.Windows.Forms.Label TotalSuppliersLabel;
-        private System.Windows.Forms.Label TotalSuppliersCount;
+        private System.Windows.Forms.Label TotalReceiptsLabel;
+        private System.Windows.Forms.Label TotalRCount;
         private System.Windows.Forms.Panel BorderPanel2;
         private System.Windows.Forms.Panel BasePanel2;
-        private System.Windows.Forms.Label AddedTodayText;
-        private System.Windows.Forms.Label ActiveLabel;
+        private System.Windows.Forms.Label TodayValue;
+        private System.Windows.Forms.Label TotalReceiptsToday;
         private System.Windows.Forms.Panel BorderPanel3;
         private System.Windows.Forms.Panel BasePanel3;
-        private System.Windows.Forms.Label RecentAddText;
-        private System.Windows.Forms.Label InactiveLabel;
+        private System.Windows.Forms.Label MonthCount;
+        private System.Windows.Forms.Label MonthReceiptsLabel;
         private System.Windows.Forms.Panel StatChart;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.PictureBox AddIcon;
         private System.Windows.Forms.PictureBox EditIcon;
-        private System.Windows.Forms.PictureBox DeleteIcon;
-        private System.Windows.Forms.DataGridView ProductDataGrid;
+        private System.Windows.Forms.DataGridView ReceiptsDataGrid;
         private System.Windows.Forms.PictureBox SearchIcon;
     }
 }

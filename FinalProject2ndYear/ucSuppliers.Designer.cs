@@ -257,11 +257,11 @@
             // 
             this.TotalSuppliersCount.AutoSize = true;
             this.TotalSuppliersCount.BackColor = System.Drawing.Color.Transparent;
-            this.TotalSuppliersCount.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalSuppliersCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalSuppliersCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.TotalSuppliersCount.Location = new System.Drawing.Point(2, 19);
             this.TotalSuppliersCount.Name = "TotalSuppliersCount";
-            this.TotalSuppliersCount.Size = new System.Drawing.Size(31, 35);
+            this.TotalSuppliersCount.Size = new System.Drawing.Size(30, 32);
             this.TotalSuppliersCount.TabIndex = 16;
             this.TotalSuppliersCount.Text = "3";
             // 
@@ -269,11 +269,11 @@
             // 
             this.TotalSuppliersLabel.AutoSize = true;
             this.TotalSuppliersLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TotalSuppliersLabel.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalSuppliersLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalSuppliersLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.TotalSuppliersLabel.Location = new System.Drawing.Point(7, 5);
             this.TotalSuppliersLabel.Name = "TotalSuppliersLabel";
-            this.TotalSuppliersLabel.Size = new System.Drawing.Size(134, 16);
+            this.TotalSuppliersLabel.Size = new System.Drawing.Size(129, 15);
             this.TotalSuppliersLabel.TabIndex = 15;
             this.TotalSuppliersLabel.Text = "TOTAL SUPPLIERS";
             // 
@@ -309,11 +309,11 @@
             // 
             this.ActiveCount.AutoSize = true;
             this.ActiveCount.BackColor = System.Drawing.Color.Transparent;
-            this.ActiveCount.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActiveCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ActiveCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.ActiveCount.Location = new System.Drawing.Point(2, 19);
             this.ActiveCount.Name = "ActiveCount";
-            this.ActiveCount.Size = new System.Drawing.Size(31, 35);
+            this.ActiveCount.Size = new System.Drawing.Size(30, 32);
             this.ActiveCount.TabIndex = 16;
             this.ActiveCount.Text = "3";
             // 
@@ -321,11 +321,11 @@
             // 
             this.ActiveLabel.AutoSize = true;
             this.ActiveLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ActiveLabel.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActiveLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ActiveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.ActiveLabel.Location = new System.Drawing.Point(7, 5);
             this.ActiveLabel.Name = "ActiveLabel";
-            this.ActiveLabel.Size = new System.Drawing.Size(109, 16);
+            this.ActiveLabel.Size = new System.Drawing.Size(102, 15);
             this.ActiveLabel.TabIndex = 15;
             this.ActiveLabel.Text = "TOTAL ACTIVE";
             // 
@@ -352,11 +352,11 @@
             // 
             this.InactiveCount.AutoSize = true;
             this.InactiveCount.BackColor = System.Drawing.Color.Transparent;
-            this.InactiveCount.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InactiveCount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InactiveCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
             this.InactiveCount.Location = new System.Drawing.Point(2, 19);
             this.InactiveCount.Name = "InactiveCount";
-            this.InactiveCount.Size = new System.Drawing.Size(31, 35);
+            this.InactiveCount.Size = new System.Drawing.Size(30, 32);
             this.InactiveCount.TabIndex = 16;
             this.InactiveCount.Text = "3";
             // 
@@ -364,11 +364,11 @@
             // 
             this.InactiveLabel.AutoSize = true;
             this.InactiveLabel.BackColor = System.Drawing.Color.Transparent;
-            this.InactiveLabel.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InactiveLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InactiveLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
             this.InactiveLabel.Location = new System.Drawing.Point(7, 5);
             this.InactiveLabel.Name = "InactiveLabel";
-            this.InactiveLabel.Size = new System.Drawing.Size(125, 16);
+            this.InactiveLabel.Size = new System.Drawing.Size(116, 15);
             this.InactiveLabel.TabIndex = 15;
             this.InactiveLabel.Text = "TOTAL INACTIVE";
             // 
@@ -445,10 +445,11 @@
             this.SupplierDataGrid.RowTemplate.ReadOnly = true;
             this.SupplierDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.SupplierDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SupplierDataGrid.Size = new System.Drawing.Size(960, 362);
+            this.SupplierDataGrid.Size = new System.Drawing.Size(960, 486);
             this.SupplierDataGrid.StandardTab = true;
             this.SupplierDataGrid.TabIndex = 16;
             this.SupplierDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SupplierDataGrid_CellClick);
+            this.SupplierDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.SupplierDataGrid_CellFormatting);
             // 
             // ucSuppliers
             // 
