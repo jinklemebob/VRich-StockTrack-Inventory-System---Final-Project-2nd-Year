@@ -44,7 +44,7 @@ namespace FinalProject2ndYear
             productCol.HeaderText = "Product";
             productCol.Width = 200;
 
-            string query = "SELECT ProductID, Description FROM Products";
+            string query = "SELECT ProductID, Description FROM Products WHERE Status = 1;";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
@@ -107,7 +107,12 @@ namespace FinalProject2ndYear
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (ReceiptDatePicker.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show("Receipt Date cannot be a future date.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (ItemsDataGrid.Rows.Count == 0)
             {
                 MessageBox.Show("Please add at least one product.", "Validation Error",

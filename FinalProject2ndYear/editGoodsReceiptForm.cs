@@ -161,6 +161,12 @@ namespace FinalProject2ndYear
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (ReceiptDatePicker.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show("Receipt Date cannot be a future date.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (ItemsDataGrid.Rows.Count == 0)
             {
