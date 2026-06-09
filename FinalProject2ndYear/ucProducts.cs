@@ -12,7 +12,7 @@ namespace FinalProject2ndYear
         private bool isEditing = false;
         private bool isDeleting = false;
         PopupNotifier popup = new PopupNotifier();
-        private const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
 
         public ucProducts()
         {

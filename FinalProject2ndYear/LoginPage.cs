@@ -35,6 +35,8 @@ namespace FinalProject2ndYear
             LoginButton.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, LoginButton.Width, LoginButton.Height, 15, 15));
             UsernamePanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, UsernamePanel.Width, UsernamePanel.Height, 15, 15));
             PasswordPanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, PasswordPanel.Width, PasswordPanel.Height, 15, 15));
+            LoginFormPanel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, LoginFormPanel.Width, LoginFormPanel.Height, 20, 20));
+            Line.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Line.Width, Line.Height, 5, 5));
         }
        
         private void LoginButton_Click(object sender, EventArgs e)
@@ -86,6 +88,11 @@ namespace FinalProject2ndYear
         private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
     }

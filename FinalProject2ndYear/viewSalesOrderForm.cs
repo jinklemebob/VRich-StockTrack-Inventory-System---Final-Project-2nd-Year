@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class viewSalesOrderForm : Form
     {
-        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
         private int salesOrderID;
 
         public viewSalesOrderForm(int salesOrderID)

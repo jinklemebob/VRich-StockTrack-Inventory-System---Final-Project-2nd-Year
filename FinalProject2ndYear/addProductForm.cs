@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class addProductForm : Form
     {
-        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
 
         public addProductForm()
         {
@@ -110,6 +110,11 @@ namespace FinalProject2ndYear
             {
                 this.Close();
             }
+        }
+
+        private void ReorderLvlLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

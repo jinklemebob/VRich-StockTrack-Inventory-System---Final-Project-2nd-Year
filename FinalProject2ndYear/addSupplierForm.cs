@@ -13,7 +13,7 @@ namespace FinalProject2ndYear
 {
     public partial class addSupplierForm : Form
     {
-        String connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        String connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
         public addSupplierForm()
         {
             InitializeComponent();

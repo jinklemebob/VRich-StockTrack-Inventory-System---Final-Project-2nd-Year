@@ -8,7 +8,7 @@ namespace FinalProject2ndYear
     {
         int CustomerID;
         int Status;
-        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
 
         public editCustomerForm(int CustomerID)
         {

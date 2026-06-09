@@ -16,7 +16,7 @@ namespace FinalProject2ndYear
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainDashboard());
+            Application.Run(new LoginPage());
         }
     }
 }

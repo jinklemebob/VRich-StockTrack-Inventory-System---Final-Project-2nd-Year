@@ -10,7 +10,7 @@ namespace FinalProject2ndYear
     public partial class ucDashboard : UserControl
     {
         public string Username;
-        private const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
 
         public ucDashboard()
         {

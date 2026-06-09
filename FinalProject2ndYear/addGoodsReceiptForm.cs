@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class addGoodsReceiptForm : Form
     {
-        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
 
         public addGoodsReceiptForm()
         {
@@ -201,6 +201,5 @@ namespace FinalProject2ndYear
                 ItemsDataGrid.ClearSelection();
             }));
         }
-
     }
 }

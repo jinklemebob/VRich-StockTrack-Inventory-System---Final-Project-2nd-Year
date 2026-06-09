@@ -8,7 +8,7 @@ namespace FinalProject2ndYear
 {
     public partial class ucInventory : UserControl
     {
-        private const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
         private bool isLoading = true;
 
         public ucInventory()
@@ -230,6 +230,11 @@ namespace FinalProject2ndYear
                     ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
                     break;
             }
+        }
+
+        private void ReceiptsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

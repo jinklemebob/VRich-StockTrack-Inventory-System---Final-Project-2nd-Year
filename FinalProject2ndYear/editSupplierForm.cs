@@ -15,7 +15,7 @@ namespace FinalProject2ndYear
     {
         int SupplierID;
         int Status;
-        String connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        String connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
         public editSupplierForm(int SupplierID)
         {
             InitializeComponent();

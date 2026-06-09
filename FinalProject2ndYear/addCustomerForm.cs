@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace FinalProject2ndYear
 {
     public partial class addCustomerForm : Form
     {
-        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
+        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
 
         public addCustomerForm()
         {
             InitializeComponent();
+
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -77,6 +79,11 @@ namespace FinalProject2ndYear
             {
                 this.Close();
             }
+        }
+
+        private void addCustomerForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

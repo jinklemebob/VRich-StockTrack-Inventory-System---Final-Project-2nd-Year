@@ -230,5 +230,10 @@ namespace FinalProject2ndYear
             MainScreenPanel.Controls.Add(ur);
             ActivateButton(UsersButton);
         }
+
+        private void MainScreenPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
