@@ -10,9 +10,11 @@ namespace FinalProject2ndYear
     public partial class ucSuppliers : UserControl
     {
         private bool isEditing = false;
-        private bool isDeleting = false;
+
         PopupNotifier popup = new PopupNotifier();
-        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+
+        private const string ConnectionString =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public ucSuppliers()
         {
@@ -24,31 +26,53 @@ namespace FinalProject2ndYear
             LoadSuppliers();
         }
 
+        // =========================
+        // LOAD SUPPLIERS (WITH FILTER)
+        // =========================
         public void LoadSuppliers()
         {
+            bool showInactive = chkShowInactive.Checked;
+
             string query = @"
                 SELECT 'SP-' + CAST(SupplierID AS VARCHAR) AS 'ID',
-                       SupplierName AS 'Name', ContactPerson AS 'Contact', ContactNo AS 'Contact No.', Email,
+                       SupplierName AS 'Name',
+                       ContactPerson AS 'Contact',
+                       ContactNo AS 'Contact No.',
+                       Email,
                        CASE WHEN Status = 1 THEN 'Active' ELSE 'Inactive' END AS Status
-                FROM Suppliers";
+                FROM Suppliers
+                WHERE (@ShowInactive = 1 OR Status = 1)";
 
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("@ShowInactive", showInactive ? 1 : 0);
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
                 SupplierDataGrid.DataSource = dt;
+                SupplierDataGrid.Visible = true;
+                SupplierDataGrid.Enabled = false;
             }
 
             RefreshCounts();
             ClearGridSelection();
         }
 
+        // =========================
+        // COUNTS
+        // =========================
         private void RefreshCounts()
         {
-            TotalSuppliersCount.Text = GetCount("SELECT COUNT(*) FROM Suppliers").ToString();
-            ActiveCount.Text = GetCount("SELECT COUNT(*) FROM Suppliers WHERE Status = 1").ToString();
-            InactiveCount.Text = GetCount("SELECT COUNT(*) FROM Suppliers WHERE Status = 0").ToString();
+            TotalSuppliersCount.Text =
+                GetCount("SELECT COUNT(*) FROM Suppliers").ToString();
+
+            ActiveCount.Text =
+                GetCount("SELECT COUNT(*) FROM Suppliers WHERE Status = 1").ToString();
+
+            InactiveCount.Text =
+                GetCount("SELECT COUNT(*) FROM Suppliers WHERE Status = 0").ToString();
         }
 
         private int GetCount(string query)
@@ -60,200 +84,116 @@ namespace FinalProject2ndYear
                     return (int)cmd.ExecuteScalar();
             }
         }
-        public void ShowNotif()
-        {
-            if (isEditing == true)
-            {
-                popup.TitleText = "Suppliers";
-                popup.ContentText = "Select a supplier to edit.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
 
-                // Size
-                popup.Size = new Size(300, 100);
-
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-            else if (isDeleting == true)
-            {
-                popup.TitleText = "Suppliers";
-                popup.ContentText = "Select a supplier to delete.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
-
-                // Size
-                popup.Size = new Size(300, 100);
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-         
-        }
+        // =========================
+        // ADD
+        // =========================
         private void AddButton_Click(object sender, EventArgs e)
         {
             ResetState();
 
-            addSupplierForm aForm = new addSupplierForm();
-            if (aForm.ShowDialog() == DialogResult.OK)
+            addSupplierForm form = new addSupplierForm();
+            if (form.ShowDialog() == DialogResult.OK)
                 LoadSuppliers();
         }
 
+        // =========================
+        // EDIT ONLY MODE
+        // =========================
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (SupplierDataGrid.RowCount == 0)
+            if (!isEditing)
             {
+                if (SupplierDataGrid.RowCount == 0)
+                {
+                    popup.TitleText = "Suppliers";
+                    popup.ContentText = "There are no suppliers available to edit.";
+                    popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
+                    popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
+                    popup.Size = new Size(300, 100);
+                    popup.TitleColor = Color.White;
+                    popup.ContentColor = Color.White;
+                    popup.BodyColor = Color.FromArgb(13, 34, 68);
+                    popup.BorderColor = Color.FromArgb(91, 155, 213);
+                    popup.Delay = 2500;
+                    popup.Popup();
+                    return;
+                }
+
+                // rows exist — enter edit mode
+                isEditing = true;
+
                 popup.TitleText = "Suppliers";
-                popup.ContentText = "There are no suppliers available to edit.";
+                popup.ContentText = "Select a supplier to edit.";
                 popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
                 popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
-
-                // Size
                 popup.Size = new Size(300, 100);
-                // Colors to match your UI
                 popup.TitleColor = Color.White;
                 popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
+                popup.BodyColor = Color.FromArgb(13, 34, 68);
                 popup.BorderColor = Color.FromArgb(91, 155, 213);
                 popup.Delay = 2500;
                 popup.Popup();
-            }
-            else if (!isEditing && SupplierDataGrid.RowCount >= 1)
-            {
-                isEditing = true;
-                isDeleting = false;
-                ShowNotif();
+
                 EditButton.Text = "Cancel";
-                EditButton.Padding = new Padding(0, 0, 0, 0);
-                DeleteButton.Text = "Delete";
-                DeleteButton.Padding = new Padding(15, 0, 0, 0);
                 SupplierDataGrid.Enabled = true;
                 EditIcon.Visible = false;
-                DeleteIcon.Visible = true;
             }
             else
             {
                 ResetState();
-
-
             }
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            if (SupplierDataGrid.RowCount == 0)
-            {
-                popup.TitleText = "Suppliers";
-                popup.ContentText = "There are no suppliers available to delete.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
-
-                // Size
-                popup.Size = new Size(300, 100);
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-            else if (!isDeleting && SupplierDataGrid.RowCount >= 1)
-            {
-                isDeleting = true;
-                isEditing = false;
-                ShowNotif();
-                DeleteButton.Text = "Cancel";
-                DeleteButton.Padding = new Padding(0, 0, 0, 0);
-                EditButton.Text = "Edit";
-                EditButton.Padding = new Padding(10, 0, 0, 0);
-                SupplierDataGrid.Enabled = true;
-                DeleteIcon.Visible = false;
-                EditIcon.Visible = true;
-            }
-            else
-            {
-                ResetState();
-             
-                
-            }
-        }
-
+        // =========================
+        // GRID CLICK (EDIT ONLY)
+        // =========================
         private void SupplierDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return; 
+            if (e.RowIndex < 0) return;
 
             string rawID = SupplierDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
             int supplierID = Convert.ToInt32(rawID.Replace("SP-", ""));
 
             if (isEditing)
             {
-                editSupplierForm eForm = new editSupplierForm(supplierID);
-                if (eForm.ShowDialog() == DialogResult.OK)
+                editSupplierForm form = new editSupplierForm(supplierID);
+                if (form.ShowDialog() == DialogResult.OK)
                     LoadSuppliers();
 
                 ResetState();
-                
-            }
-            else if (isDeleting)
-            {
-                DialogResult confirm = MessageBox.Show(
-                    $"Are you sure you want to delete {rawID}?",
-                    "Delete Supplier",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (confirm == DialogResult.Yes)
-                {
-                    using (SqlConnection conn = new SqlConnection(ConnectionString))
-                    {
-                        conn.Open();
-                        using (SqlCommand cmd = new SqlCommand("DELETE FROM Suppliers WHERE SupplierID = @ID", conn))
-                        {
-                            cmd.Parameters.AddWithValue("@ID", supplierID);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-
-                    MessageBox.Show("Supplier deleted.","Deletion Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    LoadSuppliers();
-                }
-
-                ResetState();
-               
             }
         }
 
+        // =========================
+        // SEARCH
+        // =========================
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             SearchLabel.Visible = string.IsNullOrWhiteSpace(SearchBox.Text);
 
             string query = @"
-                SELECT 'SP-' + CAST(SupplierID AS VARCHAR(10)) AS SupplierID,
-                       SupplierName, ContactPerson, ContactNo, Email,
+                SELECT 'SP-' + CAST(SupplierID AS VARCHAR(10)) AS 'ID',
+                       SupplierName AS 'Name',
+                       ContactPerson AS 'Contact',
+                       ContactNo AS 'Contact No.',
+                       Email,
                        CASE WHEN Status = 1 THEN 'Active' ELSE 'Inactive' END AS Status
                 FROM Suppliers
-                WHERE SupplierID    LIKE @Search
-                   OR SupplierName  LIKE @Search
+                WHERE SupplierID LIKE @Search
+                   OR SupplierName LIKE @Search
                    OR ContactPerson LIKE @Search
-                   OR ContactNo     LIKE @Search
-                   OR Email         LIKE @Search";
+                   OR ContactNo LIKE @Search
+                   OR Email LIKE @Search";
 
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 da.SelectCommand.Parameters.AddWithValue("@Search", "%" + SearchBox.Text + "%");
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+
                 SupplierDataGrid.DataSource = dt;
             }
 
@@ -270,19 +210,27 @@ namespace FinalProject2ndYear
             SearchLabel.Visible = string.IsNullOrWhiteSpace(SearchBox.Text);
         }
 
+        // =========================
+        // SHOW INACTIVE TOGGLE
+        // =========================
+        private void ShowInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadSuppliers();
+        }
+
+        // =========================
+        // RESET STATE
+        // =========================
         private void ResetState()
         {
             isEditing = false;
-            isDeleting = false;
 
             EditButton.Text = "Edit";
-            
-            DeleteButton.Text = "Delete";
+
             SupplierDataGrid.Enabled = false;
+
             EditIcon.Visible = true;
-            DeleteIcon.Visible = true;
-            DeleteButton.Padding = new Padding(15, 0, 0, 0);
-            EditButton.Padding = new Padding(10, 0, 0, 0);
+
             ClearGridSelection();
         }
 
@@ -295,30 +243,26 @@ namespace FinalProject2ndYear
             }));
         }
 
+        // =========================
+        // STATUS COLOR
+        // =========================
         private void SupplierDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
             string status = SupplierDataGrid.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
-
             if (status == null) return;
 
-            switch (status)
+            if (status == "Active")
             {
-                case "Active":
-                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
-                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    break;
-                case "Inactive":
-                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
-                    SupplierDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
-                    break;
+                SupplierDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.LightGreen;
+                SupplierDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.Black;
             }
-        }
-
-        private void SupplierDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            else if (status == "Inactive")
+            {
+                SupplierDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.IndianRed;
+                SupplierDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.White;
+            }
         }
     }
 }

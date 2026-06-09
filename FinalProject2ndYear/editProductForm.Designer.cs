@@ -41,62 +41,59 @@
             this.StatusBox = new System.Windows.Forms.ComboBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SupplierBox = new System.Windows.Forms.ComboBox();
+            this.SupplierLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProductDescBox
             // 
-            this.ProductDescBox.Location = new System.Drawing.Point(20, 35);
-            this.ProductDescBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ProductDescBox.Location = new System.Drawing.Point(15, 28);
             this.ProductDescBox.Name = "ProductDescBox";
-            this.ProductDescBox.Size = new System.Drawing.Size(192, 22);
+            this.ProductDescBox.Size = new System.Drawing.Size(145, 20);
             this.ProductDescBox.TabIndex = 0;
+            this.ProductDescBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProductDescBox_KeyPress);
             // 
             // ReorderLvlBox
             // 
-            this.ReorderLvlBox.Location = new System.Drawing.Point(20, 96);
-            this.ReorderLvlBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReorderLvlBox.Location = new System.Drawing.Point(15, 78);
             this.ReorderLvlBox.Name = "ReorderLvlBox";
-            this.ReorderLvlBox.Size = new System.Drawing.Size(192, 22);
+            this.ReorderLvlBox.Size = new System.Drawing.Size(145, 20);
             this.ReorderLvlBox.TabIndex = 4;
             // 
             // DescLabel
             // 
             this.DescLabel.AutoSize = true;
-            this.DescLabel.Location = new System.Drawing.Point(16, 16);
-            this.DescLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DescLabel.Location = new System.Drawing.Point(12, 13);
             this.DescLabel.Name = "DescLabel";
-            this.DescLabel.Size = new System.Drawing.Size(75, 16);
+            this.DescLabel.Size = new System.Drawing.Size(60, 13);
             this.DescLabel.TabIndex = 5;
             this.DescLabel.Text = "Description";
             // 
             // ReorderLvlLabel
             // 
             this.ReorderLvlLabel.AutoSize = true;
-            this.ReorderLvlLabel.Location = new System.Drawing.Point(16, 76);
-            this.ReorderLvlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReorderLvlLabel.Location = new System.Drawing.Point(12, 62);
             this.ReorderLvlLabel.Name = "ReorderLvlLabel";
-            this.ReorderLvlLabel.Size = new System.Drawing.Size(93, 16);
+            this.ReorderLvlLabel.Size = new System.Drawing.Size(74, 13);
             this.ReorderLvlLabel.TabIndex = 6;
             this.ReorderLvlLabel.Text = "Reorder Level";
             // 
             // CategoryLabel
             // 
             this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(216, 16);
-            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CategoryLabel.Location = new System.Drawing.Point(162, 13);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(62, 16);
+            this.CategoryLabel.Size = new System.Drawing.Size(49, 13);
             this.CategoryLabel.TabIndex = 8;
             this.CategoryLabel.Text = "Category";
             // 
             // UOMLabel
             // 
             this.UOMLabel.AutoSize = true;
-            this.UOMLabel.Location = new System.Drawing.Point(216, 76);
-            this.UOMLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UOMLabel.Location = new System.Drawing.Point(162, 62);
             this.UOMLabel.Name = "UOMLabel";
-            this.UOMLabel.Size = new System.Drawing.Size(129, 16);
+            this.UOMLabel.Size = new System.Drawing.Size(105, 13);
             this.UOMLabel.TabIndex = 9;
             this.UOMLabel.Text = "Unit of Measurement";
             // 
@@ -105,10 +102,9 @@
             this.SubmitButton.BackColor = System.Drawing.SystemColors.Highlight;
             this.SubmitButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubmitButton.Location = new System.Drawing.Point(361, 230);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Location = new System.Drawing.Point(271, 187);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(89, 33);
+            this.SubmitButton.Size = new System.Drawing.Size(67, 27);
             this.SubmitButton.TabIndex = 10;
             this.SubmitButton.Text = "Done";
             this.SubmitButton.UseVisualStyleBackColor = false;
@@ -118,20 +114,18 @@
             // 
             this.CategoryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryBox.FormattingEnabled = true;
-            this.CategoryBox.Location = new System.Drawing.Point(220, 35);
-            this.CategoryBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CategoryBox.Location = new System.Drawing.Point(165, 28);
             this.CategoryBox.Name = "CategoryBox";
-            this.CategoryBox.Size = new System.Drawing.Size(192, 24);
+            this.CategoryBox.Size = new System.Drawing.Size(145, 21);
             this.CategoryBox.TabIndex = 11;
             // 
             // UOMBox
             // 
             this.UOMBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UOMBox.FormattingEnabled = true;
-            this.UOMBox.Location = new System.Drawing.Point(220, 96);
-            this.UOMBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UOMBox.Location = new System.Drawing.Point(165, 78);
             this.UOMBox.Name = "UOMBox";
-            this.UOMBox.Size = new System.Drawing.Size(192, 24);
+            this.UOMBox.Size = new System.Drawing.Size(145, 21);
             this.UOMBox.TabIndex = 12;
             // 
             // CancelButton
@@ -139,10 +133,9 @@
             this.CancelButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(264, 230);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CancelButton.Location = new System.Drawing.Point(198, 187);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(89, 34);
+            this.CancelButton.Size = new System.Drawing.Size(67, 28);
             this.CancelButton.TabIndex = 13;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -152,25 +145,25 @@
             // 
             this.StatusBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatusBox.FormattingEnabled = true;
-            this.StatusBox.Location = new System.Drawing.Point(119, 155);
-            this.StatusBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StatusBox.Location = new System.Drawing.Point(165, 123);
             this.StatusBox.Name = "StatusBox";
-            this.StatusBox.Size = new System.Drawing.Size(192, 24);
+            this.StatusBox.Size = new System.Drawing.Size(145, 21);
             this.StatusBox.TabIndex = 15;
             // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(115, 135);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StatusLabel.Location = new System.Drawing.Point(162, 107);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(44, 16);
+            this.StatusLabel.Size = new System.Drawing.Size(37, 13);
             this.StatusLabel.TabIndex = 14;
             this.StatusLabel.Text = "Status";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel1.Controls.Add(this.SupplierBox);
+            this.panel1.Controls.Add(this.SupplierLabel);
             this.panel1.Controls.Add(this.UOMBox);
             this.panel1.Controls.Add(this.StatusBox);
             this.panel1.Controls.Add(this.ProductDescBox);
@@ -181,21 +174,39 @@
             this.panel1.Controls.Add(this.CategoryBox);
             this.panel1.Controls.Add(this.CategoryLabel);
             this.panel1.Controls.Add(this.UOMLabel);
-            this.panel1.Location = new System.Drawing.Point(22, 21);
+            this.panel1.Location = new System.Drawing.Point(16, 17);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(428, 202);
+            this.panel1.Size = new System.Drawing.Size(321, 164);
             this.panel1.TabIndex = 16;
+            // 
+            // SupplierBox
+            // 
+            this.SupplierBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SupplierBox.FormattingEnabled = true;
+            this.SupplierBox.Location = new System.Drawing.Point(15, 123);
+            this.SupplierBox.Name = "SupplierBox";
+            this.SupplierBox.Size = new System.Drawing.Size(145, 21);
+            this.SupplierBox.TabIndex = 17;
+            // 
+            // SupplierLabel
+            // 
+            this.SupplierLabel.AutoSize = true;
+            this.SupplierLabel.Location = new System.Drawing.Point(12, 107);
+            this.SupplierLabel.Name = "SupplierLabel";
+            this.SupplierLabel.Size = new System.Drawing.Size(45, 13);
+            this.SupplierLabel.TabIndex = 16;
+            this.SupplierLabel.Text = "Supplier";
             // 
             // editProductForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(473, 276);
+            this.ClientSize = new System.Drawing.Size(355, 224);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SubmitButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "editProductForm";
@@ -223,5 +234,7 @@
         private System.Windows.Forms.ComboBox StatusBox;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox SupplierBox;
+        private System.Windows.Forms.Label SupplierLabel;
     }
 }

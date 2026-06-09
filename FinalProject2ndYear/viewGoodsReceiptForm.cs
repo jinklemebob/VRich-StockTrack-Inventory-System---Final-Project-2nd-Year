@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class viewGoodsReceiptForm : Form
     {
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
         private int receiptID;
 
         public viewGoodsReceiptForm(int receiptID)
@@ -59,7 +59,7 @@ namespace FinalProject2ndYear
             string query = @"
                 SELECT p.Description AS 'Product',
                 gri.Qty AS 'Qty',
-                UPPER(u.UOMName) AS 'UoM',
+                u.UOMName AS 'UoM',
                 sb.ExpiryDate AS 'Expiry Date'
                 FROM GoodsReceiptItems gri
                 JOIN Products p ON gri.ProductID = p.ProductID

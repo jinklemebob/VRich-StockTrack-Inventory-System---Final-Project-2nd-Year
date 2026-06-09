@@ -7,12 +7,13 @@ using Tulpep.NotificationWindow;
 
 namespace FinalProject2ndYear
 {
-    public partial class ucProducts: UserControl
+    public partial class ucProducts : UserControl
     {
         private bool isEditing = false;
-        private bool isDeleting = false;
         PopupNotifier popup = new PopupNotifier();
-        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+
+        private const string ConnectionString =
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public ucProducts()
         {
@@ -24,22 +25,35 @@ namespace FinalProject2ndYear
             LoadProducts();
         }
 
+        // ✅ MAIN LOAD (FILTERED BY CHECKBOX)
         public void LoadProducts()
         {
             string query = @"
-                 SELECT 'PD-' + CAST(p.ProductID AS VARCHAR) AS 'ID',
-                 p.Description, c.CategoryName AS 'Category', 
-                 p.ReorderLvl AS 'Reorder Lvl', UPPER(u.UOMName) AS 'UoM',
-                 CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END AS 'Status',
-                 p.CreatedAt AS 'Created At'
-                 FROM Products AS p 
-                 JOIN UOMs AS u ON p.UOMID = u.UOMID
-                 JOIN Categories AS c ON p.CategoryID = c.CategoryID";
-
-
+SELECT 'PD-' + CAST(p.ProductID AS VARCHAR) AS 'ID',
+       p.Description,
+       c.CategoryName AS 'Category',
+       s.SupplierName + CASE WHEN s.Status = 0 THEN ' (Inactive)' ELSE '' END AS 'Supplier',
+       p.ReorderLvl AS 'Reorder Lvl',
+       u.UOMName AS 'UoM',
+       CASE
+           WHEN p.Status = 1 THEN 'Active'
+           ELSE 'Inactive'
+       END AS 'Status'
+FROM Products p
+JOIN UOMs u ON p.UOMID = u.UOMID
+JOIN Categories c ON p.CategoryID = c.CategoryID
+LEFT JOIN Suppliers s ON p.SupplierID = s.SupplierID
+WHERE (@ShowInactive = 1 OR p.Status = 1)";
+        
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
+
+                da.SelectCommand.Parameters.AddWithValue(
+                    "@ShowInactive",
+                    chkShowInactive.Checked ? 1 : 0
+                );
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 ProductDataGrid.DataSource = dt;
@@ -49,11 +63,20 @@ namespace FinalProject2ndYear
             ClearGridSelection();
         }
 
+        // ---------------- COUNTS ----------------
         private void RefreshCounts()
         {
             TotalSuppliersCount.Text = GetCount("SELECT COUNT(*) FROM Products").ToString();
-            AddedTodayText.Text = GetCount("SELECT COUNT(*) FROM Products WHERE CreatedAt = GETDATE()").ToString();
-            RecentAddText.Text = GetDesc("SELECT TOP 1 Description FROM Products ORDER BY CreatedAt DESC, ProductID DESC").ToString();
+
+            AddedTodayText.Text = GetCount(@"
+                SELECT COUNT(*) 
+                FROM Products 
+                WHERE CAST(CreatedAt AS DATE) = CAST(GETDATE() AS DATE)").ToString();
+
+            RecentAddText.Text = GetDesc(@"
+                SELECT TOP 1 Description 
+                FROM Products 
+                ORDER BY CreatedAt DESC, ProductID DESC");
         }
 
         private int GetCount(string query)
@@ -65,6 +88,7 @@ namespace FinalProject2ndYear
                     return (int)cmd.ExecuteScalar();
             }
         }
+
         private string GetDesc(string query)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -78,45 +102,10 @@ namespace FinalProject2ndYear
             }
         }
 
-        public void ShowNotif()
-        {
-            if (isEditing == true)
-            {
-                popup.TitleText = "Products";
-                popup.ContentText = "Select a product to edit.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
+        // ---------------- NOTIF ----------------
+       
 
-                // Size
-                popup.Size = new Size(300, 100);
-
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-            else if (isDeleting == true)
-            {
-                popup.TitleText = "Products";
-                popup.ContentText = "Select a product to delete.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
-
-                // Size
-                popup.Size = new Size(300, 100);
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-         
-        }
+        // ---------------- ADD ----------------
         private void AddButton_Click(object sender, EventArgs e)
         {
             ResetState();
@@ -126,92 +115,47 @@ namespace FinalProject2ndYear
             {
                 LoadProducts();
             }
-               
         }
 
+        // ---------------- EDIT MODE ----------------
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (ProductDataGrid.RowCount == 0)
+            if (!isEditing)
             {
-                popup.TitleText = "Products";
-                popup.ContentText = "There are no products available to edit.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
+                if (ProductDataGrid.RowCount == 0)
+                {
+                    popup.TitleText = "Products";
+                    popup.ContentText = "There are no products available to edit.";
+                    popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
+                    popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
+                    popup.Size = new Size(300, 100);
+                    popup.TitleColor = Color.White;
+                    popup.ContentColor = Color.White;
+                    popup.BodyColor = Color.FromArgb(13, 34, 68);
+                    popup.BorderColor = Color.FromArgb(91, 155, 213);
+                    popup.Delay = 2500;
+                    popup.Popup();
+                    return; // stop here, don't enter edit mode
+                }
 
-                // Size
-                popup.Size = new Size(300, 100);
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-            else if (!isEditing && ProductDataGrid.RowCount >= 1)
-            {
+                // rows exist — enter edit mode
                 isEditing = true;
-                isDeleting = false;
-                ShowNotif();
+                ShowNotif(); // shows "Select a product to edit."
+
                 EditButton.Text = "Cancel";
-                EditButton.Padding = new Padding(0, 0, 0, 0);
-                DeleteButton.Text = "Delete";
-                DeleteButton.Padding = new Padding(15, 0, 0, 0);
                 ProductDataGrid.Enabled = true;
                 EditIcon.Visible = false;
-                DeleteIcon.Visible = true;
             }
             else
             {
-                ResetState();
-
-
+                ResetState(); // cancel edit mode
             }
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            if (ProductDataGrid.RowCount == 0)
-            {
-                popup.TitleText = "Products";
-                popup.ContentText = "There are no products available to delete.";
-                popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
-                popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
-
-                // Size
-                popup.Size = new Size(300, 100);
-                // Colors to match your UI
-                popup.TitleColor = Color.White;
-                popup.ContentColor = Color.White;
-                popup.BodyColor = Color.FromArgb(13, 34, 68);  // your navy
-                popup.BorderColor = Color.FromArgb(91, 155, 213);
-                popup.Delay = 2500;
-                popup.Popup();
-            }
-            else if (!isDeleting && ProductDataGrid.RowCount >= 1)
-            {
-                isDeleting = true;
-                isEditing = false;
-                ShowNotif();
-                DeleteButton.Text = "Cancel";
-                DeleteButton.Padding = new Padding(0, 0, 0, 0);
-                EditButton.Text = "Edit";
-                EditButton.Padding = new Padding(10, 0, 0, 0);
-                ProductDataGrid.Enabled = true;
-                DeleteIcon.Visible = false;
-                EditIcon.Visible = true;
-            }
-            else
-            {
-                ResetState();
-             
-                
-            }
-        }
-
+        // ---------------- GRID CLICK ----------------
         private void ProductDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return; 
+            if (e.RowIndex < 0) return;
 
             string rawID = ProductDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
             int productID = Convert.ToInt32(rawID.Replace("PD-", ""));
@@ -219,88 +163,46 @@ namespace FinalProject2ndYear
             if (isEditing)
             {
                 editProductForm eForm = new editProductForm(productID);
+
                 if (eForm.ShowDialog() == DialogResult.OK)
                     LoadProducts();
 
                 ResetState();
-                
             }
-            else if (isDeleting)
-            {
-                DialogResult confirm = MessageBox.Show(
-                    $"Are you sure you want to delete {rawID}?",
-                    "Delete Product",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (confirm == DialogResult.Yes)
-                {
-                    using (SqlConnection conn = new SqlConnection(ConnectionString))
-                    {
-                        conn.Open();
-
-                        using (SqlCommand check = new SqlCommand(
-                            @"SELECT COUNT(*) FROM GoodsReceiptItems WHERE ProductID = @ID", conn))
-                        {
-                            check.Parameters.AddWithValue("@ID", productID);
-                            int count = (int)check.ExecuteScalar();
-
-                            if (count > 0)
-                            {
-                                using (SqlCommand cmd = new SqlCommand(
-                                    "UPDATE Products SET Status = 0 WHERE ProductID = @ID", conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@ID", productID);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                MessageBox.Show("Product is used in existing transactions and has been marked as inactive instead.",
-                                                "Product Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                using (SqlCommand cmd = new SqlCommand(
-                                    "DELETE FROM Products WHERE ProductID = @ID", conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@ID", productID);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                MessageBox.Show("Product deleted.", "Deletion Successful",
-                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-
-                    LoadProducts();
-                }
-
-                ResetState();
-            }
-
         }
 
-
+        // ---------------- SEARCH ----------------
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             SearchLabel.Visible = string.IsNullOrWhiteSpace(SearchBox.Text);
 
             string query = @"
-        SELECT 'PD-' + CAST(p.ProductID AS VARCHAR) AS 'ID',
-               p.Description, c.CategoryName AS 'Category', 
-               p.ReorderLvl AS 'Reorder Lvl', UPPER(u.UOMName) AS 'UoM',
-               CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END AS 'Status',
-               p.CreatedAt AS 'Created At'
-        FROM Products AS p 
-        JOIN UOMs AS u ON p.UOMID = u.UOMID
-        JOIN Categories AS c ON p.CategoryID = c.CategoryID
-        WHERE CAST(p.ProductID AS VARCHAR) LIKE @Search
-           OR p.Description               LIKE @Search
-           OR c.CategoryName              LIKE @Search
-           OR UPPER(u.UOMName)            LIKE @Search
-           OR CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END LIKE @Search";
+SELECT 'PD-' + CAST(p.ProductID AS VARCHAR) AS 'ID',
+       p.Description, 
+       c.CategoryName AS 'Category', 
+       s.SupplierName + CASE WHEN s.Status = 0 THEN ' (Inactive)' ELSE '' END AS 'Supplier',
+       p.ReorderLvl AS 'Reorder Lvl', 
+       u.UOMName AS 'UoM',
+       CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END AS 'Status'
+FROM Products p
+JOIN UOMs u ON p.UOMID = u.UOMID
+JOIN Categories c ON p.CategoryID = c.CategoryID
+LEFT JOIN Suppliers s ON p.SupplierID = s.SupplierID
+WHERE (CAST(p.ProductID AS VARCHAR) LIKE @Search
+   OR p.Description LIKE @Search
+   OR c.CategoryName LIKE @Search
+   OR s.SupplierName LIKE @Search
+   OR p.ReorderLvl LIKE @Search
+   OR u.UOMName LIKE @Search
+   OR CASE WHEN p.Status = 1 THEN 'Active' ELSE 'Inactive' END LIKE @Search)
+AND (@ShowInactive = 1 OR p.Status = 1)";
 
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 da.SelectCommand.Parameters.AddWithValue("@Search", "%" + SearchBox.Text + "%");
+                da.SelectCommand.Parameters.AddWithValue("@ShowInactive", chkShowInactive.Checked ? 1 : 0);
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 ProductDataGrid.DataSource = dt;
@@ -308,30 +210,35 @@ namespace FinalProject2ndYear
 
             ClearGridSelection();
         }
-
-        private void SearchBox_Click(object sender, EventArgs e)
+        public void ShowNotif()
         {
-            SearchLabel.Visible = false;
+            popup.TitleText = "Products";
+            popup.ContentText = isEditing ? "Select a product to edit." : "";
+            popup.TitleFont = new Font("Segoe UI", 11, FontStyle.Bold);
+            popup.ContentFont = new Font("Segoe UI", 12, FontStyle.Regular);
+            popup.Size = new Size(300, 100);
+            popup.TitleColor = Color.White;
+            popup.ContentColor = Color.White;
+            popup.BodyColor = Color.FromArgb(13, 34, 68);
+            popup.BorderColor = Color.FromArgb(91, 155, 213);
+            popup.Delay = 2500;
+            popup.Popup();
+        }
+        private void chkShowInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadProducts();
         }
 
-        private void SearchBox_MouseLeave(object sender, EventArgs e)
-        {
-            SearchLabel.Visible = string.IsNullOrWhiteSpace(SearchBox.Text);
-        }
-
+        // ---------------- RESET ----------------
         private void ResetState()
         {
             isEditing = false;
-            isDeleting = false;
 
             EditButton.Text = "Edit";
-            
-            DeleteButton.Text = "Delete";
-            ProductDataGrid.Enabled = false;
             EditIcon.Visible = true;
-            DeleteIcon.Visible = true;
-            DeleteButton.Padding = new Padding(15, 0, 0, 0);
-            EditButton.Padding = new Padding(10, 0, 0, 0);
+
+            ProductDataGrid.Enabled = true;
+
             ClearGridSelection();
         }
 
@@ -344,24 +251,23 @@ namespace FinalProject2ndYear
             }));
         }
 
+        // ---------------- UI CLEANUP ----------------
         private void ProductDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
             string status = ProductDataGrid.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
-
             if (status == null) return;
 
-            switch (status)
+            if (status == "Active")
             {
-                case "Active":
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    break;
-                case "Inactive":
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
-                    ProductDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
-                    break;
+                ProductDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.LightGreen;
+                ProductDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.Black;
+            }
+            else
+            {
+                ProductDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.IndianRed;
+                ProductDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.White;
             }
         }
     }

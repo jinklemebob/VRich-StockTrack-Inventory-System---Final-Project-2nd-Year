@@ -8,7 +8,7 @@ namespace FinalProject2ndYear
 {
     public partial class ucInventory : UserControl
     {
-        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
         private bool isLoading = true;
 
         public ucInventory()
@@ -54,7 +54,7 @@ namespace FinalProject2ndYear
                 SELECT COUNT(*)
                 FROM StockBatches
                 WHERE ExpiryDate <= DATEADD(DAY, 30, CAST(GETDATE() AS DATE))
-                AND ExpiryDate >= CAST(GETDATE() AS DATE)
+                AND ExpiryDate > CAST(GETDATE() AS DATE)
                 AND QtyRemaining > 0");
         }
 
@@ -71,7 +71,7 @@ namespace FinalProject2ndYear
         private string BuildStatusCase()
         {
             return @"CASE
-                WHEN sb.ExpiryDate <= CAST(GETDATE() AS DATE) THEN 'Expired'
+                WHEN sb.ExpiryDate < CAST(GETDATE() AS DATE) THEN 'Expired'
                 WHEN sb.QtyRemaining = 0 THEN 'Depleted'
                 WHEN (
                     SELECT SUM(sb2.QtyRemaining)
@@ -104,14 +104,16 @@ namespace FinalProject2ndYear
         {
             string query = $@"
                 SELECT 'Batch ' + CAST(sb.BatchID AS VARCHAR) AS 'Batch',
+                       'GR-' + CAST(gr.ReceiptID AS VARCHAR) AS 'Receipt',
                        p.Description AS 'Product',
                        c.CategoryName AS 'Category',
                        sb.QtyRemaining AS 'Quantity',
-                       UPPER(u.UOMName) AS 'UoM',
+                       u.UOMName AS 'UoM',
                        sb.ExpiryDate AS 'Expiry Date',
                        {BuildStatusCase()} AS 'Status'
                 FROM StockBatches sb
                 JOIN GoodsReceiptItems gri ON sb.ReceiptItemsID = gri.ReceiptItemsID
+                JOIN GoodsReceipts gr ON gri.ReceiptID = gr.ReceiptID
                 JOIN Products p ON gri.ProductID = p.ProductID
                 JOIN Categories c ON p.CategoryID = c.CategoryID
                 JOIN UOMs u ON p.UOMID = u.UOMID
@@ -135,14 +137,16 @@ namespace FinalProject2ndYear
 
             string baseQuery = $@"
                 SELECT 'Batch ' + CAST(sb.BatchID AS VARCHAR) AS 'Batch',
+                       'GR-' + CAST(gr.ReceiptID AS VARCHAR) AS 'Receipt ID',
                        p.Description AS 'Product',
                        c.CategoryName AS 'Category',
                        sb.QtyRemaining AS 'Quantity',
-                       UPPER(u.UOMName) AS 'UoM',
+                       u.UOMName AS 'UoM',
                        sb.ExpiryDate AS 'Expiry Date',
                        {BuildStatusCase()} AS 'Status'
                 FROM StockBatches sb
                 JOIN GoodsReceiptItems gri ON sb.ReceiptItemsID = gri.ReceiptItemsID
+                JOIN GoodsReceipts gr ON gri.ReceiptID = gr.ReceiptID
                 JOIN Products p ON gri.ProductID = p.ProductID
                 JOIN Categories c ON p.CategoryID = c.CategoryID
                 JOIN UOMs u ON p.UOMID = u.UOMID
@@ -156,6 +160,7 @@ namespace FinalProject2ndYear
                    OR CAST([Expiry Date] AS VARCHAR) LIKE @Search
                    OR [Status] LIKE @Search
                    OR [Batch] LIKE @Search
+                   OR [Receipt] LIKE @Search
                 ORDER BY [Product], [Expiry Date] ASC";
 
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -210,31 +215,29 @@ namespace FinalProject2ndYear
             switch (status)
             {
                 case "Low Stock":
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.Yellow;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.Black;
                     break;
+
                 case "Expiring Soon":
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Orange;
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.Orange;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.White;
                     break;
+
                 case "Depleted":
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.IndianRed;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.White;
                     break;
+
                 case "Expired":
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkRed;
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.DarkRed;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.White;
                     break;
                 case "OK":
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
-                    ReceiptsDataGrid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.BackColor = Color.LightGreen;
+                    ReceiptsDataGrid.Rows[e.RowIndex].Cells["Status"].Style.ForeColor = Color.Black;
                     break;
             }
-        }
-
-        private void ReceiptsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

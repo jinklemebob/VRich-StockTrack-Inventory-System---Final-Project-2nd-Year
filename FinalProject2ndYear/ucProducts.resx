@@ -133,16 +133,6 @@
         tjGccTEDigAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="DeleteIcon.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAANBJREFUOE/t0zFqQkEQxnGPkCJYpJCUKSSnsQopLUIKy2AhAQsRi5DCUwRJ6QFS
-        5AQpU6WykBAsRCzkJ0sm4Fv05dn7wRQ7M9+f3dndWm2PMMAPllhhgae8ryDU0cAVNhjjPuLZr65xiYvc
-        fBemqkq9nV3ACNMjo3gktDCpGDcFcwD6+T5LNMr9u4A09SY+8YguviKXbuNfwDLWH2jjNsEi930ClAPS
-        xKsChrk/FXtRXOMBM7ziBfPIpc91ENCJYhV1c38CnOEtHlJZvOP8z7cFHlCXl0YFGo0AAAAASUVORK5C
-        YII=
-</value>
-  </data>
   <data name="EditIcon.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAB9AAAAfQCAYAAACaOMR5AAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s

@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class editSalesOrderForm : Form
     {
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
         private int salesOrderID;
 
         public editSalesOrderForm(int salesOrderID)
@@ -87,7 +87,7 @@ namespace FinalProject2ndYear
                         {
                             SupplierComboBox.SelectedValue = Convert.ToInt32(reader["CustomerID"]);
                             ReferenceNoTextBox.Text = reader["ReferenceNo"].ToString();
-                            ReceiptDatePicker.Value = Convert.ToDateTime(reader["OrderDate"]);
+                            OrderDatePicker.Value = Convert.ToDateTime(reader["OrderDate"]);
                         }
                     }
                 }
@@ -161,6 +161,12 @@ namespace FinalProject2ndYear
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (OrderDatePicker.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show("Order Date cannot be a future date.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             // 2. Build TVP
             DataTable items = new DataTable();
@@ -183,6 +189,12 @@ namespace FinalProject2ndYear
                 if (!int.TryParse(row.Cells["Qty"].Value.ToString(), out qty) || qty <= 0)
                 {
                     MessageBox.Show("Qty must be a valid number greater than 0.", "Validation Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (ReferenceNoTextBox.Text.Trim().Length < 3)
+                {
+                    MessageBox.Show("Reference No. must be at least 3 characters.", "Validation Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -249,7 +261,7 @@ namespace FinalProject2ndYear
                     cmd.Parameters.AddWithValue("@SalesOrderID", salesOrderID);
                     cmd.Parameters.AddWithValue("@CustomerID", SupplierComboBox.SelectedValue);
                     cmd.Parameters.AddWithValue("@ReferenceNo", ReferenceNoTextBox.Text.Trim());
-                    cmd.Parameters.AddWithValue("@OrderDate", ReceiptDatePicker.Value.Date);
+                    cmd.Parameters.AddWithValue("@OrderDate", OrderDatePicker.Value.Date);
 
                     SqlParameter tvp = cmd.Parameters.AddWithValue("@Items", items);
                     tvp.SqlDbType = SqlDbType.Structured;
@@ -277,7 +289,15 @@ namespace FinalProject2ndYear
     
             }
         }
+        // Reference No: alphanumeric + dash only, max 20
+        private void ReferenceNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
 
+            if (ReferenceNoTextBox.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
         private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("Are you sure you want to cancel this process?",

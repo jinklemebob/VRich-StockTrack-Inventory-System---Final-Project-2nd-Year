@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class viewSalesOrderForm : Form
     {
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
         private int salesOrderID;
 
         public viewSalesOrderForm(int salesOrderID)
@@ -59,7 +59,7 @@ namespace FinalProject2ndYear
             string query = @"
                SELECT p.Description AS 'Product',
                soi.Qty AS 'Qty',
-               UPPER(u.UOMName) AS 'UoM'
+               u.UOMName AS 'UoM'
                FROM SalesOrderItems soi
                JOIN Products p ON soi.ProductID = p.ProductID
                JOIN UOMs u ON p.UOMID = u.UOMID

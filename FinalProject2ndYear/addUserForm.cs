@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class addUserForm : Form
     {
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public addUserForm()
         {
@@ -48,6 +48,40 @@ namespace FinalProject2ndYear
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (UsernameTextbox.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Username must be at least 3 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (PasswordTextbox.Text.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (FirstNameBox.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("First Name must be at least 2 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (LastNameBox.Text.Trim().Length < 2)
+            {
+                MessageBox.Show("Last Name must be at least 2 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (RoleBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Role.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -84,7 +118,42 @@ namespace FinalProject2ndYear
                 }
             }
         }
+        // Username: alphanumeric + underscore only, max 50
+        private void UsernameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '_' && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
 
+            if (UsernameTextbox.Text.Length >= 50 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        // Password max 50
+        private void PasswordBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (PasswordTextbox.Text.Length >= 50 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        // First Name: letters and spaces only, max 50
+        private void FirstNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+
+            if (FirstNameBox.Text.Length >= 50 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        // Last Name: letters and spaces only, max 50
+        private void LastNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+
+            if (LastNameBox.Text.Length >= 50 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
         private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("Are you sure you want to cancel this process?",

@@ -28,7 +28,7 @@ namespace UserRoleValidation
 
         public void getUserRole()
         {
-            string connStr = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
+            string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connStr);
 
 

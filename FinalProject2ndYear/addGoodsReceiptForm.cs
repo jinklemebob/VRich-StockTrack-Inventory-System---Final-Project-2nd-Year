@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class addGoodsReceiptForm : Form
     {
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public addGoodsReceiptForm()
         {
@@ -22,13 +22,18 @@ namespace FinalProject2ndYear
 
         private void LoadSuppliers()
         {
-            string query = "SELECT SupplierID, SupplierName FROM Suppliers WHERE Status = 1";
+            string query = @"
+        SELECT SupplierID, 
+               SupplierName + CASE WHEN Status = 0 THEN ' (Inactive)' ELSE '' END AS DisplayName
+        FROM Suppliers
+        ORDER BY Status DESC, SupplierName";
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                SupplierComboBox.DisplayMember = "SupplierName";
+                SupplierComboBox.DisplayMember = "DisplayName";
                 SupplierComboBox.ValueMember = "SupplierID";
                 SupplierComboBox.DataSource = dt;
                 SupplierComboBox.SelectedIndex = -1;
@@ -44,7 +49,8 @@ namespace FinalProject2ndYear
             productCol.HeaderText = "Product";
             productCol.Width = 200;
 
-            string query = "SELECT ProductID, Description FROM Products WHERE Status = 1;";
+            // All active products regardless of supplier status
+            string query = "SELECT ProductID, Description FROM Products WHERE Status = 1";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
@@ -55,12 +61,10 @@ namespace FinalProject2ndYear
                 productCol.ValueMember = "ProductID";
             }
 
- 
             DataGridViewTextBoxColumn qtyCol = new DataGridViewTextBoxColumn();
             qtyCol.Name = "Qty";
             qtyCol.HeaderText = "Qty";
             qtyCol.Width = 80;
-
 
             DataGridViewTextBoxColumn expiryCol = new DataGridViewTextBoxColumn();
             expiryCol.Name = "ExpiryDate";
@@ -119,7 +123,12 @@ namespace FinalProject2ndYear
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (ReferenceNoTextBox.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Reference No. must be at least 3 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             DataTable items = new DataTable();
             items.Columns.Add("ProductID", typeof(int));
@@ -151,7 +160,7 @@ namespace FinalProject2ndYear
 
                 if (!DateTime.TryParseExact(row.Cells["ExpiryDate"].Value.ToString(), "MM/dd/yyyy",
                 System.Globalization.CultureInfo.InvariantCulture,
-                System.Globalization.DateTimeStyles.None, out expiry) || expiry.Date < DateTime.Today)
+                System.Globalization.DateTimeStyles.None, out expiry) || expiry.Date <= DateTime.Today)
                 {
                     MessageBox.Show("Expiry Date must be a valid future date (MM/DD/YYYY).", "Validation Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -206,5 +215,15 @@ namespace FinalProject2ndYear
                 ItemsDataGrid.ClearSelection();
             }));
         }
+
+        private void ReferenceNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+
+            if (ReferenceNoTextBox.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+      
+    }
     }
 }

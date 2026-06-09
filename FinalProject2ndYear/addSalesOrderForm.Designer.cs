@@ -49,6 +49,7 @@
             this.ReferenceNoTextBox.Name = "ReferenceNoTextBox";
             this.ReferenceNoTextBox.Size = new System.Drawing.Size(145, 20);
             this.ReferenceNoTextBox.TabIndex = 0;
+            this.ReferenceNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ReferenceNoTextBox_KeyPress);
             // 
             // ReferenceNoLabel
             // 

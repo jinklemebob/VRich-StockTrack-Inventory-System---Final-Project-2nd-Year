@@ -7,7 +7,7 @@ namespace FinalProject2ndYear
 {
     public partial class editGoodsReceiptForm : Form
     {
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
         private int receiptID;
 
         public editGoodsReceiptForm(int receiptID)
@@ -174,6 +174,12 @@ namespace FinalProject2ndYear
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (ReferenceNoTextBox.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Reference No. must be at least 3 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             DataTable items = new DataTable();
             items.Columns.Add("ProductID", typeof(int));
@@ -204,10 +210,10 @@ namespace FinalProject2ndYear
                 }
 
                 if (!DateTime.TryParseExact(row.Cells["ExpiryDate"].Value.ToString(), "MM/dd/yyyy",
-                    System.Globalization.CultureInfo.InvariantCulture,
-                    System.Globalization.DateTimeStyles.None, out expiry) || expiry.Date < DateTime.Today)
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None, out expiry) || expiry.Date <= DateTime.Today)
                 {
-                    MessageBox.Show("Expiry Date must be a valid future date (MM/DD/YYYY).", "Validation Error",
+                    MessageBox.Show("Expiry Date must be a future date after today (MM/DD/YYYY).", "Validation Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -281,6 +287,15 @@ namespace FinalProject2ndYear
             {
                 this.Close();
             }
+        }
+
+        private void ReferenceNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+
+            if (ReferenceNoTextBox.Text.Length >= 20 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
         }
     }
 }

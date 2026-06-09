@@ -64,14 +64,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.NoLowStockLabel = new System.Windows.Forms.Label();
             this.LowStockGrid = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.NoExpiringSoonLabel = new System.Windows.Forms.Label();
             this.ExpiringSoonGrid = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
-            this.NoLowStockLabel = new System.Windows.Forms.Label();
-            this.NoExpiringSoonLabel = new System.Windows.Forms.Label();
             this.DashboardChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -371,6 +371,17 @@
             this.panel14.Size = new System.Drawing.Size(489, 196);
             this.panel14.TabIndex = 7;
             // 
+            // NoLowStockLabel
+            // 
+            this.NoLowStockLabel.AutoSize = true;
+            this.NoLowStockLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoLowStockLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(79)))), ((int)(((byte)(11)))));
+            this.NoLowStockLabel.Location = new System.Drawing.Point(137, 90);
+            this.NoLowStockLabel.Name = "NoLowStockLabel";
+            this.NoLowStockLabel.Size = new System.Drawing.Size(207, 18);
+            this.NoLowStockLabel.TabIndex = 2;
+            this.NoLowStockLabel.Text = "No Items Low On Stock :)";
+            // 
             // LowStockGrid
             // 
             this.LowStockGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -440,6 +451,17 @@
             this.panel16.Size = new System.Drawing.Size(489, 196);
             this.panel16.TabIndex = 7;
             // 
+            // NoExpiringSoonLabel
+            // 
+            this.NoExpiringSoonLabel.AutoSize = true;
+            this.NoExpiringSoonLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoExpiringSoonLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.NoExpiringSoonLabel.Location = new System.Drawing.Point(140, 90);
+            this.NoExpiringSoonLabel.Name = "NoExpiringSoonLabel";
+            this.NoExpiringSoonLabel.Size = new System.Drawing.Size(206, 18);
+            this.NoExpiringSoonLabel.TabIndex = 3;
+            this.NoExpiringSoonLabel.Text = "No Items Expiring Soon :)";
+            // 
             // ExpiringSoonGrid
             // 
             this.ExpiringSoonGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -487,28 +509,6 @@
             this.label7.Size = new System.Drawing.Size(112, 15);
             this.label7.TabIndex = 0;
             this.label7.Text = "EXPIRING SOON";
-            // 
-            // NoLowStockLabel
-            // 
-            this.NoLowStockLabel.AutoSize = true;
-            this.NoLowStockLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoLowStockLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(79)))), ((int)(((byte)(11)))));
-            this.NoLowStockLabel.Location = new System.Drawing.Point(137, 90);
-            this.NoLowStockLabel.Name = "NoLowStockLabel";
-            this.NoLowStockLabel.Size = new System.Drawing.Size(207, 18);
-            this.NoLowStockLabel.TabIndex = 2;
-            this.NoLowStockLabel.Text = "No Items Low On Stock :)";
-            // 
-            // NoExpiringSoonLabel
-            // 
-            this.NoExpiringSoonLabel.AutoSize = true;
-            this.NoExpiringSoonLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoExpiringSoonLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.NoExpiringSoonLabel.Location = new System.Drawing.Point(140, 90);
-            this.NoExpiringSoonLabel.Name = "NoExpiringSoonLabel";
-            this.NoExpiringSoonLabel.Size = new System.Drawing.Size(206, 18);
-            this.NoExpiringSoonLabel.TabIndex = 3;
-            this.NoExpiringSoonLabel.Text = "No Items Expiring Soon :)";
             // 
             // DashboardChart
             // 

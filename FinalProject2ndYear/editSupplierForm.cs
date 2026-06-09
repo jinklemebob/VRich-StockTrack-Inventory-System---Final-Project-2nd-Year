@@ -15,7 +15,7 @@ namespace FinalProject2ndYear
     {
         int SupplierID;
         int Status;
-        String connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
         public editSupplierForm(int SupplierID)
         {
             InitializeComponent();
@@ -61,6 +61,34 @@ namespace FinalProject2ndYear
                 string.IsNullOrWhiteSpace(EmailTxtBox.Text))
             {
                 MessageBox.Show("Please fill in all required fields.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (SupplierNameTxtBox.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Supplier Name must be at least 3 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (ContactNoTxtBox.Text.Trim().Length != 11)
+            {
+                MessageBox.Show("Contact No. must be exactly 11 digits.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (ContactPersonTxtBox.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Contact Person must be at least 3 characters.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(EmailTxtBox.Text.Trim(),
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Validation Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -131,7 +159,28 @@ namespace FinalProject2ndYear
                 }
             }
         }
+        // Block Supplier Name and Contact Person at 100 chars
+        private void SupplierNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (SupplierNameTxtBox.Text.Length >= 100 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
 
+        private void ContactPersonBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ContactPersonTxtBox.Text.Length >= 100 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        // Block Contact No. to numbers only, max 11 digits
+        private void ContactNoBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+
+            if (ContactNoTxtBox.Text.Length >= 11 && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
         private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("Are you sure you want to cancel this process?", "Cancel Process", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

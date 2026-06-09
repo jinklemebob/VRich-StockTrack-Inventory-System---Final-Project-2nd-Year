@@ -47,39 +47,36 @@
             // 
             // ReferenceNoTextBox
             // 
-            this.ReferenceNoTextBox.Location = new System.Drawing.Point(24, 36);
-            this.ReferenceNoTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReferenceNoTextBox.Location = new System.Drawing.Point(18, 29);
             this.ReferenceNoTextBox.Name = "ReferenceNoTextBox";
-            this.ReferenceNoTextBox.Size = new System.Drawing.Size(192, 22);
+            this.ReferenceNoTextBox.Size = new System.Drawing.Size(145, 20);
             this.ReferenceNoTextBox.TabIndex = 0;
+            this.ReferenceNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ReferenceNoTextBox_KeyPress);
             // 
             // ReferenceNoLabel
             // 
             this.ReferenceNoLabel.AutoSize = true;
-            this.ReferenceNoLabel.Location = new System.Drawing.Point(20, 17);
-            this.ReferenceNoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReferenceNoLabel.Location = new System.Drawing.Point(15, 14);
             this.ReferenceNoLabel.Name = "ReferenceNoLabel";
-            this.ReferenceNoLabel.Size = new System.Drawing.Size(121, 16);
+            this.ReferenceNoLabel.Size = new System.Drawing.Size(97, 13);
             this.ReferenceNoLabel.TabIndex = 5;
             this.ReferenceNoLabel.Text = "Reference Number";
             // 
             // ReceiptDateLabel
             // 
             this.ReceiptDateLabel.AutoSize = true;
-            this.ReceiptDateLabel.Location = new System.Drawing.Point(20, 77);
-            this.ReceiptDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReceiptDateLabel.Location = new System.Drawing.Point(15, 63);
             this.ReceiptDateLabel.Name = "ReceiptDateLabel";
-            this.ReceiptDateLabel.Size = new System.Drawing.Size(86, 16);
+            this.ReceiptDateLabel.Size = new System.Drawing.Size(70, 13);
             this.ReceiptDateLabel.TabIndex = 6;
             this.ReceiptDateLabel.Text = "Receipt Date";
             // 
             // SupplierLabel
             // 
             this.SupplierLabel.AutoSize = true;
-            this.SupplierLabel.Location = new System.Drawing.Point(324, 17);
-            this.SupplierLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SupplierLabel.Location = new System.Drawing.Point(243, 14);
             this.SupplierLabel.Name = "SupplierLabel";
-            this.SupplierLabel.Size = new System.Drawing.Size(57, 16);
+            this.SupplierLabel.Size = new System.Drawing.Size(45, 13);
             this.SupplierLabel.TabIndex = 8;
             this.SupplierLabel.Text = "Supplier";
             // 
@@ -88,10 +85,9 @@
             this.SubmitButton.BackColor = System.Drawing.SystemColors.Highlight;
             this.SubmitButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubmitButton.Location = new System.Drawing.Point(474, 442);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Location = new System.Drawing.Point(356, 359);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(80, 34);
+            this.SubmitButton.Size = new System.Drawing.Size(60, 28);
             this.SubmitButton.TabIndex = 10;
             this.SubmitButton.Text = "Done";
             this.SubmitButton.UseVisualStyleBackColor = false;
@@ -99,19 +95,17 @@
             // 
             // ReceiptDatePicker
             // 
-            this.ReceiptDatePicker.Location = new System.Drawing.Point(24, 98);
-            this.ReceiptDatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReceiptDatePicker.Location = new System.Drawing.Point(18, 80);
             this.ReceiptDatePicker.Name = "ReceiptDatePicker";
-            this.ReceiptDatePicker.Size = new System.Drawing.Size(265, 22);
+            this.ReceiptDatePicker.Size = new System.Drawing.Size(200, 20);
             this.ReceiptDatePicker.TabIndex = 11;
             // 
             // SupplierComboBox
             // 
             this.SupplierComboBox.FormattingEnabled = true;
-            this.SupplierComboBox.Location = new System.Drawing.Point(328, 36);
-            this.SupplierComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SupplierComboBox.Location = new System.Drawing.Point(246, 29);
             this.SupplierComboBox.Name = "SupplierComboBox";
-            this.SupplierComboBox.Size = new System.Drawing.Size(180, 24);
+            this.SupplierComboBox.Size = new System.Drawing.Size(136, 21);
             this.SupplierComboBox.TabIndex = 12;
             // 
             // ItemsDataGrid
@@ -121,14 +115,14 @@
             this.ItemsDataGrid.AllowUserToResizeColumns = false;
             this.ItemsDataGrid.AllowUserToResizeRows = false;
             this.ItemsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ItemsDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.ItemsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ItemsDataGrid.Location = new System.Drawing.Point(31, 216);
-            this.ItemsDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ItemsDataGrid.Location = new System.Drawing.Point(23, 176);
             this.ItemsDataGrid.MultiSelect = false;
             this.ItemsDataGrid.Name = "ItemsDataGrid";
             this.ItemsDataGrid.RowHeadersVisible = false;
             this.ItemsDataGrid.RowHeadersWidth = 51;
-            this.ItemsDataGrid.Size = new System.Drawing.Size(523, 218);
+            this.ItemsDataGrid.Size = new System.Drawing.Size(392, 177);
             this.ItemsDataGrid.TabIndex = 13;
             // 
             // label1
@@ -136,10 +130,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(31, 188);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(23, 153);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 24);
+            this.label1.Size = new System.Drawing.Size(86, 19);
             this.label1.TabIndex = 14;
             this.label1.Text = "Products:";
             // 
@@ -148,10 +141,9 @@
             this.AddProductButton.BackColor = System.Drawing.SystemColors.Highlight;
             this.AddProductButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.AddProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddProductButton.Location = new System.Drawing.Point(474, 175);
-            this.AddProductButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddProductButton.Location = new System.Drawing.Point(356, 142);
             this.AddProductButton.Name = "AddProductButton";
-            this.AddProductButton.Size = new System.Drawing.Size(80, 33);
+            this.AddProductButton.Size = new System.Drawing.Size(60, 27);
             this.AddProductButton.TabIndex = 15;
             this.AddProductButton.Text = "Add";
             this.AddProductButton.UseVisualStyleBackColor = false;
@@ -162,10 +154,9 @@
             this.DeleteProductButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.DeleteProductButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.DeleteProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteProductButton.Location = new System.Drawing.Point(386, 175);
-            this.DeleteProductButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteProductButton.Location = new System.Drawing.Point(290, 142);
             this.DeleteProductButton.Name = "DeleteProductButton";
-            this.DeleteProductButton.Size = new System.Drawing.Size(80, 33);
+            this.DeleteProductButton.Size = new System.Drawing.Size(60, 27);
             this.DeleteProductButton.TabIndex = 16;
             this.DeleteProductButton.Text = "Delete";
             this.DeleteProductButton.UseVisualStyleBackColor = false;
@@ -176,10 +167,9 @@
             this.CancelButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(386, 442);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CancelButton.Location = new System.Drawing.Point(290, 359);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(80, 34);
+            this.CancelButton.Size = new System.Drawing.Size(60, 28);
             this.CancelButton.TabIndex = 17;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -194,17 +184,18 @@
             this.panel1.Controls.Add(this.ReceiptDateLabel);
             this.panel1.Controls.Add(this.SupplierLabel);
             this.panel1.Controls.Add(this.SupplierComboBox);
-            this.panel1.Location = new System.Drawing.Point(31, 29);
+            this.panel1.Location = new System.Drawing.Point(23, 24);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 139);
+            this.panel1.Size = new System.Drawing.Size(392, 113);
             this.panel1.TabIndex = 18;
             // 
             // editGoodsReceiptForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(586, 490);
+            this.ClientSize = new System.Drawing.Size(440, 398);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.DeleteProductButton);
@@ -212,7 +203,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ItemsDataGrid);
             this.Controls.Add(this.SubmitButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "editGoodsReceiptForm";

@@ -10,7 +10,7 @@ namespace FinalProject2ndYear
     public partial class ucDashboard : UserControl
     {
         public string Username;
-        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public ucDashboard()
         {
@@ -228,5 +228,6 @@ namespace FinalProject2ndYear
                 grid.ClearSelection();
             }));
         }
-    }
+
+       }
 }

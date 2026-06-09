@@ -11,7 +11,7 @@ namespace FinalProject2ndYear
     {
         private bool isEditing = false;
         PopupNotifier popup = new PopupNotifier();
-        private const string ConnectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public ucGoodsReceipts()
         {
@@ -203,6 +203,11 @@ namespace FinalProject2ndYear
         }
 
         private void ReceiptsDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void EditIcon_Click(object sender, EventArgs e)
         {
 
         }

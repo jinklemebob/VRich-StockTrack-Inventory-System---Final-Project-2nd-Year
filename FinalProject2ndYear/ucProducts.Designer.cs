@@ -36,14 +36,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProductLabel = new System.Windows.Forms.Label();
             this.MenuBar = new System.Windows.Forms.Panel();
+            this.chkShowInactive = new System.Windows.Forms.CheckBox();
             this.SearchIcon = new System.Windows.Forms.PictureBox();
-            this.DeleteIcon = new System.Windows.Forms.PictureBox();
             this.EditIcon = new System.Windows.Forms.PictureBox();
             this.AddIcon = new System.Windows.Forms.PictureBox();
             this.LinkLabel = new System.Windows.Forms.Label();
             this.SearchLabel = new System.Windows.Forms.Label();
             this.SearchBox = new System.Windows.Forms.TextBox();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.BasePanel1 = new System.Windows.Forms.Panel();
@@ -62,7 +61,6 @@
             this.ProductDataGrid = new System.Windows.Forms.DataGridView();
             this.MenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeleteIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddIcon)).BeginInit();
             this.BasePanel1.SuspendLayout();
@@ -90,14 +88,13 @@
             // MenuBar
             // 
             this.MenuBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
+            this.MenuBar.Controls.Add(this.chkShowInactive);
             this.MenuBar.Controls.Add(this.SearchIcon);
-            this.MenuBar.Controls.Add(this.DeleteIcon);
             this.MenuBar.Controls.Add(this.EditIcon);
             this.MenuBar.Controls.Add(this.AddIcon);
             this.MenuBar.Controls.Add(this.LinkLabel);
             this.MenuBar.Controls.Add(this.SearchLabel);
             this.MenuBar.Controls.Add(this.SearchBox);
-            this.MenuBar.Controls.Add(this.DeleteButton);
             this.MenuBar.Controls.Add(this.EditButton);
             this.MenuBar.Controls.Add(this.AddButton);
             this.MenuBar.Controls.Add(this.ProductLabel);
@@ -107,28 +104,30 @@
             this.MenuBar.Size = new System.Drawing.Size(1034, 117);
             this.MenuBar.TabIndex = 8;
             // 
+            // chkShowInactive
+            // 
+            this.chkShowInactive.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.chkShowInactive.AutoSize = true;
+            this.chkShowInactive.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkShowInactive.ForeColor = System.Drawing.Color.GhostWhite;
+            this.chkShowInactive.Location = new System.Drawing.Point(879, 59);
+            this.chkShowInactive.Name = "chkShowInactive";
+            this.chkShowInactive.Size = new System.Drawing.Size(119, 24);
+            this.chkShowInactive.TabIndex = 19;
+            this.chkShowInactive.Text = "Show Inactive";
+            this.chkShowInactive.UseVisualStyleBackColor = true;
+            this.chkShowInactive.CheckedChanged += new System.EventHandler(this.chkShowInactive_CheckedChanged);
+            // 
             // SearchIcon
             // 
             this.SearchIcon.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SearchIcon.BackgroundImage")));
             this.SearchIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SearchIcon.Location = new System.Drawing.Point(482, 58);
+            this.SearchIcon.Location = new System.Drawing.Point(463, 58);
             this.SearchIcon.Name = "SearchIcon";
             this.SearchIcon.Size = new System.Drawing.Size(24, 24);
             this.SearchIcon.TabIndex = 18;
             this.SearchIcon.TabStop = false;
-            // 
-            // DeleteIcon
-            // 
-            this.DeleteIcon.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.DeleteIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteIcon.BackgroundImage")));
-            this.DeleteIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeleteIcon.Enabled = false;
-            this.DeleteIcon.Location = new System.Drawing.Point(917, 64);
-            this.DeleteIcon.Name = "DeleteIcon";
-            this.DeleteIcon.Size = new System.Drawing.Size(16, 14);
-            this.DeleteIcon.TabIndex = 17;
-            this.DeleteIcon.TabStop = false;
             // 
             // EditIcon
             // 
@@ -136,7 +135,7 @@
             this.EditIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditIcon.BackgroundImage")));
             this.EditIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditIcon.Enabled = false;
-            this.EditIcon.Location = new System.Drawing.Point(821, 64);
+            this.EditIcon.Location = new System.Drawing.Point(792, 64);
             this.EditIcon.Name = "EditIcon";
             this.EditIcon.Size = new System.Drawing.Size(16, 15);
             this.EditIcon.TabIndex = 16;
@@ -148,7 +147,7 @@
             this.AddIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddIcon.BackgroundImage")));
             this.AddIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddIcon.Enabled = false;
-            this.AddIcon.Location = new System.Drawing.Point(732, 65);
+            this.AddIcon.Location = new System.Drawing.Point(712, 65);
             this.AddIcon.Name = "AddIcon";
             this.AddIcon.Size = new System.Drawing.Size(14, 12);
             this.AddIcon.TabIndex = 15;
@@ -174,7 +173,7 @@
             this.SearchLabel.Enabled = false;
             this.SearchLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchLabel.ForeColor = System.Drawing.Color.SlateGray;
-            this.SearchLabel.Location = new System.Drawing.Point(521, 64);
+            this.SearchLabel.Location = new System.Drawing.Point(502, 64);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(50, 13);
             this.SearchLabel.TabIndex = 13;
@@ -185,30 +184,11 @@
             this.SearchBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.SearchBox.Location = new System.Drawing.Point(514, 54);
+            this.SearchBox.Location = new System.Drawing.Point(495, 54);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.Size = new System.Drawing.Size(198, 35);
             this.SearchBox.TabIndex = 12;
-            this.SearchBox.Click += new System.EventHandler(this.SearchBox_Click);
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
-            this.SearchBox.MouseLeave += new System.EventHandler(this.SearchBox_MouseLeave);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.DeleteButton.FlatAppearance.BorderSize = 0;
-            this.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(115)))));
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.DeleteButton.Location = new System.Drawing.Point(909, 55);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.DeleteButton.Size = new System.Drawing.Size(85, 30);
-            this.DeleteButton.TabIndex = 10;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // EditButton
             // 
@@ -218,7 +198,7 @@
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.EditButton.Location = new System.Drawing.Point(806, 55);
+            this.EditButton.Location = new System.Drawing.Point(777, 55);
             this.EditButton.Name = "EditButton";
             this.EditButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.EditButton.Size = new System.Drawing.Size(85, 30);
@@ -235,7 +215,7 @@
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.AddButton.Location = new System.Drawing.Point(715, 55);
+            this.AddButton.Location = new System.Drawing.Point(695, 55);
             this.AddButton.Name = "AddButton";
             this.AddButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.AddButton.Size = new System.Drawing.Size(85, 30);
@@ -466,7 +446,6 @@
             this.MenuBar.ResumeLayout(false);
             this.MenuBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SearchIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeleteIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddIcon)).EndInit();
             this.BasePanel1.ResumeLayout(false);
@@ -489,7 +468,6 @@
         private System.Windows.Forms.Panel MenuBar;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Label SearchLabel;
         private System.Windows.Forms.Label LinkLabel;
         private System.Windows.Forms.Panel BasePanel1;
@@ -508,8 +486,8 @@
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.PictureBox AddIcon;
         private System.Windows.Forms.PictureBox EditIcon;
-        private System.Windows.Forms.PictureBox DeleteIcon;
         private System.Windows.Forms.DataGridView ProductDataGrid;
         private System.Windows.Forms.PictureBox SearchIcon;
+        private System.Windows.Forms.CheckBox chkShowInactive;
     }
 }

@@ -17,8 +17,8 @@ namespace FinalProject2ndYear
     public partial class MainDashboard : Form
     {
 
-        public String Username = "admin";
-        public String Password = "123";
+        public String Username;
+        public String Password;
         Submenus sb;
         private Color menuColor = Color.FromArgb(0, 30, 70);
         private Color submenuColor = Color.FromArgb(0, 50, 100);
@@ -47,6 +47,12 @@ namespace FinalProject2ndYear
             originalMasterArrow = (Image)ArrowIndicM.Image.Clone();
             originalTransactionsArrow = (Image)ArrowIndicT.Image.Clone();
             defaultButtonColor = DashboardButton.BackColor;
+
+            DateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
+            ClockLabel.Text = DateTime.Now.ToString("hh: mm: ss tt");
+            DateHeader.Start();
+            ClockTimer.Start();
+            UserLabel.Text = "Logged in as: " + Username;
 
             ValidateUserRole vu = new ValidateUserRole(Username, Password);
             vu.getUserRole();
@@ -148,10 +154,16 @@ namespace FinalProject2ndYear
             ArrowIndicT.Refresh();
         }
         private void LogoutButton_Click(object sender, EventArgs e)
-        { 
-            LoginPage logout = new LoginPage();
-            logout.Show();
-            this.Hide();
+        {
+            DialogResult LogOut = MessageBox.Show("Are you sure you want to logout?", "User Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (LogOut == DialogResult.Yes)
+            {
+                LoginPage logout = new LoginPage();
+                logout.Show();
+                this.Hide();
+            }
+            
         }
         private void MainDashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -235,5 +247,16 @@ namespace FinalProject2ndYear
         {
 
         }
+
+        private void ClockTimer_Tick(object sender, EventArgs e)
+        {
+            ClockLabel.Text = DateTime.Now.ToString("hh:mm:ss tt");
+        }
+
+        private void DateHeader_Tick(object sender, EventArgs e)
+        {
+            DateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
+        }
+ 
     }
 }

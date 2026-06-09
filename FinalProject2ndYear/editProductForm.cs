@@ -8,7 +8,7 @@ namespace FinalProject2ndYear
     public partial class editProductForm : Form
     {
         int ProductID;
-        string connectionString = @"Data Source=DESKTOP-K0HOPRM;Initial Catalog=StockTrackDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=StockTrackDB;Integrated Security=True";
 
         public editProductForm(int ProductID)
         {
@@ -34,6 +34,12 @@ namespace FinalProject2ndYear
                     CategoryBox.SelectedValue = reader["CategoryID"];
                     UOMBox.SelectedValue = reader["UOMID"];
                     StatusBox.SelectedIndex = Convert.ToInt32(reader["Status"]) == 1 ? 0 : 1;
+
+                    // pre-select the supplier
+                    if (reader["SupplierID"] != DBNull.Value)
+                        SupplierBox.SelectedValue = reader["SupplierID"];
+                    else
+                        SupplierBox.SelectedIndex = -1;
                 }
             }
         }
@@ -64,7 +70,22 @@ namespace FinalProject2ndYear
                 UOMBox.SelectedIndex = -1;
             }
 
-            // Load Status options
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(@"
+        SELECT SupplierID, 
+               SupplierName + CASE WHEN Status = 0 THEN ' (Inactive)' ELSE '' END AS DisplayName
+        FROM Suppliers
+        ORDER BY Status DESC, SupplierName", conn))
+            {
+                conn.Open();
+                DataTable dtSup = new DataTable();
+                dtSup.Load(cmd.ExecuteReader());
+                SupplierBox.DataSource = dtSup;
+                SupplierBox.DisplayMember = "DisplayName";
+                SupplierBox.ValueMember = "SupplierID";
+                SupplierBox.SelectedIndex = -1;
+            }
+
             StatusBox.Items.Clear();
             StatusBox.Items.Add("Active");
             StatusBox.Items.Add("Inactive");
@@ -83,36 +104,32 @@ namespace FinalProject2ndYear
                 return;
             }
 
-            if (!int.TryParse(ReorderLvlBox.Text, out int reorderLvl) || reorderLvl < 0)
+            if (!int.TryParse(ReorderLvlBox.Text, out int reorderLvl) || reorderLvl <= 0)
             {
-                MessageBox.Show("Reorder Level must be a non-negative whole number.", "Validation Error",
+                MessageBox.Show("Invalid Reorder Level.", "Validation Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int newStatus = StatusBox.SelectedIndex == 0 ? 1 : 0;
 
-            // Warn if setting to inactive and still has remaining stock
             if (newStatus == 0)
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     using (SqlCommand check = new SqlCommand(@"
-                        SELECT COUNT(*) FROM StockBatches sb
-                        JOIN GoodsReceiptItems gri ON sb.ReceiptItemsID = gri.ReceiptItemsID
-                        WHERE gri.ProductID = @ID AND sb.QtyRemaining > 0", conn))
+                SELECT COUNT(*) FROM StockBatches sb
+                JOIN GoodsReceiptItems gri ON sb.ReceiptItemsID = gri.ReceiptItemsID
+                WHERE gri.ProductID = @ID AND sb.QtyRemaining > 0", conn))
                     {
                         check.Parameters.AddWithValue("@ID", ProductID);
                         int remainingStock = (int)check.ExecuteScalar();
-
                         if (remainingStock > 0)
                         {
-                            DialogResult warn = MessageBox.Show(
-                                "This product still has remaining stock in the inventory. Are you sure you want to mark it as inactive?",
-                                "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                            if (warn == DialogResult.No) return;
+                            MessageBox.Show("This product cannot be set as inactive because it still has remaining stock in the inventory.",
+                                            "Cannot Deactivate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
                     }
                 }
@@ -127,6 +144,12 @@ namespace FinalProject2ndYear
                 {
                     check.Parameters.AddWithValue("@Description", ProductDescBox.Text.Trim());
                     check.Parameters.AddWithValue("@ID", ProductID);
+                    if (ProductDescBox.Text.Trim().Length < 3)
+                    {
+                        MessageBox.Show("Product description must be at least 3 characters.", "Validation Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     if ((int)check.ExecuteScalar() > 0)
                     {
                         MessageBox.Show("A product with that description already exists.", "Duplicate Entry",
@@ -136,12 +159,13 @@ namespace FinalProject2ndYear
                 }
 
                 string query = @"UPDATE Products 
-                                 SET Description = @Description,
-                                     ReorderLvl  = @ReorderLvl,
-                                     CategoryID  = @CategoryID,
-                                     UOMID       = @UOMID,
-                                     Status      = @Status
-                                 WHERE ProductID = @ID";
+                         SET Description = @Description,
+                             ReorderLvl  = @ReorderLvl,
+                             CategoryID  = @CategoryID,
+                             UOMID       = @UOMID,
+                             SupplierID  = @SupplierID,
+                             Status      = @Status
+                         WHERE ProductID = @ID";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ID", ProductID);
@@ -149,6 +173,13 @@ namespace FinalProject2ndYear
                     cmd.Parameters.AddWithValue("@ReorderLvl", reorderLvl);
                     cmd.Parameters.AddWithValue("@CategoryID", Convert.ToInt32(CategoryBox.SelectedValue));
                     cmd.Parameters.AddWithValue("@UOMID", Convert.ToInt32(UOMBox.SelectedValue));
+
+                    // SupplierID is optional — keep existing value if nothing selected
+                    if (SupplierBox.SelectedIndex != -1)
+                        cmd.Parameters.AddWithValue("@SupplierID", Convert.ToInt32(SupplierBox.SelectedValue));
+                    else
+                        cmd.Parameters.AddWithValue("@SupplierID", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@Status", newStatus);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Product Updated!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -166,6 +197,14 @@ namespace FinalProject2ndYear
             {
                 this.Close();
             }
+        }
+
+        private void ProductDescBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show("Product description must be at least 3 characters.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+
         }
     }
 }

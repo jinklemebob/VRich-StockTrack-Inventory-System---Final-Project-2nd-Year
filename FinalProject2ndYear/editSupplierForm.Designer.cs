@@ -46,73 +46,68 @@
             // 
             // SupplierNameTxtBox
             // 
-            this.SupplierNameTxtBox.Location = new System.Drawing.Point(17, 33);
-            this.SupplierNameTxtBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SupplierNameTxtBox.Location = new System.Drawing.Point(13, 27);
             this.SupplierNameTxtBox.Name = "SupplierNameTxtBox";
-            this.SupplierNameTxtBox.Size = new System.Drawing.Size(192, 22);
+            this.SupplierNameTxtBox.Size = new System.Drawing.Size(145, 20);
             this.SupplierNameTxtBox.TabIndex = 0;
+            this.SupplierNameTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SupplierNameBox_KeyPress);
             // 
             // ContactPersonTxtBox
             // 
-            this.ContactPersonTxtBox.Location = new System.Drawing.Point(217, 33);
-            this.ContactPersonTxtBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactPersonTxtBox.Location = new System.Drawing.Point(163, 27);
             this.ContactPersonTxtBox.Name = "ContactPersonTxtBox";
-            this.ContactPersonTxtBox.Size = new System.Drawing.Size(192, 22);
+            this.ContactPersonTxtBox.Size = new System.Drawing.Size(145, 20);
             this.ContactPersonTxtBox.TabIndex = 1;
+            this.ContactPersonTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactPersonBox_KeyPress);
             // 
             // EmailTxtBox
             // 
-            this.EmailTxtBox.Location = new System.Drawing.Point(217, 94);
-            this.EmailTxtBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EmailTxtBox.Location = new System.Drawing.Point(163, 76);
             this.EmailTxtBox.Name = "EmailTxtBox";
-            this.EmailTxtBox.Size = new System.Drawing.Size(192, 22);
+            this.EmailTxtBox.Size = new System.Drawing.Size(145, 20);
             this.EmailTxtBox.TabIndex = 2;
             // 
             // ContactNoTxtBox
             // 
-            this.ContactNoTxtBox.Location = new System.Drawing.Point(17, 94);
-            this.ContactNoTxtBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactNoTxtBox.Location = new System.Drawing.Point(13, 76);
             this.ContactNoTxtBox.Name = "ContactNoTxtBox";
-            this.ContactNoTxtBox.Size = new System.Drawing.Size(192, 22);
+            this.ContactNoTxtBox.Size = new System.Drawing.Size(145, 20);
             this.ContactNoTxtBox.TabIndex = 4;
+            this.ContactNoTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactNoBox_KeyPress);
             // 
             // SupplierNameLabel
             // 
             this.SupplierNameLabel.AutoSize = true;
-            this.SupplierNameLabel.Location = new System.Drawing.Point(13, 14);
-            this.SupplierNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SupplierNameLabel.Location = new System.Drawing.Point(10, 11);
             this.SupplierNameLabel.Name = "SupplierNameLabel";
-            this.SupplierNameLabel.Size = new System.Drawing.Size(97, 16);
+            this.SupplierNameLabel.Size = new System.Drawing.Size(76, 13);
             this.SupplierNameLabel.TabIndex = 5;
             this.SupplierNameLabel.Text = "Supplier Name";
             // 
             // ContactNoLabel
             // 
             this.ContactNoLabel.AutoSize = true;
-            this.ContactNoLabel.Location = new System.Drawing.Point(13, 74);
-            this.ContactNoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ContactNoLabel.Location = new System.Drawing.Point(10, 60);
             this.ContactNoLabel.Name = "ContactNoLabel";
-            this.ContactNoLabel.Size = new System.Drawing.Size(76, 16);
+            this.ContactNoLabel.Size = new System.Drawing.Size(64, 13);
             this.ContactNoLabel.TabIndex = 6;
             this.ContactNoLabel.Text = "Contact No.";
             // 
             // ContactPersonLabel
             // 
             this.ContactPersonLabel.AutoSize = true;
-            this.ContactPersonLabel.Location = new System.Drawing.Point(213, 14);
-            this.ContactPersonLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ContactPersonLabel.Location = new System.Drawing.Point(160, 11);
             this.ContactPersonLabel.Name = "ContactPersonLabel";
-            this.ContactPersonLabel.Size = new System.Drawing.Size(98, 16);
+            this.ContactPersonLabel.Size = new System.Drawing.Size(80, 13);
             this.ContactPersonLabel.TabIndex = 8;
             this.ContactPersonLabel.Text = "Contact Person";
             // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(213, 74);
-            this.EmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EmailLabel.Location = new System.Drawing.Point(160, 60);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(41, 16);
+            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
             this.EmailLabel.TabIndex = 9;
             this.EmailLabel.Text = "Email";
             // 
@@ -121,10 +116,9 @@
             this.SubmitButton.BackColor = System.Drawing.SystemColors.Highlight;
             this.SubmitButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubmitButton.Location = new System.Drawing.Point(360, 217);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Location = new System.Drawing.Point(270, 176);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(91, 32);
+            this.SubmitButton.Size = new System.Drawing.Size(68, 26);
             this.SubmitButton.TabIndex = 10;
             this.SubmitButton.Text = "Done";
             this.SubmitButton.UseVisualStyleBackColor = false;
@@ -133,20 +127,18 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(133, 129);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StatusLabel.Location = new System.Drawing.Point(100, 105);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(44, 16);
+            this.StatusLabel.Size = new System.Drawing.Size(37, 13);
             this.StatusLabel.TabIndex = 12;
             this.StatusLabel.Text = "Status";
             // 
             // StatusBox
             // 
             this.StatusBox.FormattingEnabled = true;
-            this.StatusBox.Location = new System.Drawing.Point(137, 148);
-            this.StatusBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StatusBox.Location = new System.Drawing.Point(103, 120);
             this.StatusBox.Name = "StatusBox";
-            this.StatusBox.Size = new System.Drawing.Size(160, 24);
+            this.StatusBox.Size = new System.Drawing.Size(121, 21);
             this.StatusBox.TabIndex = 13;
             // 
             // CancelButton
@@ -154,10 +146,9 @@
             this.CancelButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(261, 217);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CancelButton.Location = new System.Drawing.Point(196, 176);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(91, 32);
+            this.CancelButton.Size = new System.Drawing.Size(68, 26);
             this.CancelButton.TabIndex = 14;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -176,21 +167,21 @@
             this.panel1.Controls.Add(this.EmailLabel);
             this.panel1.Controls.Add(this.ContactNoLabel);
             this.panel1.Controls.Add(this.ContactPersonLabel);
-            this.panel1.Location = new System.Drawing.Point(22, 21);
+            this.panel1.Location = new System.Drawing.Point(16, 17);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(429, 189);
+            this.panel1.Size = new System.Drawing.Size(322, 154);
             this.panel1.TabIndex = 15;
             // 
             // editSupplierForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(473, 259);
+            this.ClientSize = new System.Drawing.Size(355, 210);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SubmitButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "editSupplierForm";
